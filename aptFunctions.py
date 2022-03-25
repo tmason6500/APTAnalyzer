@@ -1,8 +1,9 @@
 import mitreattack.attackToExcel.attackToExcel as attackToExcel
 import mitreattack.attackToExcel.stixToDf as stixToDf
+import pandas as pd
 
 
-def update():
+def updateDataFrameSources() -> None:
     attackdata = attackToExcel.get_stix_data("enterprise-attack")
     techniques_data = stixToDf.techniquesToDf(attackdata, "enterprise-attack")
     tactics_data = stixToDf.tacticsToDf(attackdata, "enerprise-attack")
@@ -29,7 +30,7 @@ def update():
     groupsFromRelationships.to_csv("APTAnalyzer/data/groupsFromRelationships.csv", index=False)
     relationship_df.to_csv("APTAnalyzer/data/relationships.csv", index=False)
 
-def buildDataFrames():
+def buildDataFrames() -> pd.DataFrame:
     techniques_df = pd.read_csv("APTAnalyzer/data/techniques.csv")
     tactics_df = pd.read_csv("APTAnalyzer/data/tactics.csv")
     groups_df = pd.read_csv("APTAnalyzer/data/groups.csv")
@@ -38,4 +39,4 @@ def buildDataFrames():
     groupsFromRelationships = pd.read_csv("APTAnalyzer/data/groupsFromRelationships.csv")
     relationships_df = pd.read_csv("APTAnalyzer/data/relationships.csv")
 
-    return {"techniques": techniques_df, "tactics": tactics_df, "groups": groups_df, "software": software_df, "mitigations": mitigations_df, "groupsFromRelationships": groupsFromRelationships, "relationships": relationships_df}
+    return techniques_df, tactics_df, groups_df, software_df, mitigations_df, groupsFromRelationships, relationships_df
