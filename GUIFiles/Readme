@@ -1,1 +1,1 @@
-
+tacticscombo.json, software.json, and Store.py were only created for testing purposes. If you want to run the GUI.py, you will need to store the GUI.py, GUI.ui, tacticscombo.json, software.json in the same folder. Once we get a link with the backend and the front end, the additional files will possibly become obsolete. 
