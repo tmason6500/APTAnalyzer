@@ -1,16 +1,15 @@
-from PyQt5.QtWidgets import QMainWindow, QApplication, QComboBox, QPushButton, QPlainTextEdit, QCompleter, QListWidget
-from PyQt5 import uic
-from PyQt5 import Qt
+from PyQt5.QtWidgets import QMainWindow, QApplication, QComboBox, QPushButton, QPlainTextEdit, QCompleter, QListWidget, QAction, QLabel
+from PyQt5 import uic, Qt, QtCore
+from PyQt5.QtCore import QCoreApplication
 import sys
 import json
-from PyQt5.QtGui import QStandardItemModel, QStandardItem, QFont
+from PyQt5.QtGui import QStandardItemModel, QStandardItem, QFont, QMovie
+from Storedata import *
 
 with open('tacticscombo.json') as d:
-     #enters the contents of the data.json file into dictionary attackers
     TacticCombo = json.load(d)
 
 with open('software.json') as d:
-     #enters the contents of the data.json file into dictionary attackers
     Malware = json.load(d)
 
 Backend_list = []
@@ -21,6 +20,8 @@ class UI(QMainWindow):
 
         #load the ui File
         uic.loadUi("GUI.ui", self)
+        self.setWindowTitle("APT ANALYZER")
+
         self.setStyleSheet("background-color: #33393B; color : white; font-size : 11pt;}")
 
         self.model = QStandardItemModel()
@@ -52,6 +53,8 @@ class UI(QMainWindow):
         self.delete_software_btn.setStyleSheet('QPushButton {background-color: #282C2E; color: white; font-size : 12pt;}')
         self.clear_all_btn = self.findChild(QPushButton, "ClearAll")
         self.clear_all_btn.setStyleSheet('QPushButton {background-color: #282C2E; color: white; font-size : 12pt;}')
+        self.evaluate_btn = self.findChild(QPushButton, "Evaluate")
+        self.evaluate_btn.setStyleSheet('QPushButton {background-color: #282C2E; color: white; font-size : 12pt;}')
 
         self.added_techniques_box = self.findChild(QListWidget, "AddedTechniquesBox")
         self.added_techniques_box.setStyleSheet('QListWidget {background-color: #282C2E; color: white; font-size : 12pt;}')
@@ -84,6 +87,15 @@ class UI(QMainWindow):
         self.techniques.setModel(self.model)
         self.software.addItems(Malware)
 
+        self.update_action = self.findChild(QAction, "actionUpdate")
+        self.progress_label = self.findChild(QLabel, "progress")
+        self.progress_label.hide()
+        self.update_label = self.findChild(QLabel, "updating")
+        self.update_label.hide()
+        self.movie1 = QMovie("loader.gif")
+        self.progress_label.setMovie(self.movie1)
+        self.movie2 = QMovie("updating.gif")
+        self.update_label.setMovie(self.movie2)
 
         #Populate Tactics and Techniques comboboxes
         for k, v in TacticCombo.items():
@@ -107,8 +119,11 @@ class UI(QMainWindow):
         self.delete_technique_btn.pressed.connect(self.delete_technique)
         self.delete_software_btn.pressed.connect(self.delete_software)
         self.clear_all_btn.pressed.connect(self.clear_all)
+        self.evaluate_btn.pressed.connect(self.evaluate)
 
+        self.update_action.triggered.connect(self.update_data)
         self.showMaximized()
+
 
 
     def updateTacticCombo(self, index):
@@ -170,6 +185,49 @@ class UI(QMainWindow):
         self.description_box.setPlainText("All techniques and software have been cleared from added techniques and added software lists.")
         Backend_list.clear()
         print (Backend_list)
+
+    def evaluate(self):
+        for x in range(self.added_techniques_box.count()-1):
+            Backend_list.append(self.added_techniques_box.item(x))
+        for x in range(self.added_software_box.count()-1):
+            Backend_list.append(self.added_software_box.item(x))
+        print (Backend_list)
+
+    def update_data(self):
+        self.temp_thread = StringThread("hello")
+        self.tactics.clear()
+        self.software.clear()
+        self.potential_matches.clear()
+        self.description_box.clear()
+        self.added_software_box.clear()
+        self.added_techniques_box.clear()
+        self.description_box.setStyleSheet('QPlainTextEdit {background-color: #282C2E; color: white; font-size : 14pt;}')
+        self.description_box.insertPlainText("PLEASE WAIT..." + "\n" + "THE STORED DATA IS BEING UPDATED..." + "\n" + "APPLICATION WILL RESTART ONCE DONE...")
+        self.progress_label.show()
+        self.update_label.show()
+        self.movie1.start()
+        self.movie2.start()
+        self.setEnabled(False)
+        self.temp_thread.start()
+
+class StringThread(QtCore.QThread):
+
+    str_signal = QtCore.pyqtSignal(str)
+    _name = ''
+
+    def __init__(self, name):
+        QtCore.QThread.__init__(self)
+        self._name = name
+        print("Thread Created")
+
+    def run(self):
+        update()
+        QtCore.QCoreApplication.quit()
+        status = QtCore.QProcess.startDetached(sys.executable, sys.argv)
+
+
+
+
 
 #Initialize the App
 app = QApplication(sys.argv)

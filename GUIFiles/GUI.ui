@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <widget class="QMainWindow" name="APT Analyzer">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1352</width>
+    <width>1300</width>
     <height>636</height>
    </rect>
   </property>
@@ -111,7 +111,7 @@
      <string>Potential Matches: #</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="Pick">
+   <widget class="QPushButton" name="Evaluate">
     <property name="geometry">
      <rect>
       <x>700</x>
@@ -121,7 +121,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Pick</string>
+     <string>Evaluate</string>
     </property>
    </widget>
    <widget class="QPushButton" name="DeleteTechnique">
@@ -288,6 +288,32 @@
      <string>Clear All</string>
     </property>
    </widget>
+   <widget class="QLabel" name="progress">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>250</y>
+      <width>211</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="updating">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>220</y>
+      <width>128</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
    <zorder>PotentialMatches</zorder>
    <zorder>DeleteTechnique</zorder>
    <zorder>DeleteSoftware</zorder>
@@ -303,9 +329,11 @@
    <zorder>AddTechnique</zorder>
    <zorder>AddSoftware</zorder>
    <zorder>DescriptionBox</zorder>
-   <zorder>Pick</zorder>
+   <zorder>Evaluate</zorder>
    <zorder>AddedTechniquesText</zorder>
    <zorder>AddedTechniquesBox</zorder>
+   <zorder>progress</zorder>
+   <zorder>updating</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
@@ -313,7 +341,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1352</width>
+     <width>1300</width>
      <height>25</height>
     </rect>
    </property>
