@@ -1,4 +1,4 @@
-technique_ID,source_ID,source_name,source_type,mapping_type,technique_name,target_type,mapping_description
+target_ID,source_ID,source_name,source_type,mapping_type,target_name,target_type,mapping_description
 S0434,G0099,APT-C-36,group,uses,Imminent Monitor,software,(Citation: QiAnXin APT-C-36 Feb2019)
 S0017,G0006,APT1,group,uses,BISCUIT,software,(Citation: Mandiant APT1)
 S0025,G0006,APT1,group,uses,CALENDAR,software,(Citation: Mandiant APT1)

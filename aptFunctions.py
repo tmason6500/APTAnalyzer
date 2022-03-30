@@ -4,7 +4,13 @@ import pandas as pd
 
 
 def updateDataFrameSources() -> None:
+    """
+    Update the sources of the dataframes
+    """
+    # Get MemoryStore from Mitre
     attackdata = attackToExcel.get_stix_data("enterprise-attack")
+
+    # Get data from MemoryStore for each dataframe
     techniques_data = stixToDf.techniquesToDf(attackdata, "enterprise-attack")
     tactics_data = stixToDf.tacticsToDf(attackdata, "enerprise-attack")
     groups_data = stixToDf.groupsToDf(attackdata, "enterprise-attack")
@@ -12,31 +18,76 @@ def updateDataFrameSources() -> None:
     mitigations_data = stixToDf.mitigationsToDf(attackdata, "enterprise-attack")
     relationship_data = stixToDf.relationshipsToDf(attackdata)
 
-    techniques_df = techniques_data["techniques"]
-    tactics_df = tactics_data["tactics"]
-    groups_df = groups_data["groups"]
-    software_df = software_data["software"]
-    mitigations_df = mitigations_data["mitigations"]
-    relationship_df = relationship_data["relationships"]
+    # Convert data file to dataframe
+    df_techniques = techniques_data["techniques"]
+    df_tactics = tactics_data["tactics"]
+    df_groups = groups_data["groups"]
+    df_software = software_data["software"]
+    df_mitigations = mitigations_data["mitigations"]
+    df_relationships = relationship_data["relationships"]
 
-    relationship_df.columns = [column.replace(" ", "_") for column in relationship_df.columns]
-    groupsFromRelationships = relationship_df.query("source_type == 'group'")
+    """
+    Transform dataframes to usuable state
+    """
+    
+    # Remove spaces from column names
+    df_relationships.columns = [column.replace(" ", "_") for column in df_relationships.columns]
+    
+    # Rename columns for transforms
+    df_relationships.rename(columns={'target_ID': 'technique_ID'}, inplace=True)
+    df_relationships.rename(columns={'target_name': 'technique_name'}, inplace=True)
+    df_techniques.rename(columns={'ID': 'technique_ID'}, inplace=True)
+    df_techniques.rename(columns={'name': 'technique_name'}, inplace=True)
+    
+    # Synchronize technique names across required dataframes
+    df_relationships.set_index('technique_ID', inplace=True)
+    df_relationships.update(df_techniques.set_index('technique_ID'))
+    df_relationships.reset_index(inplace=True)
+    
+    # Revert column names
+    df_relationships.rename(columns={'technique_ID': 'target_ID'}, inplace=True)
+    df_relationships.rename(columns={'technique_name': 'target_name'}, inplace=True)
+    df_techniques.rename(columns={'technique_ID': 'ID'}, inplace=True)
+    df_techniques.rename(columns={'technique_name': 'name'}, inplace=True)
+    
+    # Filter for required subset of relationship dataframe
+    df_gfr = df_relationships.query("source_type == 'group'")
 
-    techniques_df.to_csv("APTAnalyzer/data/techniques.csv", index=False)
-    tactics_df.to_csv("APTAnalyzer/data/tactics.csv", index=False)
-    groups_df.to_csv("APTAnalyzer/data/groups.csv", index=False)
-    software_df.to_csv("APTAnalyzer/data/software.csv", index=False)
-    mitigations_df.to_csv("APTAnalyzer/data/mitigations.csv", index=False)
-    groupsFromRelationships.to_csv("APTAnalyzer/data/groupsFromRelationships.csv", index=False)
-    relationship_df.to_csv("APTAnalyzer/data/relationships.csv", index=False)
+    # Store dataframes as csv(s)
+    df_techniques.to_csv("data/techniques.csv", index=False)
+    df_tactics.to_csv("data/tactics.csv", index=False)
+    df_groups.to_csv("data/groups.csv", index=False)
+    df_software.to_csv("data/software.csv", index=False)
+    df_mitigations.to_csv("data/mitigations.csv", index=False)
+    df_gfr.to_csv("data/df_gfr.csv", index=False)
+    df_relationships.to_csv("data/relationships.csv", index=False)
 
 def buildDataFrames() -> pd.DataFrame:
-    techniques_df = pd.read_csv("APTAnalyzer/data/techniques.csv")
-    tactics_df = pd.read_csv("APTAnalyzer/data/tactics.csv")
-    groups_df = pd.read_csv("APTAnalyzer/data/groups.csv")
-    software_df = pd.read_csv("APTAnalyzer/data/software.csv")
-    mitigations_df = pd.read_csv("APTAnalyzer/data/mitigations.csv")
-    groupsFromRelationships = pd.read_csv("APTAnalyzer/data/groupsFromRelationships.csv")
-    relationships_df = pd.read_csv("APTAnalyzer/data/relationships.csv")
+    """
+    Build dataframes from csv(s)
+    """
+    df_techniques = pd.read_csv("data/techniques.csv")
+    df_tactics = pd.read_csv("data/tactics.csv")
+    df_groups = pd.read_csv("data/groups.csv")
+    df_software = pd.read_csv("data/software.csv")
+    df_mitigations = pd.read_csv("data/mitigations.csv")
+    df_gfr = pd.read_csv("data/df_gfr.csv")
+    df_relationships = pd.read_csv("data/relationships.csv")
 
-    return techniques_df, tactics_df, groups_df, software_df, mitigations_df, groupsFromRelationships, relationships_df
+    return df_techniques, df_tactics, df_groups, df_software, df_mitigations, df_gfr, df_relationships
+
+def get_techniques_by_tactic(tactics: pd.DataFrame, techniques: pd.DataFrame) -> dict:
+    """
+    Returns a dictionary of all techniques grouped by tactic.
+    """
+    tacticsList = tactics.name.tolist()
+    techniques_by_tactic = {}
+    for tactic in tacticsList:
+        techniques_by_tactic[tactic] = techniques[techniques.tactics.str.contains('{}'.format(tactic))].name
+    return techniques_by_tactic
+
+def get_software_list(software: pd.DataFrame) -> list:
+    """
+    Returns a list of all software names.
+    """
+    return software.name.tolist()
