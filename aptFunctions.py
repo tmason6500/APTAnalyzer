@@ -76,7 +76,7 @@ def buildDataFrames() -> pd.DataFrame:
 
     return df_techniques, df_tactics, df_groups, df_software, df_mitigations, df_gfr, df_relationships
 
-def techniquesByTactic(tactics: pd.DataFrame, techniques: pd.DataFrame) -> dict:
+def getTechniquesByTactic(tactics: pd.DataFrame, techniques: pd.DataFrame) -> dict:
     """
     Returns a dictionary of all techniques grouped by tactic.
     """
