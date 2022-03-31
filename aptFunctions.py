@@ -91,3 +91,43 @@ def getSoftwareList(software: pd.DataFrame) -> list:
     Returns a list of all software names.
     """
     return software.name.tolist()
+
+def filterForSelectedTechniques(df: pd.DataFrame, techniqueList: list) -> pd.DataFrame:
+    """
+    Returns a dataframe groups that use the each of the techniques in 
+    the techniqueList.
+    """
+    # Create empty dataframe
+    filtered = pd.DataFrame()
+    
+    # Iterate through techniques in techniqueList
+    for technique in techniqueList:
+
+        # Filter for groups that use the technique
+        filtered = pd.concat([df[df.target_name == technique], filtered])
+
+    # Return filtered dataframe
+    return filtered
+
+def analyzeResults(df: pd.DataFrame, techniqueList: list) -> dict:
+    """
+    Returns a dictionary of the groups (key) and the percentage of the
+    techniques in the techniqueList they use (value).
+    """
+    # create empty dictionary
+    percentages = {}
+
+    # count the number of techniques in the techniqueList
+    techniqueCount = len(techniqueList)
+
+    # create a list of all groups in the dataframe
+    groupList = df.source_ID.tolist()
+
+    # Iterate through groups in groupList
+    for group in groupList:
+        
+        # Calculate the percentage of techniques each group matched
+        percentages[group] = (groupList.count(group) / techniqueCount)
+    
+    # Return the dictionary
+    return percentages
