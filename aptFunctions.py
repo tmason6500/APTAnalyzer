@@ -131,3 +131,11 @@ def analyzeResults(df: pd.DataFrame, techniqueList: list) -> dict:
     
     # Return the dictionary
     return percentages
+
+def getDescription(df: pd.DataFrame, name: str) -> str:
+    """
+    Returns the description of the group, technique, or software
+    from the associated dataframe.
+ """
+       
+    return df[df.name == name].description.values[0]
