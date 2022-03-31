@@ -76,7 +76,7 @@ def buildDataFrames() -> pd.DataFrame:
 
     return df_techniques, df_tactics, df_groups, df_software, df_mitigations, df_gfr, df_relationships
 
-def get_techniques_by_tactic(tactics: pd.DataFrame, techniques: pd.DataFrame) -> dict:
+def techniquesByTactic(tactics: pd.DataFrame, techniques: pd.DataFrame) -> dict:
     """
     Returns a dictionary of all techniques grouped by tactic.
     """
@@ -86,7 +86,7 @@ def get_techniques_by_tactic(tactics: pd.DataFrame, techniques: pd.DataFrame) ->
         techniques_by_tactic[tactic] = techniques[techniques.tactics.str.contains('{}'.format(tactic))].name
     return techniques_by_tactic
 
-def get_software_list(software: pd.DataFrame) -> list:
+def getSoftwareList(software: pd.DataFrame) -> list:
     """
     Returns a list of all software names.
     """
