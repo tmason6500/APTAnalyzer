@@ -1,6 +1,7 @@
 import mitreattack.attackToExcel.attackToExcel as attackToExcel
 import mitreattack.attackToExcel.stixToDf as stixToDf
 import pandas as pd
+import os
 
 
 def updateDataFrameSources() -> None:
@@ -66,15 +67,20 @@ def buildDataFrames() -> pd.DataFrame:
     """
     Build dataframes from csv(s)
     """
-    df_techniques = pd.read_csv("data/techniques.csv")
-    df_tactics = pd.read_csv("data/tactics.csv")
-    df_groups = pd.read_csv("data/groups.csv")
-    df_software = pd.read_csv("data/software.csv")
-    df_mitigations = pd.read_csv("data/mitigations.csv")
-    df_gfr = pd.read_csv("data/df_gfr.csv")
-    df_relationships = pd.read_csv("data/relationships.csv")
+    try:
+        df_techniques = pd.read_csv("data/techniques.csv")
+        df_tactics = pd.read_csv("data/tactics.csv")
+        df_groups = pd.read_csv("data/groups.csv")
+        df_software = pd.read_csv("data/software.csv")
+        df_mitigations = pd.read_csv("data/mitigations.csv")
+        df_gfr = pd.read_csv("data/df_gfr.csv")
+        df_relationships = pd.read_csv("data/relationships.csv")
 
-    return df_techniques, df_tactics, df_groups, df_software, df_mitigations, df_gfr, df_relationships
+        return df_techniques, df_tactics, df_groups, df_software, df_mitigations, df_gfr, df_relationships
+    except FileNotFoundError:
+        os.makedirs("data")
+        updateDataFrameSources()
+        return buildDataFrames()
 
 def getTechniquesByTactic(tactics: pd.DataFrame, techniques: pd.DataFrame) -> dict:
     """
