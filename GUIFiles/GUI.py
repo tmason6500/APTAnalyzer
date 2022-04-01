@@ -5,6 +5,7 @@ import sys
 import json
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QFont, QMovie, QIcon
 import aptFunctions as apt
+import webbrowser
 
 
 techniques_df, tactics_df, groups_df, software_df, mitigations_df, gfr_df, relationships_df = apt.buildDataFrames()
@@ -54,12 +55,9 @@ class UI(QMainWindow):
         self.clear_all_btn.setStyleSheet('QPushButton {background-color: #282C2E; color: white; font-size : 12pt;}')
         self.evaluate_btn = self.findChild(QPushButton, "Evaluate")
         self.evaluate_btn.setStyleSheet('QPushButton {background-color: #282C2E; color: white; font-size : 12pt;}')
-        self.reset_btn = self.findChild(QPushButton, "Reset")
+        self.reset_btn = self.findChild(QPushButton, "ResetButton")
         self.reset_btn.setStyleSheet('QPushButton {background-color: #282C2E; color: white; font-size : 12pt;}')
         self.reset_btn.hide()
-        self.download_report_btn = self.findChild(QPushButton, "DownloadReport")
-        self.download_report_btn.setStyleSheet('QPushButton {background-color: #282C2E; color: white; font-size : 12pt;}')
-        self.download_report_btn.hide()
 
         self.added_techniques_box = self.findChild(QListWidget, "AddedTechniquesBox")
         self.added_techniques_box.setStyleSheet('QListWidget {background-color: #282C2E; color: white; font-size : 12pt;}')
@@ -68,10 +66,6 @@ class UI(QMainWindow):
         self.description_box = self.findChild(QPlainTextEdit, "DescriptionBox")
         self.description_box.setStyleSheet('QPlainTextEdit {background-color: #282C2E; color: white; font-size : 12pt;}')
         self.description_box.setReadOnly(True)
-        self.results_box = self.findChild(QPlainTextEdit, "ResultsBox")
-        self.results_box.setStyleSheet('QPlainTextEdit {background-color: #282C2E; color: white; font-size : 12pt;}')
-        self.results_box.setReadOnly(True)
-        self.results_box.hide()
         self.added_techniques_text = self.findChild(QPlainTextEdit, "AddedTechniquesText")
         self.added_techniques_text.setStyleSheet('QPlainTextEdit {background-color: #282C2E; color: white; font-size : 13pt;}')
         self.added_techniques_text.setReadOnly(True)
@@ -131,8 +125,6 @@ class UI(QMainWindow):
         self.clear_all_btn.pressed.connect(self.clear_all)
         self.evaluate_btn.pressed.connect(self.evaluate)
         self.reset_btn.pressed.connect(self.reset)
-        self.download_report_btn.pressed.connect(self.download_report)
-
         self.update_action.triggered.connect(self.update_data)
         self.showMaximized()
 
@@ -159,20 +151,24 @@ class UI(QMainWindow):
 
     def add_technique(self):
         if(self.technique_selected != ""):
-            self.added_techniques_box.addItem(self.technique_selected)
-            self.description_box.setPlainText("Technique " + self.technique_selected+ " has been added to the technique list." )
-            Backend_list.append(self.technique_selected)
-            self.technique_selected = ""
-            self.techniques.removeItem(self.techniques.currentIndex())
-            #print(Backend_list)
+            if (self.technique_selected in Backend_list):
+                self.description_box.setPlainText("Technique already added, please select another.")
+            else:
+                self.added_techniques_box.addItem(self.technique_selected)
+                self.description_box.setPlainText("Technique: " + self.technique_selected+ " has been added to the technique list." )
+                Backend_list.append(self.technique_selected)
+                self.technique_selected = ""
+                self.potential_matches.setPlainText("Possible Matches above 50%: " + str(apt.update_num(gfr_df, Backend_list)))
     def add_software(self):
         if(self.software_selected != ""):
-            self.added_software_box.addItem(self.software_selected)
-            self.description_box.setPlainText("Software " + self.software_selected+ " has been added to the software list." )
-            Backend_list.append(self.software_selected)
-            self.software_selected = ""
-            self.software.removeItem(self.software.currentIndex())
-            #print (Backend_list)
+            if (self.software_selected in Backend_list):
+                self.description_box.setPlainText("Software already added, please select another.")
+            else:
+                self.added_software_box.addItem(self.software_selected)
+                self.description_box.setPlainText("Software " + self.software_selected+ " has been added to the software list." )
+                Backend_list.append(self.software_selected)
+                self.software_selected = ""
+                self.potential_matches.setPlainText("Possible Matches above 50%: " + str(apt.update_num(gfr_df, Backend_list)))
 
     def delete_technique(self):
         listItems=self.added_techniques_box.selectedItems()
@@ -181,8 +177,8 @@ class UI(QMainWindow):
             self.added_techniques_box.takeItem(self.added_techniques_box.row(item))
             self.description_box.setPlainText("Technique " + item.text()+ " has been removed from the technique list." )
             Backend_list.remove(item.text())
-            self.techniques.addItem(item.text())
-        #    print(Backend_list)
+            self.potential_matches.setPlainText("Possible Matches above 50%: " + str(apt.update_num(gfr_df, Backend_list)))
+
     def delete_software(self):
         listItems=self.added_software_box.selectedItems()
         if not listItems: return
@@ -190,52 +186,54 @@ class UI(QMainWindow):
             self.added_software_box.takeItem(self.added_software_box.row(item))
             self.description_box.setPlainText("Software " + item.text()+ " has been removed from the software list." )
             Backend_list.remove(item.text())
-            self.software.addItem(item.text())
-            #print(Backend_list)
+            self.potential_matches.setPlainText("Possible Matches above 50%: " + str(apt.update_num(gfr_df, Backend_list)))
+
     def clear_all(self):
         self.added_techniques_box.clear()
         self.added_software_box.clear()
         self.description_box.setPlainText("All techniques and software have been cleared from added techniques and added software lists.")
         Backend_list.clear()
-        #print (Backend_list)
-    def reset(self):
-        QtCore.QCoreApplication.quit()
-        status = QtCore.QProcess.startDetached(sys.executable, sys.argv)
-
-    def download_report(self):
-        self.download_report_btn.setEnabled(False)
-        f = open("DownloadedReport.txt", "w")
-        f.write(self.results_box.toPlainText())
-        f.close()
-        self.results_box.setPlainText("Report has been downloaded. Press reset to continue working with the application.")
+        self.potential_matches.setPlainText("Possible Matches above 50%: " + str(apt.update_num(gfr_df, Backend_list)))
 
     def evaluate(self):
         if ((self.added_techniques_box.count() == 0) and (self.added_software_box.count() == 0)):
             self.description_box.setPlainText("Please add at least 1 technique or 1 software before evaluating.")
         else:
+            self.reset_btn.show()
             Backend_list.clear()
-            self.tactics.clear()
-            self.software.clear()
-            self.update_action.setEnabled(False)
-            self.evaluate_btn.setEnabled(False)
-            self.add_software_btn.setEnabled(False)
-            self.add_technique_btn.setEnabled(False)
-            self.delete_software_btn.setEnabled(False)
-            self.delete_technique_btn.setEnabled(False)
-            self.clear_all_btn.setEnabled(False)
             self.tactics.setEnabled(False)
             self.techniques.setEnabled(False)
             self.software.setEnabled(False)
-            self.description_box.clear()
+            self.add_technique_btn.setEnabled(False)
+            self.add_software_btn.setEnabled(False)
+            self.delete_technique_btn.setEnabled(False)
+            self.delete_software_btn.setEnabled(False)
+            self.clear_all_btn.setEnabled(False)
+            self.evaluate_btn.setEnabled(False)
+            self.update_action.setEnabled(False)
             for i in range(self.added_techniques_box.count()):
                 Backend_list.append(self.added_techniques_box.item(i).text())
             for i in range(self.added_software_box.count()):
                 Backend_list.append(self.added_software_box.item(i).text())
-            self.results_box.show()
-            self.results_box.insertPlainText("Based on these techniques and/or software selected :{}, these groups were matched.".format(Backend_list))
-            self.reset_btn.show()
-            self.download_report_btn.show()
+            self.description_box.setPlainText("Results have been generated..." +"\n" + "Please press Reset button to continue working.")
 
+    def reset(self):
+        Backend_list.clear()
+        self.potential_matches.setPlainText("Possible Matches above 50%: ")
+        self.added_techniques_box.clear()
+        self.added_software_box.clear()
+        self.description_box.clear()
+        self.tactics.setEnabled(True)
+        self.techniques.setEnabled(True)
+        self.software.setEnabled(True)
+        self.add_technique_btn.setEnabled(True)
+        self.add_software_btn.setEnabled(True)
+        self.delete_technique_btn.setEnabled(True)
+        self.delete_software_btn.setEnabled(True)
+        self.clear_all_btn.setEnabled(True)
+        self.evaluate_btn.setEnabled(True)
+        self.update_action.setEnabled(True)
+        self.reset_btn.hide()
     def update_data(self):
         self.temp_thread = StringThread("RAPTOR")
         self.tactics.clear()
