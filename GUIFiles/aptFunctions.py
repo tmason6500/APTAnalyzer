@@ -78,9 +78,13 @@ def buildDataFrames() -> pd.DataFrame:
 
         return df_techniques, df_tactics, df_groups, df_software, df_mitigations, df_gfr, df_relationships
     except FileNotFoundError:
-        os.makedirs("data")
-        updateDataFrameSources()
-        return buildDataFrames()
+        try:
+            os.makedirs("data")
+            updateDataFrameSources()
+            return buildDataFrames()
+        except FileExistsError:
+            updateDataFrameSources()
+            return buildDataFrames()
 
 def getTechniquesByTactic(tactics: pd.DataFrame, techniques: pd.DataFrame) -> dict:
     """
