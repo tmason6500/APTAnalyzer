@@ -6,6 +6,7 @@ import json
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QFont, QMovie, QIcon
 import aptFunctions as apt
 import webbrowser
+import os
 
 
 techniques_df, tactics_df, groups_df, software_df, mitigations_df, gfr_df, relationships_df = apt.buildDataFrames()
@@ -159,6 +160,7 @@ class UI(QMainWindow):
                 Backend_list.append(self.technique_selected)
                 self.technique_selected = ""
                 self.potential_matches.setPlainText("Possible Matches above 50%: " + str(apt.update_num(gfr_df, Backend_list)))
+
     def add_software(self):
         if(self.software_selected != ""):
             if (self.software_selected in Backend_list):
@@ -199,8 +201,12 @@ class UI(QMainWindow):
         if ((self.added_techniques_box.count() == 0) and (self.added_software_box.count() == 0)):
             self.description_box.setPlainText("Please add at least 1 technique or 1 software before evaluating.")
         else:
-            self.reset_btn.show()
             Backend_list.clear()
+            for i in range(self.added_techniques_box.count()):
+                Backend_list.append(self.added_techniques_box.item(i).text())
+            for i in range(self.added_software_box.count()):
+                Backend_list.append(self.added_software_box.item(i).text())
+            self.reset_btn.show()
             self.tactics.setEnabled(False)
             self.techniques.setEnabled(False)
             self.software.setEnabled(False)
@@ -211,10 +217,8 @@ class UI(QMainWindow):
             self.clear_all_btn.setEnabled(False)
             self.evaluate_btn.setEnabled(False)
             self.update_action.setEnabled(False)
-            for i in range(self.added_techniques_box.count()):
-                Backend_list.append(self.added_techniques_box.item(i).text())
-            for i in range(self.added_software_box.count()):
-                Backend_list.append(self.added_software_box.item(i).text())
+            filename = 'file:///'+os.getcwd()+'/' + 'results.html'
+            webbrowser.open_new_tab(filename)
             self.description_box.setPlainText("Results have been generated..." +"\n" + "Please press Reset button to continue working.")
 
     def reset(self):
@@ -234,6 +238,7 @@ class UI(QMainWindow):
         self.evaluate_btn.setEnabled(True)
         self.update_action.setEnabled(True)
         self.reset_btn.hide()
+
     def update_data(self):
         self.temp_thread = StringThread("RAPTOR")
         self.tactics.clear()
