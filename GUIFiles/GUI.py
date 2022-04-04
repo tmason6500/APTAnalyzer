@@ -13,6 +13,7 @@ techniques_df, tactics_df, groups_df, software_df, mitigations_df, gfr_df, relat
 apt.getTechniquesByTactic(tactics_df, techniques_df)
 apt.getSoftwareList(software_df)
 TacticCombo = apt.getTechniquesByTactic(tactics_df, techniques_df)
+Techniques = apt.getTechniqueList(techniques_df)
 Malware = apt.getSoftwareList(software_df)
 Backend_list = []
 
@@ -86,8 +87,8 @@ class UI(QMainWindow):
         self.software_box.setStyleSheet('QPlainTextEdit {background-color: #282C2E; color: white; font-size : 13pt;}')
         self.software_box.setReadOnly(True)
 
-        self.tactics.setModel(self.model)
-        self.techniques.setModel(self.model)
+        #self.tactics.setModel(self.model)
+        #self.techniques.setModel(self.model)
         self.software.addItems(Malware)
 
         self.update_action = self.findChild(QAction, "actionUpdate")
@@ -102,16 +103,12 @@ class UI(QMainWindow):
         self.movie2 = QMovie("updating.gif")
         self.update_label.setMovie(self.movie2)
 
-        #Populate Tactics and Techniques comboboxes
-        for k, v in TacticCombo.items():
-            tacts = QStandardItem(k)
-            self.model.appendRow(tacts)
-            for value in v:
-                techniques = QStandardItem(value)
-                tacts.appendRow(techniques)
+        self.tactics.addItem("", Techniques)
+        for i in range(len(TacticCombo)):
+            self.tactics.addItem(list(TacticCombo.keys())[i], list(TacticCombo.values())[i])
 
-        self.tactics.currentIndexChanged.connect(self.updateTacticCombo)
-        self.updateTacticCombo(0)
+        self.tactics.currentIndexChanged.connect(self.indexChanged)
+        self.indexChanged(self.tactics.currentIndex())
 
         self.tactics.activated[str].connect(self.tactic_text)
         self.techniques.activated[str].connect(self.technique_text)
@@ -129,16 +126,19 @@ class UI(QMainWindow):
         self.update_action.triggered.connect(self.update_data)
         self.showMaximized()
 
-    def updateTacticCombo(self, index):
-          indx = self.model.index(index, 0, self.tactics.rootModelIndex())
-          self.techniques.setRootModelIndex(indx)
-          self.techniques.setCurrentIndex(0)
+
+    def indexChanged(self, index):
+        self.techniques.clear()
+        data = self.tactics.itemData(index)
+        if data is not None:
+            self.techniques.addItems(data)
 
     #Gets whatever is in the comboxbox
     def tactic_text(self, text):
         self.tactic_selected = self.tactics.currentText()
         #self.description_box.setPlainText(self.tactic_selected)
-        self.description_box.setPlainText(apt.getDescription(tactics_df, self.tactic_selected))
+        if (self.tactic_selected != ""):
+            self.description_box.setPlainText(apt.getDescription(tactics_df, self.tactic_selected))
     def technique_text(self,text):
         self.technique_selected = self.techniques.currentText()
         self.description_box.setPlainText(self.technique_selected)
@@ -219,7 +219,7 @@ class UI(QMainWindow):
             self.update_action.setEnabled(False)
             filename = 'file:///'+os.getcwd()+'/' + 'results.html'
             webbrowser.open_new_tab(filename)
-            self.description_box.setPlainText("Results have been generated..." +"\n" + "Please press Reset button to continue working.")
+            self.description_box.setPlainText("Results are/have been generated..." +"\n" + "Please press Reset button to continue working.")
 
     def reset(self):
         Backend_list.clear()
