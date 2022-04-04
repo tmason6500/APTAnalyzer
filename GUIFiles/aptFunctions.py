@@ -96,7 +96,6 @@ def getTechniquesByTactic(tactics: pd.DataFrame, techniques: pd.DataFrame) -> di
     techniques_by_tactic = {}
     for tactic in tacticsList:
         techniques_by_tactic[tactic] = techniques[techniques.tactics.str.contains('{}'.format(tactic))].name
-    techniques_by_tactic[''] = techniques.name.tolist()
     return techniques_by_tactic
 
 def getSoftwareList(software: pd.DataFrame) -> list:
@@ -104,6 +103,9 @@ def getSoftwareList(software: pd.DataFrame) -> list:
     Returns a list of all software names.
     """
     return software.name.tolist()
+
+def getTechniqueList(technique: pd.DataFrame) -> list:
+    return technique.name.tolist()
 
 def filterForSelectedTechniques(df: pd.DataFrame, techniqueList: list) -> pd.DataFrame:
     """
@@ -150,7 +152,6 @@ def getDescription(df: pd.DataFrame, name: str) -> str:
     Returns the description of the group, technique, or software
     from the associated dataframe.
  """
-       
     return df[df.name == name].description.values[0]
 
 ######################################################################################
