@@ -40,7 +40,10 @@
      </rect>
     </property>
     <property name="maxVisibleItems">
-     <number>5</number>
+     <number>4</number>
+    </property>
+    <property name="insertPolicy">
+     <enum>QComboBox::InsertAlphabetically</enum>
     </property>
    </widget>
    <widget class="QComboBox" name="Techniques">
@@ -53,7 +56,10 @@
      </rect>
     </property>
     <property name="maxVisibleItems">
-     <number>5</number>
+     <number>4</number>
+    </property>
+    <property name="insertPolicy">
+     <enum>QComboBox::InsertAlphabetically</enum>
     </property>
    </widget>
    <widget class="QPlainTextEdit" name="TacticsBox">
@@ -108,7 +114,7 @@
      </rect>
     </property>
     <property name="plainText">
-     <string>Potential Matches: #</string>
+     <string>Potential Matches above 50%: #</string>
     </property>
    </widget>
    <widget class="QPushButton" name="Evaluate">
@@ -163,7 +169,10 @@
      <bool>false</bool>
     </property>
     <property name="maxVisibleItems">
-     <number>5</number>
+     <number>4</number>
+    </property>
+    <property name="insertPolicy">
+     <enum>QComboBox::InsertAlphabetically</enum>
     </property>
    </widget>
    <widget class="QPushButton" name="AddSoftware">
@@ -314,40 +323,17 @@
      <string>TextLabel</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="Reset">
+   <widget class="QPushButton" name="ResetButton">
     <property name="geometry">
      <rect>
-      <x>750</x>
-      <y>490</y>
-      <width>121</width>
+      <x>770</x>
+      <y>480</y>
+      <width>102</width>
       <height>27</height>
      </rect>
     </property>
     <property name="text">
-     <string>Reset </string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="DownloadReport">
-    <property name="geometry">
-     <rect>
-      <x>540</x>
-      <y>390</y>
-      <width>181</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Download Report</string>
-    </property>
-   </widget>
-   <widget class="QPlainTextEdit" name="ResultsBox">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>10</y>
-      <width>501</width>
-      <height>371</height>
-     </rect>
+     <string>Reset</string>
     </property>
    </widget>
    <zorder>PotentialMatches</zorder>
@@ -370,9 +356,7 @@
    <zorder>AddedTechniquesBox</zorder>
    <zorder>updating</zorder>
    <zorder>progress</zorder>
-   <zorder>Reset</zorder>
-   <zorder>DownloadReport</zorder>
-   <zorder>ResultsBox</zorder>
+   <zorder>ResetButton</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">

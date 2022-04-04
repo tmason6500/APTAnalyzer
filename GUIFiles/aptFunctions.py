@@ -2,7 +2,9 @@ import mitreattack.attackToExcel.attackToExcel as attackToExcel
 import mitreattack.attackToExcel.stixToDf as stixToDf
 import pandas as pd
 import os
-
+#added imports from Thomas
+from collections import Counter
+import itertools
 
 def updateDataFrameSources() -> None:
     """
@@ -78,9 +80,13 @@ def buildDataFrames() -> pd.DataFrame:
 
         return df_techniques, df_tactics, df_groups, df_software, df_mitigations, df_gfr, df_relationships
     except FileNotFoundError:
-        os.makedirs("data")
-        updateDataFrameSources()
-        return buildDataFrames()
+        try:
+            os.makedirs("data")
+            updateDataFrameSources()
+            return buildDataFrames()
+        except FileExistsError:
+            updateDataFrameSources()
+            return buildDataFrames()
 
 def getTechniquesByTactic(tactics: pd.DataFrame, techniques: pd.DataFrame) -> dict:
     """
@@ -146,3 +152,71 @@ def getDescription(df: pd.DataFrame, name: str) -> str:
  """
        
     return df[df.name == name].description.values[0]
+
+######################################################################################
+## Thomas's added code
+######################################################################################
+
+def get_dictionary(df):
+    """
+    Return a dictionary of with techniques and software associated with their ids
+    """
+    dictionary={}
+
+    for target_name, target_id in zip(df.target_name, df.target_ID):
+            target_name.strip()
+            dictionary[target_name] = target_id
+    return dictionary
+
+def get_groups_by_ID(df, IDs: list):
+    """
+    Gets Groups based on their ID
+    """
+    groups = []
+    groupList = []
+    for ID in IDs:
+        groups = df[df.target_ID == ID]
+        tempGrouplist=groups.source_ID.tolist()
+        #Chains all the lists returned by each ID in groups
+        groupList = list(itertools.chain(groupList,tempGrouplist))
+    return groupList
+
+def get_possible_selection(itemDict,selection,groupsFromRelationships):
+    IDs = []
+    #returns the ID associated with each technique/software selected and appends it to array IDs
+    for x in selection:
+        try:
+            itemID = itemDict[x]
+            IDs.append(itemID)
+        except:
+            pass
+   #get the group ID associated with each ID
+    groups = get_groups_by_ID(groupsFromRelationships,IDs)
+
+    #removes duplicate ids from the array groups
+    set_groups = set(groups)
+    #creates a variable that store the number of occurences of each item
+    groupCount = Counter(groups)
+    #variable to add up the number of selections that exceed 50%
+    possibleSelections = 0
+    #unneeded variable but it store the groups that exceed 50% at any given point
+    selectedGroups = []
+    for group in set_groups:
+        num = groupCount[group]
+
+        if (num/len(selection) >= 0.5):
+            possibleSelections += 1
+            selectedGroups.append(group)
+        else:
+            pass
+    return(possibleSelections)
+
+def update_num(groupsFromRelationships, selection):
+    debug = False
+    #debug to put a manual selection of tactics and/or Techniques
+    if debug == True:
+        selection = [ "BISCUIT", "External Remote Services","Malware"]
+    else:
+        pass
+    itemDict = get_dictionary(groupsFromRelationships)
+    return(get_possible_selection(itemDict, selection, groupsFromRelationships))
