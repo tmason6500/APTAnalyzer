@@ -154,6 +154,12 @@ def getDescription(df: pd.DataFrame, name: str) -> str:
  """
     return df[df.name == name].description.values[0]
 
+def getData(df: pd.DataFrame, ID: str, col: str) -> str:
+    """
+    Returns the data from the specified column in the specified dataframe
+    """
+    return df[df.ID == ID].iloc[0][col]
+    
 ######################################################################################
 ## Thomas's added code
 ######################################################################################
