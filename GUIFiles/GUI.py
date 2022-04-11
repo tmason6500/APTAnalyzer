@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMainWindow, QApplication, QComboBox, QPushButton, QPlainTextEdit, QCompleter, QListWidget, QAction, QLabel
+from PyQt5.QtWidgets import QMainWindow, QApplication, QComboBox, QPushButton, QPlainTextEdit, QCompleter, QListWidget, QAction, QLabel, QSlider
 from PyQt5 import uic, Qt, QtCore
 from PyQt5.QtCore import QCoreApplication
 import sys
@@ -87,6 +87,12 @@ class UI(QMainWindow):
         self.software_box.setStyleSheet('QPlainTextEdit {background-color: #282C2E; color: white; font-size : 13pt;}')
         self.software_box.setReadOnly(True)
 
+        self.slider = self.findChild(QSlider, "slider_bar")
+        self.slider.setStyleSheet("QSlider::handle:horizontal {background-color : green, border-color: grey}")
+
+        self.slider_text = self.findChild(QLabel, "slider_text")
+        self.slider_text.setStyleSheet('QLabel{background-color: #282C2E; color: white; font-size : 13pt;}')
+
         #self.tactics.setModel(self.model)
         #self.techniques.setModel(self.model)
         self.software.addItems(Malware)
@@ -124,7 +130,13 @@ class UI(QMainWindow):
         self.evaluate_btn.pressed.connect(self.evaluate)
         self.reset_btn.pressed.connect(self.reset)
         self.update_action.triggered.connect(self.update_data)
+
+        self.slider.valueChanged.connect(self.sliderchange)
         self.showMaximized()
+
+    def sliderchange(self):
+        self.slider_text.setText(str(self.slider.value())+ "%")
+        self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
 
 
     def indexChanged(self, index):
@@ -138,17 +150,15 @@ class UI(QMainWindow):
         self.tactic_selected = self.tactics.currentText()
         #self.description_box.setPlainText(self.tactic_selected)
         if (self.tactic_selected != ""):
-            self.description_box.setPlainText(apt.getDescription(tactics_df, self.tactic_selected))
+            self.description_box.setPlainText("{}...\n\n{}".format(self.tactic_selected, apt.getDescription(tactics_df,self.tactic_selected)))
     def technique_text(self,text):
         self.technique_selected = self.techniques.currentText()
-        self.description_box.setPlainText(self.technique_selected)
-        self.description_box.setPlainText(apt.getDescription(techniques_df, self.technique_selected))
+        self.description_box.setPlainText("{}...\n\n{}".format(self.technique_selected, apt.getDescription(techniques_df,self.technique_selected)))
 
     def software_text(self,text):
         self.software_selected = self.software.currentText()
         self.description_box.setPlainText(self.software_selected)
         self.description_box.setPlainText(apt.getDescription(software_df, self.software_selected))
-
 
     def add_technique(self):
         if(self.technique_selected != ""):
@@ -159,8 +169,7 @@ class UI(QMainWindow):
                 self.description_box.setPlainText("Technique: " + self.technique_selected+ " has been added to the technique list." )
                 Backend_list.append(self.technique_selected)
                 self.technique_selected = ""
-                self.potential_matches.setPlainText("Possible Matches above 50%: " + str(apt.update_num(gfr_df, Backend_list)))
-
+                self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
     def add_software(self):
         if(self.software_selected != ""):
             if (self.software_selected in Backend_list):
@@ -170,8 +179,7 @@ class UI(QMainWindow):
                 self.description_box.setPlainText("Software " + self.software_selected+ " has been added to the software list." )
                 Backend_list.append(self.software_selected)
                 self.software_selected = ""
-                self.potential_matches.setPlainText("Possible Matches above 50%: " + str(apt.update_num(gfr_df, Backend_list)))
-
+                self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
     def delete_technique(self):
         listItems=self.added_techniques_box.selectedItems()
         if not listItems: return
@@ -179,8 +187,7 @@ class UI(QMainWindow):
             self.added_techniques_box.takeItem(self.added_techniques_box.row(item))
             self.description_box.setPlainText("Technique " + item.text()+ " has been removed from the technique list." )
             Backend_list.remove(item.text())
-            self.potential_matches.setPlainText("Possible Matches above 50%: " + str(apt.update_num(gfr_df, Backend_list)))
-
+            self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
     def delete_software(self):
         listItems=self.added_software_box.selectedItems()
         if not listItems: return
@@ -188,14 +195,13 @@ class UI(QMainWindow):
             self.added_software_box.takeItem(self.added_software_box.row(item))
             self.description_box.setPlainText("Software " + item.text()+ " has been removed from the software list." )
             Backend_list.remove(item.text())
-            self.potential_matches.setPlainText("Possible Matches above 50%: " + str(apt.update_num(gfr_df, Backend_list)))
-
+            self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
     def clear_all(self):
         self.added_techniques_box.clear()
         self.added_software_box.clear()
         self.description_box.setPlainText("All techniques and software have been cleared from added techniques and added software lists.")
         Backend_list.clear()
-        self.potential_matches.setPlainText("Possible Matches above 50%: " + str(apt.update_num(gfr_df, Backend_list)))
+        self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
 
     def evaluate(self):
         if ((self.added_techniques_box.count() == 0) and (self.added_software_box.count() == 0)):
@@ -206,6 +212,7 @@ class UI(QMainWindow):
                 Backend_list.append(self.added_techniques_box.item(i).text())
             for i in range(self.added_software_box.count()):
                 Backend_list.append(self.added_software_box.item(i).text())
+            print (Backend_list)
             self.reset_btn.show()
             self.tactics.setEnabled(False)
             self.techniques.setEnabled(False)
@@ -217,13 +224,13 @@ class UI(QMainWindow):
             self.clear_all_btn.setEnabled(False)
             self.evaluate_btn.setEnabled(False)
             self.update_action.setEnabled(False)
-            filename = 'file:///'+os.getcwd()+'/' + 'results.html'
-            webbrowser.open_new_tab(filename)
-            self.description_box.setPlainText("Results are/have been generated..." +"\n" + "Please press Reset button to continue working.")
+            #filename = 'file:///'+os.getcwd()+'/' + 'results.html'
+            #webbrowser.open_new_tab(filename)
+            self.description_box.setPlainText("Results are being or have been generated..." +"\n" + "Please press Reset button to continue working.")
 
     def reset(self):
         Backend_list.clear()
-        self.potential_matches.setPlainText("Possible Matches above 50%: ")
+        self.potential_matches.setPlainText("Potential Matches above 0%: ")
         self.added_techniques_box.clear()
         self.added_software_box.clear()
         self.description_box.clear()
