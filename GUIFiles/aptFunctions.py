@@ -32,27 +32,27 @@ def updateDataFrameSources() -> None:
     """
     Transform dataframes to usuable state
     """
-    
+
     # Remove spaces from column names
     df_relationships.columns = [column.replace(" ", "_") for column in df_relationships.columns]
-    
+
     # Rename columns for transforms
     df_relationships.rename(columns={'target_ID': 'technique_ID'}, inplace=True)
     df_relationships.rename(columns={'target_name': 'technique_name'}, inplace=True)
     df_techniques.rename(columns={'ID': 'technique_ID'}, inplace=True)
     df_techniques.rename(columns={'name': 'technique_name'}, inplace=True)
-    
+
     # Synchronize technique names across required dataframes
     df_relationships.set_index('technique_ID', inplace=True)
     df_relationships.update(df_techniques.set_index('technique_ID'))
     df_relationships.reset_index(inplace=True)
-    
+
     # Revert column names
     df_relationships.rename(columns={'technique_ID': 'target_ID'}, inplace=True)
     df_relationships.rename(columns={'technique_name': 'target_name'}, inplace=True)
     df_techniques.rename(columns={'technique_ID': 'ID'}, inplace=True)
     df_techniques.rename(columns={'technique_name': 'name'}, inplace=True)
-    
+
     # Filter for required subset of relationship dataframe
     df_gfr = df_relationships.query("source_type == 'group'")
 
@@ -109,12 +109,12 @@ def getTechniqueList(technique: pd.DataFrame) -> list:
 
 def filterForSelectedTechniques(df: pd.DataFrame, techniqueList: list) -> pd.DataFrame:
     """
-    Returns a dataframe groups that use the each of the techniques in 
+    Returns a dataframe groups that use the each of the techniques in
     the techniqueList.
     """
     # Create empty dataframe
     filtered = pd.DataFrame()
-    
+
     # Iterate through techniques in techniqueList
     for technique in techniqueList:
 
@@ -140,10 +140,10 @@ def analyzeResults(df: pd.DataFrame, techniqueList: list) -> dict:
 
     # Iterate through groups in groupList
     for group in groupList:
-        
+
         # Calculate the percentage of techniques each group matched
         percentages[group] = (groupList.count(group) / techniqueCount)
-    
+
     # Return the dictionary
     return percentages
 
@@ -159,7 +159,7 @@ def getData(df: pd.DataFrame, ID: str, col: str) -> str:
     Returns the data from the specified column in the specified dataframe
     """
     return df[df.ID == ID].iloc[0][col]
-    
+
 ######################################################################################
 ## Thomas's added code
 ######################################################################################
@@ -188,7 +188,7 @@ def get_groups_by_ID(df, IDs: list):
         groupList = list(itertools.chain(groupList,tempGrouplist))
     return groupList
 
-def get_possible_selection(itemDict,selection,groupsFromRelationships):
+def get_possible_selection(itemDict,selection,groupsFromRelationships,percentage_num):
     IDs = []
     #returns the ID associated with each technique/software selected and appends it to array IDs
     for x in selection:
@@ -210,15 +210,15 @@ def get_possible_selection(itemDict,selection,groupsFromRelationships):
     selectedGroups = []
     for group in set_groups:
         num = groupCount[group]
-
-        if (num/len(selection) >= 0.5):
+        decimal_num = percentage_num/100
+        if (num/len(selection) >= decimal_num):
             possibleSelections += 1
             selectedGroups.append(group)
         else:
             pass
     return(possibleSelections)
 
-def update_num(groupsFromRelationships, selection):
+def update_num(groupsFromRelationships, selection, num):
     debug = False
     #debug to put a manual selection of tactics and/or Techniques
     if debug == True:
@@ -226,4 +226,4 @@ def update_num(groupsFromRelationships, selection):
     else:
         pass
     itemDict = get_dictionary(groupsFromRelationships)
-    return(get_possible_selection(itemDict, selection, groupsFromRelationships))
+    return(get_possible_selection(itemDict, selection, groupsFromRelationships,num))
