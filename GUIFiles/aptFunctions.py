@@ -109,7 +109,7 @@ def getTechniqueList(technique: pd.DataFrame) -> list:
 
 def filterForSelectedTechniques(df: pd.DataFrame, techniqueList: list) -> pd.DataFrame:
     """
-    Returns a dataframe groups that use the each of the techniques in
+    Returns a dataframe ofgroups that use the each of the techniques in
     the techniqueList.
     """
     # Create empty dataframe
@@ -159,6 +159,24 @@ def getData(df: pd.DataFrame, ID: str, col: str) -> str:
     Returns the data from the specified column in the specified dataframe
     """
     return df[df.ID == ID].iloc[0][col]
+
+def getTechniquesByGroup(df: pd.DataFrame, GroupID: str) -> list:
+    '''
+    Return a list of all techniques used by a particular group
+    '''
+    return df[(df.source_ID == GroupID)& (df.target_type == 'technique')].target_ID.tolist()
+
+def getSofwareByGroup(df: pd.DataFrame, GroupID: str) -> list:
+    '''
+    Return a list of all software used by a particular group
+    '''
+    return df[(df.source_ID == GroupID) & (df.target_type == 'software')].target_ID.tolist()
+
+def mitigationsByTechnique(df: pd.DataFrame, TechniqueID: str) -> list:
+    '''
+    Return a list of all mitigations used by a particular technique
+    '''
+    return df[(df.target_ID == TechniqueID) & (df.source_type == 'mitigation')].source_ID.tolist()
 
 ######################################################################################
 ## Thomas's added code
