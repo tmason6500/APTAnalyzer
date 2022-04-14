@@ -150,15 +150,15 @@ class UI(QMainWindow):
         self.tactic_selected = self.tactics.currentText()
         #self.description_box.setPlainText(self.tactic_selected)
         if (self.tactic_selected != ""):
-            self.description_box.setPlainText("{}...\n\n{}".format(self.tactic_selected, apt.getDescription(tactics_df,self.tactic_selected)))
+            self.description_box.setPlainText("{}...\n\n{}".format(self.tactic_selected, apt.getDescriptionByName(tactics_df,self.tactic_selected)))
     def technique_text(self,text):
         self.technique_selected = self.techniques.currentText()
-        self.description_box.setPlainText("{}...\n\n{}".format(self.technique_selected, apt.getDescription(techniques_df,self.technique_selected)))
+        self.description_box.setPlainText("{}...\n\n{}".format(self.technique_selected, apt.getDescriptionByName(techniques_df,self.technique_selected)))
 
     def software_text(self,text):
         self.software_selected = self.software.currentText()
         self.description_box.setPlainText(self.software_selected)
-        self.description_box.setPlainText(apt.getDescription(software_df, self.software_selected))
+        self.description_box.setPlainText(apt.getDescriptionByName(software_df, self.software_selected))
 
     def add_technique(self):
         if(self.technique_selected != ""):
