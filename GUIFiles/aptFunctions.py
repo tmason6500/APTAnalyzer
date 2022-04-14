@@ -149,15 +149,15 @@ def analyzeResults(df: pd.DataFrame, techniqueList: list) -> dict:
 
 def getDescriptionByName(df: pd.DataFrame, name: str) -> str:
     """
-    Returns the description of the group, technique, or software
-    from the associated dataframe.
+    Returns the description from the associated dataframe
+    based on the name.
     """
     return df[df.name == name].description.values[0]
 
 def getDescriptionByID(df: pd.DataFrame, ID: str) -> str:
     """
-    Returns the description of the group, technique, or software
-    from the associated dataframe.
+    Returns the description from the associated dataframe
+    based on the ID.
     """
     return df[df.ID == ID].description.values[0]
 
