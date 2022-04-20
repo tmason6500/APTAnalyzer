@@ -4,7 +4,7 @@ from PyQt5.QtCore import QCoreApplication
 import sys
 import json
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QFont, QMovie, QIcon, QTextCursor
-import aptFunctions as apt
+import RAPTORFunctions as apt
 import report as report
 import webbrowser
 import os
