@@ -1,10 +1,11 @@
-from PyQt5.QtWidgets import QMainWindow, QApplication, QComboBox, QPushButton, QPlainTextEdit, QCompleter, QListWidget, QAction, QLabel, QSlider
+from PyQt5.QtWidgets import QMainWindow, QApplication, QComboBox, QPushButton, QPlainTextEdit, QCompleter, QListWidget, QAction, QLabel, QSlider, QTextBrowser
 from PyQt5 import uic, Qt, QtCore
 from PyQt5.QtCore import QCoreApplication
 import sys
 import json
-from PyQt5.QtGui import QStandardItemModel, QStandardItem, QFont, QMovie, QIcon
+from PyQt5.QtGui import QStandardItemModel, QStandardItem, QFont, QMovie, QIcon, QTextCursor
 import aptFunctions as apt
+import report as report
 import webbrowser
 import os
 
@@ -22,12 +23,11 @@ class UI(QMainWindow):
         super(UI, self).__init__()
 
         #load the ui File
-        uic.loadUi("GUI.ui", self)
+        uic.loadUi("GUIFiles/GUI.ui", self)
         self.setWindowTitle("RAPTOR")
-        self.setWindowIcon(QIcon('raptor.png'))
-
+        self.setWindowIcon(QIcon('GUIFiles/raptor.png'))
+        self.setStyleSheet("background-color: #282C2E; color: white; font-size : 12 pt;")
         self.model = QStandardItemModel()
-
         #Define our QtWidgets
         self.tactics = self.findChild(QComboBox, "Tactics")
         self.tactics.setEditable(True)
@@ -57,6 +57,7 @@ class UI(QMainWindow):
         self.clear_all_btn.setStyleSheet('QPushButton {background-color: #282C2E; color: white; font-size : 12pt;}')
         self.evaluate_btn = self.findChild(QPushButton, "Evaluate")
         self.evaluate_btn.setStyleSheet('QPushButton {background-color: #282C2E; color: white; font-size : 12pt;}')
+        self.evaluate_btn.hide()
         self.reset_btn = self.findChild(QPushButton, "ResetButton")
         self.reset_btn.setStyleSheet('QPushButton {background-color: #282C2E; color: white; font-size : 12pt;}')
         self.reset_btn.hide()
@@ -65,9 +66,10 @@ class UI(QMainWindow):
         self.added_techniques_box.setStyleSheet('QListWidget {background-color: #282C2E; color: white; font-size : 12pt;}')
         self.added_software_box = self.findChild(QListWidget, "AddedSoftwareBox")
         self.added_software_box.setStyleSheet('QListWidget {background-color: #282C2E; color: white; font-size : 12pt;}')
-        self.description_box = self.findChild(QPlainTextEdit, "DescriptionBox")
-        self.description_box.setStyleSheet('QPlainTextEdit {background-color: #282C2E; color: white; font-size : 12pt;}')
-        self.description_box.setReadOnly(True)
+        self.description_box = self.findChild(QTextBrowser, "DescriptionBox")
+        self.description_box.setStyleSheet('QTextBrowser {background-color: #282C2E; color: white; font-size : 12pt;}')
+        #self.description_box.setOpenExternalLinks(True)
+        self.description_box.setAcceptRichText(True)
         self.added_techniques_text = self.findChild(QPlainTextEdit, "AddedTechniquesText")
         self.added_techniques_text.setStyleSheet('QPlainTextEdit {background-color: #282C2E; color: white; font-size : 13pt;}')
         self.added_techniques_text.setReadOnly(True)
@@ -104,9 +106,9 @@ class UI(QMainWindow):
         self.update_label = self.findChild(QLabel, "updating")
         self.update_label.setStyleSheet('QLabel {background-color: #282C2E; color: white; font-size : 12pt;}')
         self.update_label.hide()
-        self.movie1 = QMovie("dinosaur.gif")
+        self.movie1 = QMovie("GUIFiles/dinosaur.gif")
         self.progress_label.setMovie(self.movie1)
-        self.movie2 = QMovie("updating.gif")
+        self.movie2 = QMovie("GUIFiles/updating.gif")
         self.update_label.setMovie(self.movie2)
 
         self.tactics.addItem("", Techniques)
@@ -135,9 +137,9 @@ class UI(QMainWindow):
         self.showMaximized()
 
     def sliderchange(self):
+        self.slider.setEnabled(True)
         self.slider_text.setText(str(self.slider.value())+ "%")
         self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
-
 
     def indexChanged(self, index):
         self.techniques.clear()
@@ -147,18 +149,22 @@ class UI(QMainWindow):
 
     #Gets whatever is in the comboxbox
     def tactic_text(self, text):
+        self.description_box.moveCursor(QTextCursor.Start)
         self.tactic_selected = self.tactics.currentText()
         #self.description_box.setPlainText(self.tactic_selected)
         if (self.tactic_selected != ""):
-            self.description_box.setPlainText("{}...\n\n{}".format(self.tactic_selected, apt.getDescriptionByName(tactics_df,self.tactic_selected)))
+            self.description_box.setText("{}...\n\n{}".format(self.tactic_selected, apt.getDescriptionByName(tactics_df,self.tactic_selected)))
     def technique_text(self,text):
+        self.description_box.moveCursor(QTextCursor.Start)
         self.technique_selected = self.techniques.currentText()
-        self.description_box.setPlainText("{}...\n\n{}".format(self.technique_selected, apt.getDescriptionByName(techniques_df,self.technique_selected)))
+        self.description_box.setText(apt.getDescriptionByName(techniques_df,self.technique_selected))
+        #self.description_box.setText("{}...\n\n{}".format(self.technique_selected, apt.getDescriptionByName(techniques_df,self.technique_selected)))
 
     def software_text(self,text):
+        self.description_box.moveCursor(QTextCursor.Start)
         self.software_selected = self.software.currentText()
-        self.description_box.setPlainText(self.software_selected)
-        self.description_box.setPlainText(apt.getDescriptionByName(software_df, self.software_selected))
+        #self.description_box.setText(self.software_selected)
+        self.description_box.setText(apt.getDescriptionByName(software_df, self.software_selected))
 
     def add_technique(self):
         if(self.technique_selected != ""):
@@ -170,6 +176,11 @@ class UI(QMainWindow):
                 Backend_list.append(self.technique_selected)
                 self.technique_selected = ""
                 self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
+                if(apt.update_num(gfr_df, Backend_list, self.slider.value()) >= 1):
+                    self.evaluate_btn.show()
+                else:
+                    self.evaluate_btn.hide()
+
     def add_software(self):
         if(self.software_selected != ""):
             if (self.software_selected in Backend_list):
@@ -180,6 +191,11 @@ class UI(QMainWindow):
                 Backend_list.append(self.software_selected)
                 self.software_selected = ""
                 self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
+                if(apt.update_num(gfr_df, Backend_list, self.slider.value()) >= 1):
+                    self.evaluate_btn.show()
+                else:
+                    self.evaluate_btn.hide()
+
     def delete_technique(self):
         listItems=self.added_techniques_box.selectedItems()
         if not listItems: return
@@ -188,6 +204,10 @@ class UI(QMainWindow):
             self.description_box.setPlainText("Technique " + item.text()+ " has been removed from the technique list." )
             Backend_list.remove(item.text())
             self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
+            if(apt.update_num(gfr_df, Backend_list, self.slider.value()) >= 1):
+                self.evaluate_btn.show()
+            else:
+                self.evaluate_btn.hide()
     def delete_software(self):
         listItems=self.added_software_box.selectedItems()
         if not listItems: return
@@ -196,7 +216,12 @@ class UI(QMainWindow):
             self.description_box.setPlainText("Software " + item.text()+ " has been removed from the software list." )
             Backend_list.remove(item.text())
             self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
+            if(apt.update_num(gfr_df, Backend_list, self.slider.value()) >= 1):
+                self.evaluate_btn.show()
+            else:
+                self.evaluate_btn.hide()
     def clear_all(self):
+        self.evaluate_btn.hide()
         self.added_techniques_box.clear()
         self.added_software_box.clear()
         self.description_box.setPlainText("All techniques and software have been cleared from added techniques and added software lists.")
@@ -212,7 +237,6 @@ class UI(QMainWindow):
                 Backend_list.append(self.added_techniques_box.item(i).text())
             for i in range(self.added_software_box.count()):
                 Backend_list.append(self.added_software_box.item(i).text())
-            print (Backend_list)
             self.reset_btn.show()
             self.tactics.setEnabled(False)
             self.techniques.setEnabled(False)
@@ -224,12 +248,16 @@ class UI(QMainWindow):
             self.clear_all_btn.setEnabled(False)
             self.evaluate_btn.setEnabled(False)
             self.update_action.setEnabled(False)
+            test_df = apt.filterForSelectedTechniques(gfr_df, Backend_list)
+            report.report_func(apt.analyzeResults(test_df, Backend_list))
             #filename = 'file:///'+os.getcwd()+'/' + 'results.html'
             #webbrowser.open_new_tab(filename)
             self.description_box.setPlainText("Results are being or have been generated..." +"\n" + "Please press Reset button to continue working.")
 
     def reset(self):
         Backend_list.clear()
+        self.evaluate_btn.setEnabled(True)
+        self.slider_bar.setEnabled(False)
         self.potential_matches.setPlainText("Potential Matches above 0%: ")
         self.added_techniques_box.clear()
         self.added_software_box.clear()
@@ -242,7 +270,7 @@ class UI(QMainWindow):
         self.delete_technique_btn.setEnabled(True)
         self.delete_software_btn.setEnabled(True)
         self.clear_all_btn.setEnabled(True)
-        self.evaluate_btn.setEnabled(True)
+        self.evaluate_btn.hide()
         self.update_action.setEnabled(True)
         self.reset_btn.hide()
 
