@@ -2,6 +2,7 @@ import mitreattack.attackToExcel.attackToExcel as attackToExcel
 import mitreattack.attackToExcel.stixToDf as stixToDf
 import pandas as pd
 import os
+import math
 #added imports from Thomas
 from collections import Counter
 import itertools
@@ -142,7 +143,7 @@ def analyzeResults(df: pd.DataFrame, techniqueList: list) -> dict:
     for group in groupList:
 
         # Calculate the percentage of techniques each group matched
-        percentages[group] = (groupList.count(group) / techniqueCount)
+        percentages[group] = math.ceil((groupList.count(group) / techniqueCount) * 100)
 
     # Return the dictionary
     return percentages
