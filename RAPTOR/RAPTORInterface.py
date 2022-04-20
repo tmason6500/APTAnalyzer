@@ -5,7 +5,7 @@ import sys
 import json
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QFont, QMovie, QIcon, QTextCursor
 import RAPTORFunctions as apt
-import report as report
+import RAPTORReport as report
 import webbrowser
 import os
 
