@@ -287,15 +287,17 @@ def build_new_descriptions(df):
 def remove_citation(text):
     text = re.sub(r"\(Citation:+ [^()]*\)", "", text)
     return text
+    
 #removes [name](link)
 def remove_APT_HTTP(text):
     text=re.sub(r"\[(.*?)\]\(https?://[^()]*\)", "ADDED_ENTRY", text)
     return text
+
 #finds [name](link)
 def find_APT_HTTP(text):
     text=re.findall(f"\[(.*?)\]\((https?://[^()]*)\)",  text)
     return text
+
 #makes a http link clickable
 def make_clickable(text: str, link: str) -> str:
-    # print( '<a href="{}">{}</a>'.format(link, text))
     return ('<a href="{}">{}</a>'.format(link, text))
