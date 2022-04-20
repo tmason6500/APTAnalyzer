@@ -3,6 +3,8 @@ import mitreattack.attackToExcel.stixToDf as stixToDf
 import pandas as pd
 import os
 import math
+import re
+from IPython.display import HTML
 #added imports from Thomas
 from collections import Counter
 import itertools
@@ -72,12 +74,19 @@ def buildDataFrames() -> pd.DataFrame:
     """
     try:
         df_techniques = pd.read_csv("data/techniques.csv")
+        df_techniques = build_new_descriptions(df_techniques)
         df_tactics = pd.read_csv("data/tactics.csv")
+        df_tactics = build_new_descriptions(df_tactics)
         df_groups = pd.read_csv("data/groups.csv")
+        df_groups = build_new_descriptions(df_groups)
         df_software = pd.read_csv("data/software.csv")
+        df_software = build_new_descriptions(df_software)
         df_mitigations = pd.read_csv("data/mitigations.csv")
+        df_mitigations = build_new_descriptions(df_mitigations)
         df_gfr = pd.read_csv("data/df_gfr.csv")
+        # df_gfr = build_new_descriptions(df_gfr)
         df_relationships = pd.read_csv("data/relationships.csv")
+        # df_relationships = build_new_descriptions(df_relationships)
 
         return df_techniques, df_tactics, df_groups, df_software, df_mitigations, df_gfr, df_relationships
     except FileNotFoundError:
@@ -253,3 +262,40 @@ def update_num(groupsFromRelationships, selection, num):
         pass
     itemDict = get_dictionary(groupsFromRelationships)
     return(get_possible_selection(itemDict, selection, groupsFromRelationships,num))
+
+####################################
+#Sanatization functions from Thomas
+####################################
+
+#main function for removing names in discriptions and replacing it with hyperlinked name
+def build_new_descriptions(df):
+    for descript in df.description:
+        sanitized_descript=remove_citation(descript)
+        APT_HTTP_LIST = find_APT_HTTP(descript)
+        sanitized_descript = remove_APT_HTTP(sanitized_descript)
+        #Check for the marker, find the 
+        #replace {...} with the hyperlinked name
+        for apt_http_entry in APT_HTTP_LIST:
+             clickable_entry = (make_clickable(apt_http_entry[0], apt_http_entry[1]))
+             
+             sanitized_descript=sanitized_descript.replace("ADDED_ENTRY", clickable_entry, 1)
+        df.description = df.description.replace([descript],sanitized_descript)
+    HTML(df.to_html(escape=False))
+    return df
+
+#remove citations
+def remove_citation(text):
+    text = re.sub(r"\(Citation:+ [^()]*\)", "", text)
+    return text
+#removes [name](link)
+def remove_APT_HTTP(text):
+    text=re.sub(r"\[(.*?)\]\(https?://[^()]*\)", "ADDED_ENTRY", text)
+    return text
+#finds [name](link)
+def find_APT_HTTP(text):
+    text=re.findall(f"\[(.*?)\]\((https?://[^()]*)\)",  text)
+    return text
+#makes a http link clickable
+def make_clickable(text: str, link: str) -> str:
+    # print( '<a href="{}">{}</a>'.format(link, text))
+    return ('<a href="{}">{}</a>'.format(link, text))
