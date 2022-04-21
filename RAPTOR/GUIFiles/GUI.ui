@@ -510,6 +510,7 @@
      </rect>
     </property>
    </widget>
+   <zorder>DescriptionBox</zorder>
    <zorder>PotentialMatches</zorder>
    <zorder>DeleteTechnique</zorder>
    <zorder>DeleteSoftware</zorder>
@@ -529,7 +530,6 @@
    <zorder>AddedTechniquesBox</zorder>
    <zorder>slider_bar</zorder>
    <zorder>slider_text</zorder>
-   <zorder>DescriptionBox</zorder>
    <zorder>progress</zorder>
    <zorder>updating</zorder>
    <zorder>ResetButton</zorder>
