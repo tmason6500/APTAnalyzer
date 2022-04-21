@@ -1,5 +1,5 @@
 import webbrowser
-import aptFunctions as apt
+import RAPTORFunctions as apt
 
 techniques_df, tactics_df, groups_df, software_df, mitigations_df, gfr_df, relationships_df = apt.buildDataFrames()
 
