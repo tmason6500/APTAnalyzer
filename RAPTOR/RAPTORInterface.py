@@ -69,7 +69,7 @@ class UI(QMainWindow):
         self.description_box = self.findChild(QTextBrowser, "DescriptionBox")
         self.description_box.setStyleSheet('QTextBrowser {background-color: #282C2E; color: white; font-size : 12pt;}')
         #self.description_box.setOpenExternalLinks(True)
-        self.description_box.setAcceptRichText(True)
+        #self.description_box.setAcceptRichText(True)
         self.added_techniques_text = self.findChild(QPlainTextEdit, "AddedTechniquesText")
         self.added_techniques_text.setStyleSheet('QPlainTextEdit {background-color: #282C2E; color: white; font-size : 13pt;}')
         self.added_techniques_text.setReadOnly(True)
@@ -137,7 +137,6 @@ class UI(QMainWindow):
         self.showMaximized()
 
     def sliderchange(self):
-        self.slider.setEnabled(True)
         self.slider_text.setText(str(self.slider.value())+ "%")
         self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
 
@@ -157,16 +156,19 @@ class UI(QMainWindow):
     def technique_text(self,text):
         self.description_box.moveCursor(QTextCursor.Start)
         self.technique_selected = self.techniques.currentText()
-        self.description_box.setText(apt.getDescriptionByName(techniques_df,self.technique_selected))
-        #self.description_box.setText("{}...\n\n{}".format(self.technique_selected, apt.getDescriptionByName(techniques_df,self.technique_selected)))
+        self.description_box.setHtml(apt.getDescriptionByName(techniques_df,self.technique_selected))
+        #self.description_box.setHtml("{}...\n\n{}".format(self.technique_selected, apt.getDescriptionByName(techniques_df,self.technique_selected)))
 
     def software_text(self,text):
         self.description_box.moveCursor(QTextCursor.Start)
         self.software_selected = self.software.currentText()
         #self.description_box.setText(self.software_selected)
-        self.description_box.setText(apt.getDescriptionByName(software_df, self.software_selected))
+        self.description_box.setHtml(apt.getDescriptionByName(software_df, self.software_selected))
 
     def add_technique(self):
+        self.description_box.setOpenExternalLinks(False)
+        self.description_box.setAcceptRichText(True)
+
         if(self.technique_selected != ""):
             if (self.technique_selected in Backend_list):
                 self.description_box.setPlainText("Technique already added, please select another.")
@@ -182,6 +184,9 @@ class UI(QMainWindow):
                     self.evaluate_btn.hide()
 
     def add_software(self):
+        self.description_box.setOpenExternalLinks(False)
+        self.description_box.setAcceptRichText(True)
+
         if(self.software_selected != ""):
             if (self.software_selected in Backend_list):
                 self.description_box.setPlainText("Software already added, please select another.")
@@ -249,7 +254,7 @@ class UI(QMainWindow):
             self.evaluate_btn.setEnabled(False)
             self.update_action.setEnabled(False)
             test_df = apt.filterForSelectedTechniques(gfr_df, Backend_list)
-            report.report_func(apt.analyzeResults(test_df, Backend_list))
+            report.htmlReport(apt.analyzeResults(test_df, Backend_list))
             #filename = 'file:///'+os.getcwd()+'/' + 'results.html'
             #webbrowser.open_new_tab(filename)
             self.description_box.setPlainText("Results are being or have been generated..." +"\n" + "Please press Reset button to continue working.")
@@ -257,7 +262,7 @@ class UI(QMainWindow):
     def reset(self):
         Backend_list.clear()
         self.evaluate_btn.setEnabled(True)
-        self.slider_bar.setEnabled(False)
+        self.slider_bar.setEnabled(True)
         self.potential_matches.setPlainText("Potential Matches above 0%: ")
         self.added_techniques_box.clear()
         self.added_software_box.clear()
