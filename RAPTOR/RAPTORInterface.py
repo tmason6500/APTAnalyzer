@@ -68,7 +68,7 @@ class UI(QMainWindow):
         self.added_software_box.setStyleSheet('QListWidget {background-color: #282C2E; color: white; font-size : 12pt;}')
         self.description_box = self.findChild(QTextBrowser, "DescriptionBox")
         self.description_box.setStyleSheet('QTextBrowser {background-color: #282C2E; color: white; font-size : 12pt;}')
-        #self.description_box.setOpenExternalLinks(True)
+        self.description_box.setOpenExternalLinks(True)
         #self.description_box.setAcceptRichText(True)
         self.added_techniques_text = self.findChild(QPlainTextEdit, "AddedTechniquesText")
         self.added_techniques_text.setStyleSheet('QPlainTextEdit {background-color: #282C2E; color: white; font-size : 13pt;}')
