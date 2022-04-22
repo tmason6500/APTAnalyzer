@@ -6,7 +6,7 @@ techniques_df, tactics_df, groups_df, software_df, mitigations_df, gfr_df, relat
 # This is just for dummy testing for DEBUG
 groups = {'G0130':95, 'G0100':55, 'G0006':61, 'G0080':62, 'G0035':70, 'G0125':55, 'G0032':83}
 
-DEBUG = False
+DEBUG = True
 
 # Create html report using dictionary {GroupID:Percent}
 def htmlReport(groups: dict):
@@ -164,12 +164,12 @@ def htmlReport(groups: dict):
       </body>
     </html>"""
 
-    with open('HTMLFiles/Index.html', 'w') as f:
+    with open('HTMLFiles\Index.html', 'w') as f:
         f.write(index)
         f.close()
             
     if DEBUG:        
-        webbrowser.open('HTMLFiles/Index.html', new=2)
+        webbrowser.open('HTMLFiles\Index.html', new=2)
 
     ##### Home/Main Page #####
     home = """
@@ -304,12 +304,12 @@ def htmlReport(groups: dict):
       </body>
     </html>"""
 
-    with open('HTMLFiles/Home.html', 'w') as f:
+    with open('HTMLFiles\Home.html', 'w') as f:
         f.write(index)
         f.close()
 
     if DEBUG:  
-        webbrowser.open('HTMLFiles/Home.html', new=2)
+        webbrowser.open('HTMLFiles\Home.html', new=2)
 
     ##### About Page #####
     about = """<!DOCTYPE html>
@@ -469,12 +469,12 @@ def htmlReport(groups: dict):
       </body>
     </html>"""
 
-    with open('HTMLFiles/About.html', 'w') as f:
+    with open('HTMLFiles\About.html', 'w') as f:
         f.write(about)
         f.close()
             
     if DEBUG:        
-        webbrowser.open('HTMLFiles/About.html', new=2)
+        webbrowser.open('HTMLFiles\About.html', new=2)
 
     ##### Group Pages #####
     for key in groups:
@@ -578,48 +578,48 @@ def htmlReport(groups: dict):
                       <div class="u-border-3 u-border-custom-color-1 u-container-layout u-container-layout-2">"""
 
         info += """
-                        <h1 class="u-align-left u-text u-text-custom-color-1 u-title u-text-6">{}</h1>""".format(apt.getData(groups_df, key, 'name'))
+                        <h1 class="u-text-custom-color-1">{}</h1>""".format(apt.getData(groups_df, key, 'name'))
 
         info += """
-                        <p class="u-align-left u-text u-text-custom-color-1 u-text-default u-text-8">{}</p>""".format(apt.getData(groups_df, key, 'description'))
+                        <p class="u-text-custom-color-1" style="font-size:16px">{}</p>""".format(apt.getData(groups_df, key, 'description'))
 
         info += """
-                        <h2 class="u-align-left u-subtitle u-text u-text-custom-color-1 u-text-default u-text-9">Associated Groups</h2>
-                        <p class="u-align-left u-text u-text-custom-color-1 u-text-default u-text-10">{}</p>""".format(apt.getData(groups_df, key, 'associated groups'))
+                        <h2 class="u-text-custom-color-1" style="font-size:24px">Associated Groups</h2>
+                        <p class="u-text-custom-color-1" style="font-size:16px">{}</p>""".format(apt.getData(groups_df, key, 'associated groups'))
 
         # Populate software used by group
         info += """
                          <details>
-                             <summary><h2 class="u-align-left u-subtitle u-text u-text-custom-color-1 u-text-default u-text-9">Software</h2></summary>"""
+                             <summary class="u-text-custom-color-1" style="font-size:24px">Software</summary>"""
         
         software = apt.getSofwareByGroup(relationships_df, key)
         for i in range(len(software)):
             info += """
                         <details>
-                            <summary class="u-align-left u-text u-text-custom-color-1 u-text-9 style="padding-left: 15px;"><span style="padding-left: 20px; display:block">{}</span></summary>
-                            <p><span style="padding-left: 40px; display:block">{}</span></p>
+                            <summary class="u-text-custom-color-1" style="font-size:16px;padding-left:15px">{}</summary>
+                            <p style="font-size:14px;padding-left:30px">{}</p>
                         </details>""".format(apt.getData(software_df, software[i], 'name'), apt.getData(software_df, software[i], 'description'))
 
         # Populate techniques and how to mitigate these attacks
         info += """</details>
                    <details>
-                     <summary><h2 class="u-align-left u-subtitle u-text u-text-custom-color-1 u-text-default u-text-9">Techniques</h2></summary>"""
+                     <summary class="u-text-custom-color-1" style="font-size:24px">Techniques</summary>"""
 
         techniques = apt.getTechniquesByGroup(relationships_df, key)
         for i in range(len(techniques)):
             info += """
                         <details>
-                            <summary class="u-align-left u-text u-text-custom-color-1 u-text-9"><h5 class="u-align-left u-text u-text-custom-color-1 u-text-default u-text-9"><span style="padding-left: 20px; display:block">{}</span></h5></summary>
-                            <p><span style="padding-left: 40px; display:block">{}</span></p>""".format(apt.getData(techniques_df, techniques[i], 'name'), apt.getData(techniques_df, techniques[i], 'description'))
+                            <summary class="u-text-custom-color-1" style="font-size:16px;padding-left:15px">{}</summary>
+                            <p class="u-text-custom-color-1" style="font-size:14px;padding-left:30px">{}</p>""".format(apt.getData(techniques_df, techniques[i], 'name'), apt.getData(techniques_df, techniques[i], 'description'))
             
             mitigations = apt.mitigationsByTechnique(relationships_df, techniques[i])
             if mitigations != []:
                 info += """
                     <details>
-                        <summary><h6 class="u-align-left u-text u-text-custom-color-1 u-text-default u-text-9"><span style="padding-left: 60px; display:block">Mitigations</span></h6></summary>"""
+                        <summary class="u-text-custom-color-1" style="font-size:16px;padding-left:45px">Mitigations</summary>"""
                 for j in range(len(mitigations)):
                     info += """
-                            <p><span style="padding-left: 80px; display:block">{} - {}</span></p>""".format(apt.getData(mitigations_df, mitigations[j], 'name'), apt.getData(mitigations_df, mitigations[j], 'description'))
+                            <p class="u-text-custom-color-1" style="font-size:14px;padding-left:60px">{} - {}</p>""".format(apt.getData(mitigations_df, mitigations[j], 'name'), apt.getData(mitigations_df, mitigations[j], 'description'))
                 info += """</details>
                         </details>"""
             else:
@@ -659,7 +659,7 @@ def htmlReport(groups: dict):
           </body>
         </html>"""
 
-        file = 'HTMLFiles/{}.html'.format(key)
+        file = 'HTMLFiles\{}.html'.format(key)
         with open(file, 'w') as f:
                 f.write(info)
                 f.close()
@@ -668,7 +668,7 @@ def htmlReport(groups: dict):
             webbrowser.open(file, new=2)
 
     ##### Opens Main Webpage #####
-    webbrowser.open('HTMLFiles/Index.html', new=2)
+    webbrowser.open('HTMLFiles\Index.html', new=2)
 
 if DEBUG:
     htmlReport(groups)
