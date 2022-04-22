@@ -149,32 +149,36 @@ class UI(QMainWindow):
     #Gets whatever is in the comboxbox
     def tactic_text(self, text):
         self.description_box.moveCursor(QTextCursor.Start)
+        self.description_box.setOpenExternalLinks(True)
         self.tactic_selected = self.tactics.currentText()
         #self.description_box.setPlainText(self.tactic_selected)
         if (self.tactic_selected != ""):
-            self.description_box.setText("{}...\n\n{}".format(self.tactic_selected, apt.getDescriptionByName(tactics_df,self.tactic_selected)))
+            self.description_box.setHtml("{}<p>{}</p>".format(self.tactic_selected, apt.getDescriptionByName(tactics_df,self.tactic_selected)))
     def technique_text(self,text):
         self.description_box.moveCursor(QTextCursor.Start)
+        self.description_box.setOpenExternalLinks(True)
         self.technique_selected = self.techniques.currentText()
         self.description_box.setHtml(apt.getDescriptionByName(techniques_df,self.technique_selected))
         #self.description_box.setHtml("{}...\n\n{}".format(self.technique_selected, apt.getDescriptionByName(techniques_df,self.technique_selected)))
 
     def software_text(self,text):
         self.description_box.moveCursor(QTextCursor.Start)
+        self.description_box.setOpenExternalLinks(True)
         self.software_selected = self.software.currentText()
         #self.description_box.setText(self.software_selected)
         self.description_box.setHtml(apt.getDescriptionByName(software_df, self.software_selected))
 
     def add_technique(self):
         self.description_box.setOpenExternalLinks(False)
-        self.description_box.setAcceptRichText(True)
+        self.description_box.setAcceptRichText(False)
+        self.description_box.moveCursor(QTextCursor.Start)
 
         if(self.technique_selected != ""):
             if (self.technique_selected in Backend_list):
-                self.description_box.setPlainText("Technique already added, please select another.")
+                self.description_box.setHtml("Technique already added, please select another.")
             else:
                 self.added_techniques_box.addItem(self.technique_selected)
-                self.description_box.setPlainText("Technique: " + self.technique_selected+ " has been added to the technique list." )
+                self.description_box.setHtml("Technique: " + self.technique_selected+ " has been added to the technique list." )
                 Backend_list.append(self.technique_selected)
                 self.technique_selected = ""
                 self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
@@ -185,14 +189,14 @@ class UI(QMainWindow):
 
     def add_software(self):
         self.description_box.setOpenExternalLinks(False)
-        self.description_box.setAcceptRichText(True)
+        self.description_box.setAcceptRichText(False)
 
         if(self.software_selected != ""):
             if (self.software_selected in Backend_list):
-                self.description_box.setPlainText("Software already added, please select another.")
+                self.description_box.setHtml("Software already added, please select another.")
             else:
                 self.added_software_box.addItem(self.software_selected)
-                self.description_box.setPlainText("Software " + self.software_selected+ " has been added to the software list." )
+                self.description_box.setHtml("Software " + self.software_selected+ " has been added to the software list." )
                 Backend_list.append(self.software_selected)
                 self.software_selected = ""
                 self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
@@ -206,7 +210,7 @@ class UI(QMainWindow):
         if not listItems: return
         for item in listItems:
             self.added_techniques_box.takeItem(self.added_techniques_box.row(item))
-            self.description_box.setPlainText("Technique " + item.text()+ " has been removed from the technique list." )
+            self.description_box.setHtml("Technique " + item.text()+ " has been removed from the technique list." )
             Backend_list.remove(item.text())
             self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
             if(apt.update_num(gfr_df, Backend_list, self.slider.value()) >= 1):
@@ -218,7 +222,7 @@ class UI(QMainWindow):
         if not listItems: return
         for item in listItems:
             self.added_software_box.takeItem(self.added_software_box.row(item))
-            self.description_box.setPlainText("Software " + item.text()+ " has been removed from the software list." )
+            self.description_box.setHtml("Software " + item.text()+ " has been removed from the software list." )
             Backend_list.remove(item.text())
             self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
             if(apt.update_num(gfr_df, Backend_list, self.slider.value()) >= 1):
@@ -229,7 +233,7 @@ class UI(QMainWindow):
         self.evaluate_btn.hide()
         self.added_techniques_box.clear()
         self.added_software_box.clear()
-        self.description_box.setPlainText("All techniques and software have been cleared from added techniques and added software lists.")
+        self.description_box.setHtml("All techniques and software have been cleared from added techniques and added software lists.")
         Backend_list.clear()
         self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
 
@@ -255,12 +259,13 @@ class UI(QMainWindow):
             self.update_action.setEnabled(False)
             test_df = apt.filterForSelectedTechniques(gfr_df, Backend_list)
             report.htmlReport(apt.analyzeResults(test_df, Backend_list))
-            #filename = 'file:///'+os.getcwd()+'/' + 'results.html'
+             #filename = 'file:///'+os.getcwd()+'/' + 'results.html'
             #webbrowser.open_new_tab(filename)
             self.description_box.setPlainText("Results are being or have been generated..." +"\n" + "Please press Reset button to continue working.")
 
     def reset(self):
         Backend_list.clear()
+        self.description_box.setOpenExternalLinks(True)
         self.evaluate_btn.setEnabled(True)
         self.slider_bar.setEnabled(True)
         self.potential_matches.setPlainText("Potential Matches above 0%: ")
