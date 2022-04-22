@@ -106,10 +106,15 @@ class UI(QMainWindow):
         self.update_label = self.findChild(QLabel, "updating")
         self.update_label.setStyleSheet('QLabel {background-color: #282C2E; color: white; font-size : 12pt;}')
         self.update_label.hide()
+        self.update_label2 = self.findChild(QLabel, "updating_2")
+        self.update_label2.setStyleSheet('QLabel {background-color: #282C2E; color: white; font-size : 12pt;}')
+        self.update_label2.hide()
         self.movie1 = QMovie("GUIFiles/dinosaur.gif")
         self.progress_label.setMovie(self.movie1)
         self.movie2 = QMovie("GUIFiles/updating.gif")
         self.update_label.setMovie(self.movie2)
+        self.movie3 = QMovie("GUIFiles/result.gif")
+        self.update_label2.setMovie(self.movie3)
 
         self.tactics.addItem("", Techniques)
         for i in range(len(TacticCombo)):
@@ -238,14 +243,16 @@ class UI(QMainWindow):
         self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
 
     def evaluate(self):
+        self.temp_thread2 = StringThread2("Report")
         if ((self.added_techniques_box.count() == 0) and (self.added_software_box.count() == 0)):
-            self.description_box.setPlainText("Please add at least 1 technique or 1 software before evaluating.")
+            self.description_box.setHtml("Please add at least 1 technique or 1 software before evaluating.")
         else:
             Backend_list.clear()
             for i in range(self.added_techniques_box.count()):
                 Backend_list.append(self.added_techniques_box.item(i).text())
             for i in range(self.added_software_box.count()):
                 Backend_list.append(self.added_software_box.item(i).text())
+            self.description_box.clear()
             self.reset_btn.show()
             self.tactics.setEnabled(False)
             self.techniques.setEnabled(False)
@@ -257,14 +264,28 @@ class UI(QMainWindow):
             self.clear_all_btn.setEnabled(False)
             self.evaluate_btn.setEnabled(False)
             self.update_action.setEnabled(False)
-            test_df = apt.filterForSelectedTechniques(gfr_df, Backend_list)
-            report.htmlReport(apt.analyzeResults(test_df, Backend_list))
-             #filename = 'file:///'+os.getcwd()+'/' + 'results.html'
-            #webbrowser.open_new_tab(filename)
-            self.description_box.setPlainText("Results are being or have been generated..." +"\n" + "Please press Reset button to continue working.")
+            self.reset_btn.hide()
+            self.progress_label.show()
+            self.update_label2.show()
+            self.movie1.start()
+            self.movie3.start()
+            self.temp_thread2.start()
+            self.temp_thread2.finished.connect(self.thread_finished)
+
+
+    def thread_finished(self):
+        self.description_box.clear()
+        self.progress_label.hide()
+        self.update_label2.hide()
+        self.reset_btn.show()
+        self.reset_btn.setEnabled(True)
+        self.description_box.setHtml("PLEASE PRESS RESET BUTTON TO CONTINUE WORKING.")
+
 
     def reset(self):
         Backend_list.clear()
+        self.progress_label.hide()
+        self.update_label2.hide()
         self.description_box.setOpenExternalLinks(True)
         self.evaluate_btn.setEnabled(True)
         self.slider_bar.setEnabled(True)
@@ -293,13 +314,14 @@ class UI(QMainWindow):
         self.added_software_box.clear()
         self.added_techniques_box.clear()
         self.description_box.setStyleSheet('QPlainTextEdit {background-color: #282C2E; color: white; font-size : 14pt;}')
-        self.description_box.insertPlainText("PLEASE WAIT..." + "\n" + "THE STORED DATA IS BEING UPDATED..." + "\n" + "APPLICATION WILL RESTART ONCE DONE...")
+        self.description_box.setHtml("<p>PLEASE WAIT...</p><p>THE STORED DATA IS BEING UPDATED...</p><p>APPLICATION WILL RESTART ONCE DONE...</p>")
         self.progress_label.show()
         self.update_label.show()
         self.movie1.start()
         self.movie2.start()
         self.setEnabled(False)
         self.temp_thread.start()
+
 
 class StringThread(QtCore.QThread):
 
@@ -315,6 +337,18 @@ class StringThread(QtCore.QThread):
         QtCore.QCoreApplication.quit()
         status = QtCore.QProcess.startDetached(sys.executable, sys.argv)
 
+class StringThread2(QtCore.QThread):
+
+    str_signal = QtCore.pyqtSignal(str)
+    _name = ''
+
+    def __init__(self, name):
+        QtCore.QThread.__init__(self)
+        self._name = name
+
+    def run(self):
+        test_df = apt.filterForSelectedTechniques(gfr_df, Backend_list)
+        report.htmlReport(apt.analyzeResults(test_df, Backend_list))
 #Initialize the App
 app = QApplication(sys.argv)
 UIWindow = UI()
