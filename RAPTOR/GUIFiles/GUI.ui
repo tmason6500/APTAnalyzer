@@ -510,6 +510,19 @@
      </rect>
     </property>
    </widget>
+   <widget class="QLabel" name="updating_2">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>380</y>
+      <width>501</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
    <zorder>DescriptionBox</zorder>
    <zorder>PotentialMatches</zorder>
    <zorder>DeleteTechnique</zorder>
@@ -533,6 +546,7 @@
    <zorder>progress</zorder>
    <zorder>updating</zorder>
    <zorder>ResetButton</zorder>
+   <zorder>updating_2</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
