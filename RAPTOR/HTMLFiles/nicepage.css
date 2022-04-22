@@ -36588,6 +36588,17 @@ a.u-link.u-text-hover-grey-90:hover {
 .u-footer .u-icon-2 {
   height: 32px;
 }
+details summary { 
+  cursor: pointer;
+  color: lawngreen;
+}
+details > summary {
+  display: list-item;
+}
+details { 
+  cursor: pointer;
+  color: lawngreen;
+}
 @media (max-width: 1199px) {
   .u-footer .u-sheet-1 {
     min-height: 99px;
