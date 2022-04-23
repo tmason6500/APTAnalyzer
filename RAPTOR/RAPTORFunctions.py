@@ -300,4 +300,10 @@ def find_APT_HTTP(text):
 
 #makes a http link clickable
 def make_clickable(text: str, link: str) -> str:
-    return ('<a href="{}">{}</a>'.format(link, text))
+    return ('[<a href="{}">{}</a>]'.format(link, text))
+
+def fix_pdf_description(text: str)-> str:
+    text = re.sub(r'\<a href=\"https?://[^()]*?>', '', text)
+    text = re.sub(r"</a>", '', text)
+
+    return text
