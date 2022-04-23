@@ -1,0 +1,156 @@
+body {
+    height: 100vh;
+    margin: 0;
+}
+.container {
+    height: 100%;
+    display: grid;
+    grid-template-areas: 'h h h h' 'm c c c' 'f f f f';
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 10% 80% 10%;
+}
+#navmenu {
+    height: 100%;
+    grid-area: h;
+    background-color: #000000;
+    color: lawngreen;
+    border: lawngreen solid medium;
+}
+#navmenu ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+#navmenu li {
+    float: right;
+    padding: 30px 5px;
+    margin-right: 15px;
+    font-size: 20px;
+}
+#navmenu li a {
+    text-decoration: none;
+    color: lawngreen;
+}
+#navmenu .left {
+    float:left;
+    padding: 5px;
+    margin: 5px;
+}
+#logo {
+    height: 70px;
+    width: 70px;
+    padding: 0px;
+}
+#groupmenu {
+    display: grid;
+    grid-area: m;
+    background-color: #000000;
+    color: lawngreen;
+    border: lawngreen solid medium;
+    overflow: auto;
+    padding-bottom: 20px;
+}
+#groupmenu h2 {
+    font-size: 40px;
+    text-align: center;
+    margin: 0px;
+    padding: 10px 0px 10px 0px;
+}
+#groupmenu p {
+    font-size: 20px;
+    text-align: center;
+    margin: 0px;
+    padding: 5px;
+}
+#groupmenu p a{
+    display: block;
+    text-decoration: none;
+    color: lawngreen;
+}
+#groupinfo {
+    min-height: 80%;
+    grid-area: c;
+    padding: 4px 12px;
+    background-color: #000000;
+    color: lawngreen;
+    border: lawngreen solid medium;
+    overflow: auto;
+    padding-bottom: 20px;
+}
+#groupinfo h1 {
+    font-size: 60px;
+    margin: 0px;
+    padding: 10px 0px 10px 0px;
+}
+#groupinfo p a{
+    text-decoration: none;
+    color: lawngreen;
+}
+#groupinfo h2 {
+    font-size: 40px;
+    margin: 0px;
+    padding: 10px 0px 10px 0px;
+}
+#groupinfo p {
+    font-size: 20px;
+    margin: 0px;
+    padding: 10px 0px 10px 0px;
+}
+#button1 {
+    font-size: 40px;
+}
+#button2 {
+    font-size: 30px;
+}
+#button3 {
+    font-size: 20px;
+}
+.collapsible {
+    cursor: pointer;
+    background-color: #000000;
+    color: lawngreen;
+    border: none;
+    padding: 10px 0px 10px 0px;
+}
+.collapsible:after {
+    content: '\002B';
+    color: lawngreen;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+.active:after {
+    content: "\2212";
+}
+.content {
+    padding: 0px 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: flex 0.2s ease-out;
+  }
+.content1 {
+    padding: 0px 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: flex 0.2s ease-out;
+  }
+#footer {
+    min-height: 10%;
+    grid-area: f;
+    background-color: #000000;
+    color: lawngreen;
+    border: lawngreen solid medium;
+    padding: 18px;
+    text-align: center;
+    margin-top: -15px;
+}
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 5px lawngreen; 
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: lawngreen; 
+}
