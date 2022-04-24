@@ -6,7 +6,7 @@ techniques_df, tactics_df, groups_df, software_df, mitigations_df, gfr_df, relat
 # This is just for dummy testing for DEBUG
 groups = {'G0130':95, 'G0100':55, 'G0006':61, 'G0080':62, 'G0035':70, 'G0125':55, 'G0032':83}
 
-DEBUG = True
+DEBUG = False
 
 # Create html report using dictionary {GroupID:Percent}
 def htmlReport(groups: dict):
@@ -387,7 +387,7 @@ def htmlReport(groups: dict):
       webbrowser.open(file, new=2)
 
       ##### Opens Main Webpage #####
-    webbrowser.open('HTMLFiles/Index.html', new=2)
+  webbrowser.open('HTMLFiles/index.html', new=2)
 
 if DEBUG:
   htmlReport(groups)
