@@ -68,7 +68,7 @@ body {
     color: lawngreen;
 }
 #groupinfo {
-    min-height: 80%;
+    min-height: 75%;
     grid-area: c;
     padding: 4px 12px;
     background-color: #000000;
@@ -140,9 +140,22 @@ body {
     background-color: #000000;
     color: lawngreen;
     border: lawngreen solid medium;
-    padding: 18px;
-    text-align: center;
-    margin-top: -15px;
+}
+#footer ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#footer li {
+    float: Center;
+    font-size: 20px;
+}
+#footer img {
+    height: 50px;
+    width: 50px;
+    padding: 0px;
 }
 ::-webkit-scrollbar {
     width: 12px;

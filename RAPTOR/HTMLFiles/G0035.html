@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="RAPTOR.css">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <title>Dragonfly</title>
+  </head>
+  <body>
+    <div class="container">
+      <div id="navmenu">
+        <ul>
+          <li><a href="index.html">Print All</a></li>
+          <li><a href="index.html">About</a></li>
+          <li class="left"><a href="index.html"><img src="./images/raptor.png" id="logo"></a></li>
+        </ul>
+      </div>
+      <div id="groupmenu">
+        <h2>90+%</h2>
+          <p><a href="G0130.html">Ajax Security Team</a></p>
+        <h2>80% - 89%</h2>
+          <p><a href="G0032.html">Lazarus Group</a></p>
+        <h2>70% - 79%</h2>
+          <p><a href="G0035.html">Dragonfly</a></p>
+        <h2>60% - 69%</h2>
+          <p><a href="G0006.html">APT1</a></p>
+          <p><a href="G0080.html">Cobalt Group</a></p>
+        <h2>50% - 59%</h2>
+          <p><a href="G0100.html">Inception</a></p>
+          <p><a href="G0125.html">HAFNIUM</a></p>
+      </div>
+      <div id="groupinfo">
+        <h1>Dragonfly</h1>
+          <p>[<a href="https://attack.mitre.org/groups/G0035">Dragonfly</a>] is a cyber espionage group that has been active since at least 2011. They initially targeted defense and aviation companies but shifted to focus to include the energy sector in early 2013. They have also targeted companies related to industrial control systems. 
+
+A similar group emerged in 2015 and was identified by Symantec as [<a href="https://attack.mitre.org/groups/G0074">Dragonfly 2.0</a>]. There is debate over the extent of the overlap between [<a href="https://attack.mitre.org/groups/G0035">Dragonfly</a>] and [<a href="https://attack.mitre.org/groups/G0074">Dragonfly 2.0</a>], but there is sufficient evidence to lead to these being tracked as two separate groups. </p>
+        <h2>Associated Groups</h2>
+          <p>Crouching Yeti, Energetic Bear, IRON LIBERTY, TG-4192</p>
+        <button id ="button1" class="collapsible">Software</button>
+          <div class="content">
+            <button id="button2" class="collapsible">Backdoor.Oldrea</button>
+              <div class="content">
+                <p>[<a href="https://attack.mitre.org/software/S0093">Backdoor.Oldrea</a>] is a backdoor used by [<a href="https://attack.mitre.org/groups/G0035">Dragonfly</a>]. It appears to be custom malware authored by the group or specifically for it. </p>
+              </div>
+            <button id="button2" class="collapsible">CrackMapExec</button>
+              <div class="content">
+                <p>[<a href="https://attack.mitre.org/software/S0488">CrackMapExec</a>], or CME, is a post-exploitation tool developed in Python and designed for penetration testing against networks. [<a href="https://attack.mitre.org/software/S0488">CrackMapExec</a>] collects Active Directory information to conduct lateral movement through targeted networks.</p>
+              </div>
+            <button id="button2" class="collapsible">Mimikatz</button>
+              <div class="content">
+                <p>[<a href="https://attack.mitre.org/software/S0002">Mimikatz</a>] is a credential dumper capable of obtaining plaintext Windows account logins and passwords, along with many other features that make it useful for testing the security of networks.  </p>
+              </div>
+            <button id="button2" class="collapsible">PsExec</button>
+              <div class="content">
+                <p>[<a href="https://attack.mitre.org/software/S0029">PsExec</a>] is a free Microsoft tool that can be used to execute a program on another computer. It is used by IT administrators and attackers.  </p>
+              </div>
+            <button id="button2" class="collapsible">Trojan.Karagany</button>
+              <div class="content">
+                <p>[<a href="https://attack.mitre.org/software/S0094">Trojan.Karagany</a>] is a modular remote access tool used for recon and linked to [<a href="https://attack.mitre.org/groups/G0035">Dragonfly</a>] and [<a href="https://attack.mitre.org/groups/G0074">Dragonfly 2.0</a>]. The source code for [<a href="https://attack.mitre.org/software/S0094">Trojan.Karagany</a>] originated from Dream Loader malware which was leaked in 2010 and sold on underground forums. </p>
+              </div>
+          </div>
+        <button id ="button1" class="collapsible">Techniques</button>
+          <div class="content">
+          <button id="button2" class="collapsible">Supply Chain Compromise: Compromise Software Supply Chain</button>
+            <div class="content">
+              <p>Adversaries may manipulate application software prior to receipt by a final consumer for the purpose of data or system compromise. Supply chain compromise of software can take place in a number of ways, including manipulation of the application source code, manipulation of the update/distribution mechanism for that software, or replacing compiled releases with a modified version.
+
+Targeting may be specific to a desired victim set or may be distributed to a broad set of consumers but only move on to additional tactics on specific victims.   </p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Update Software - Perform regular software updates to mitigate exploitation risk.</p>
+                  <p>Vulnerability Scanning - Vulnerability scanning is used to find potentially exploitable software vulnerabilities to remediate them.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">Drive-by Compromise</button>
+            <div class="content">
+              <p>Adversaries may gain access to a system through a user visiting a website over the normal course of browsing. With this technique, the user's web browser is typically targeted for exploitation, but adversaries may also use compromised websites for non-exploitation behavior such as acquiring [<a href="https://attack.mitre.org/techniques/T1550/001">Application Access Token</a>].
+
+Multiple ways of delivering exploit code to a browser exist, including:
+
+* A legitimate website is compromised where adversaries have injected some form of malicious code such as JavaScript, iFrames, and cross-site scripting.
+* Malicious ads are paid for and served through legitimate ad providers.
+* Built-in web application interfaces are leveraged for the insertion of any other kind of object that can be used to display web content or contain a script that executes on the visiting client (e.g. forum posts, comments, and other user controllable web content).
+
+Often the website used by an adversary is one visited by a specific community, such as government, a particular industry, or region, where the goal is to compromise a specific user or set of users based on a shared interest. This kind of targeted attack is referred to a strategic web compromise or watering hole attack. There are several known examples of this occurring.
+
+Typical drive-by compromise process:
+
+1. A user visits a website that is used to host the adversary controlled content.
+2. Scripts automatically execute, typically searching versions of the browser and plugins for a potentially vulnerable version. 
+    * The user may be required to assist in this process by enabling scripting or active website components and ignoring warning dialog boxes.
+3. Upon finding a vulnerable version, exploit code is delivered to the browser.
+4. If exploitation is successful, then it will give the adversary code execution on the user's system unless other protections are in place.
+    * In some cases a second visit to the website after the initial scan is required before exploit code is delivered.
+
+Unlike [<a href="https://attack.mitre.org/techniques/T1190">Exploit Public-Facing Application</a>], the focus of this technique is to exploit software on a client endpoint upon visiting a website. This will commonly give an adversary access to systems on the internal network instead of external systems that may be in a DMZ.
+
+Adversaries may also use compromised websites to deliver a user to a malicious application designed to [<a href="https://attack.mitre.org/techniques/T1528">Steal Application Access Token</a>]s, like OAuth tokens, to gain access to protected applications and information. These malicious applications have been delivered through popups on legitimate websites.</p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Application Isolation and Sandboxing - Restrict execution of code to a virtual environment on or in transit to an endpoint system.</p>
+                  <p>Exploit Protection - Use capabilities to detect and block conditions that may lead to or be indicative of a software exploit occurring.</p>
+                  <p>Restrict Web-Based Content - Restrict use of certain websites, block downloads/attachments, block Javascript, restrict browser extensions, etc.</p>
+                  <p>Update Software - Perform regular software updates to mitigate exploitation risk.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">Phishing</button>
+            <div class="content">
+              <p>Adversaries may send phishing messages to gain access to victim systems. All forms of phishing are electronically delivered social engineering. Phishing can be targeted, known as spearphishing. In spearphishing, a specific individual, company, or industry will be targeted by the adversary. More generally, adversaries can conduct non-targeted phishing, such as in mass malware spam campaigns.
+
+Adversaries may send victims emails containing malicious attachments or links, typically to execute malicious code on victim systems. Phishing may also be conducted via third-party services, like social media platforms. Phishing may also involve social engineering techniques, such as posing as a trusted source.</p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Antivirus/Antimalware - Use signatures or heuristics to detect malicious software.</p>
+                  <p>Network Intrusion Prevention - Use intrusion detection signatures to block traffic at network boundaries.</p>
+                  <p>Restrict Web-Based Content - Restrict use of certain websites, block downloads/attachments, block Javascript, restrict browser extensions, etc.</p>
+                  <p>Software Configuration - Implement configuration changes to software (other than the operating system) to mitigate security risks associated to how the software operates.</p>
+                  <p>User Training - Train users to be aware of access or manipulation attempts by an adversary to reduce the risk of successful spearphishing, social engineering, and other techniques that involve user interaction.</p>
+                </div>
+            </div>
+          <button id="button2" class="collapsible">Obtain Capabilities: Tool</button>
+            <div class="content">
+              <p>Adversaries may buy, steal, or download software tools that can be used during targeting. Tools can be open or closed source, free or commercial. A tool can be used for malicious purposes by an adversary, but (unlike malware) were not intended to be used for those purposes (ex: [<a href="https://attack.mitre.org/software/S0029">PsExec</a>]). Tool acquisition can involve the procurement of commercial software licenses, including for red teaming tools such as [<a href="https://attack.mitre.org/software/S0154">Cobalt Strike</a>]. Commercial software may be obtained through purchase, stealing licenses (or licensed copies of the software), or cracking trial versions.
+
+Adversaries may obtain tools to support their operations, including to support execution of post-compromise behaviors. In addition to freely downloading or purchasing software, adversaries may steal software and/or software licenses from third-party entities (including other adversaries).</p>
+              <button id="button3" class="collapsible">Mitigations</button>
+                <div class="content">
+                  <p>Pre-compromise - This category is used for any applicable mitigation activities that apply to techniques occurring before an adversary gains Initial Access, such as Reconnaissance and Resource Development techniques.</p>
+                </div>
+            </div>
+          </div>
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="https://github.com/redbeardmeric/APTAnalyzer"><img src="./images/Github.png"></a></li>
+          <li><a href="https://attack.mitre.org/"><img src="./images/Attck.png"></a></li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      var coll = document.getElementsByClassName("collapsible");
+      var i;
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function(){
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.maxHeight){
+            content.style.maxHeight = null;
+          } else {
+            content.style.maxHeight = 1000000 + "px";
+          } 
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -37,7 +37,8 @@ def htmlReport(groups: dict):
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="RAPTOR.css">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
     <title>R.A.P.T.O.R.</title>
   </head>
   <body>
@@ -90,10 +91,10 @@ def htmlReport(groups: dict):
           <p>Technique(s) known to be used by the group will be here.</p>
       </div>
       <div id="footer">
-        <p>
-          <a href="https://github.com/redbeardmeric/APTAnalyzer">Github</a>
-          <a href="https://attack.mitre.org/">Attck</a>
-        </p>
+        <ul>
+          <li><a href="https://github.com/redbeardmeric/APTAnalyzer"><img src="./images/Github.png"></a></li>
+          <li><a href="https://attack.mitre.org/"><img src="./images/Attck.png"></a></li>
+        </ul>
       </div>
     </div>
     <script>
@@ -127,8 +128,9 @@ def htmlReport(groups: dict):
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="test.css">
-    <title>{}</title>""".format(key)
+    <link rel="stylesheet" href="RAPTOR.css">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <title>{}</title>""".format(apt.getData(groups_df, key, 'name'))
     info += """
   </head>
   <body>
@@ -225,10 +227,10 @@ def htmlReport(groups: dict):
           </div>
       </div>
       <div id="footer">
-        <p>
-          <a href="https://github.com/redbeardmeric/APTAnalyzer">Github</a>
-          <a href="https://attack.mitre.org/">Attck</a>
-        </p>
+        <ul>
+          <li><a href="https://github.com/redbeardmeric/APTAnalyzer"><img src="./images/Github.png"></a></li>
+          <li><a href="https://attack.mitre.org/"><img src="./images/Attck.png"></a></li>
+        </ul>
       </div>
     </div>
     <script>

@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="RAPTOR.css">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <title>R.A.P.T.O.R.</title>
+  </head>
+  <body>
+    <div class="container">
+      <div id="navmenu">
+        <ul>
+          <li><a href="index.html">Print All</a></li>
+          <li><a href="index.html">About</a></li>
+          <li class="left"><a href="index.html"><img src="./images/raptor.png" id="logo"></a></li>
+        </ul>
+      </div>
+      <div id="groupmenu">
+        <h2>90+%</h2>
+          <p><a href="G0130.html">Ajax Security Team</a></p>
+        <h2>80% - 89%</h2>
+          <p><a href="G0032.html">Lazarus Group</a></p>
+        <h2>70% - 79%</h2>
+          <p><a href="G0035.html">Dragonfly</a></p>
+        <h2>60% - 69%</h2>
+          <p><a href="G0006.html">APT1</a></p>
+          <p><a href="G0080.html">Cobalt Group</a></p>
+        <h2>50% - 59%</h2>
+          <p><a href="G0100.html">Inception</a></p>
+          <p><a href="G0125.html">HAFNIUM</a></p>
+      </div>
+      <div id="groupinfo">
+        <h1>APT Name</h1>
+          <p>The descrition of the APT will be here.</p>
+        <h2>Associated Groups</h2>
+          <p>Known associated groups will be here.</p>
+        <h2>Software</h2>
+          <p>Software(s) known to be used by the group will be here.</p>
+        <h2>Techniques</h2>
+          <p>Technique(s) known to be used by the group will be here.</p>
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="https://github.com/redbeardmeric/APTAnalyzer"><img src="./images/Github.png"></a></li>
+          <li><a href="https://attack.mitre.org/"><img src="./images/Attck.png"></a></li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      var coll = document.getElementsByClassName("collapsible");
+      var i;
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function(){
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.maxHeight){
+            content.style.maxHeight = null;
+          } else {
+            content.style.maxHeight = 1000000 + "px";
+          } 
+        });
+      }
+    </script>
+  </body>
+</html>
