@@ -46,9 +46,18 @@ def htmlReport(groups: dict):
     <div class="container">
       <div class="navmenu">
         <ul>
-          <li><a href="index.html">Print All</a></li>
-          <li><a href="about.html">About</a></li>
           <li class="left"><a href="index.html"><img src="./images/raptor.png" id="logo"></a></li>
+          <li></li>
+          <li></li>
+          <li>R.</li>
+          <li>A.</li>
+          <li>P.</li>
+          <li>T.</li>
+          <li>O.</li>
+          <li>R.</li>
+          <li></li>
+          <li class="right"><a href="about.html">[About]</a></li>
+          <li class="right"><a href="index.html">[Print All]</a></li>
         </ul>
       </div>
       <div class="groupmenu">
@@ -87,7 +96,7 @@ def htmlReport(groups: dict):
         <div>
           <h1>APT Name</h1>
             <p>The descrition of the APT will be here.</p>
-          <h2>Associated Groups</h2>
+          <h2 id="spacer">Associated Groups</h2>
             <p>Known associated groups will be here.</p>
             <button id ="button1" class="collapsible">Software</button>
               <div class="content">
@@ -147,9 +156,18 @@ def htmlReport(groups: dict):
     <div class="container">
       <div class="navmenu">
         <ul>
-          <li><a href="index.html">Print All</a></li>
-          <li><a href="about.html">About</a></li>
           <li class="left"><a href="index.html"><img src="./images/raptor.png" id="logo"></a></li>
+          <li></li>
+          <li></li>
+          <li>R.</li>
+          <li>A.</li>
+          <li>P.</li>
+          <li>T.</li>
+          <li>O.</li>
+          <li>R.</li>
+          <li></li>
+          <li class="right"><a href="about.html">[About]</a></li>
+          <li class="right"><a href="index.html">[Print All]</a></li>
         </ul>
       </div>
       <div class="groupmenu">
@@ -193,7 +211,7 @@ def htmlReport(groups: dict):
             <p>{}</p>""".format(apt.getData(groups_df, key, 'description'))
 
     info += """
-          <h2>Associated Groups</h2>
+          <h2 id="spacer">Associated Groups</h2>
             <p>{}</p>""".format(apt.getData(groups_df, key, 'associated groups'))
 
       # Populate software used by group
