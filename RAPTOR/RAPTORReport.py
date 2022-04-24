@@ -243,7 +243,7 @@ def htmlReport(groups: dict):
       if mitigations != []:
         info += """
                 <button id="button3" class="collapsible">Mitigations</button>
-                  <div class="content">"""
+                  <div class="content1">"""
         for j in range(len(mitigations)):
             info += """
                     <p>{} - {}</p>""".format(apt.getData(mitigations_df, mitigations[j], 'name'), apt.getData(mitigations_df, mitigations[j], 'description'))
