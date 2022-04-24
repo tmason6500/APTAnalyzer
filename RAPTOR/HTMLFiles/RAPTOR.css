@@ -95,7 +95,7 @@ body {
     background-color: #000000;
     color: lawngreen;
     border: lawngreen solid medium;
-    overflow: auto;
+    overflow: scroll;
 }
 .groupmenu h2 {
     font-size: 40px;
@@ -120,7 +120,7 @@ body {
     background-color: #000000;
     color: lawngreen;
     border: lawngreen solid medium;
-    overflow: auto;
+    overflow: scroll;
 }
 .groupinfo h1 {
     font-size: 60px;
@@ -149,11 +149,12 @@ body {
 }
 #button2 {
     font-size: 30px;
-    padding: 10px 30px;
+    padding: 10px 40px;
     justify-self: left;
 }
 #button3 {
     font-size: 20px;
+    padding: 10px 50px;
     justify-self: left;
 }
 .collapsible {
@@ -177,11 +178,13 @@ body {
     max-height: 0;
     overflow: hidden;
     transition: flex 0.2s ease-out;
+    padding-left: 10px;
 }
 .content1 {
     max-height: 0;
     overflow: hidden;
     transition: flex 0.2s ease-out;
+    padding-left: 20px;
 }
 .aboutus {
     grid-row: 3 / 4;
