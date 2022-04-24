@@ -386,7 +386,11 @@ def htmlReport(groups: dict):
   if DEBUG:        
     webbrowser.open(file, new=2)
 
+<<<<<<< HEAD
   ##### Opens Main Webpage #####
+=======
+      ##### Opens Main Webpage #####
+>>>>>>> 1d33c94f6b7777db18784f103f2fabe1aa5bdad0
   webbrowser.open('HTMLFiles/index.html', new=2)
 
 if DEBUG:
