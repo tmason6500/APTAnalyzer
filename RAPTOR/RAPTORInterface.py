@@ -24,6 +24,8 @@ class UI(QMainWindow):
 
         #load the ui File
         uic.loadUi("GUIFiles/GUI.ui", self)
+        self.setFixedWidth(1525)
+        self.setFixedHeight(660)
         self.setWindowTitle("RAPTOR")
         self.setWindowIcon(QIcon('GUIFiles/raptor.png'))
         self.setStyleSheet("background-color: #282C2E; color: white; font-size : 12 pt;")

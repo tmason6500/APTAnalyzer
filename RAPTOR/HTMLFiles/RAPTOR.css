@@ -13,9 +13,13 @@ body {
 ::-webkit-scrollbar-thumb {
     box-shadow: inset 0 0 5px lawngreen; 
     border-radius: 10px;
+    background-color: #000000;
 }
 ::-webkit-scrollbar-thumb:hover {
     background: lawngreen; 
+}
+::-webkit-scrollbar-corner {
+    background-color: transparent;
 }
 .navmenu {
     display: grid;  
