@@ -387,7 +387,7 @@ def htmlReport(groups: dict):
     webbrowser.open(file, new=2)
 
   ##### Opens Main Webpage #####
-  webbrowser.open('HTMLFiles/index.html', new=2)
+  #webbrowser.open('HTMLFiles/index.html', new=2)
 
 if DEBUG:
   htmlReport(groups)
