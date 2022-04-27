@@ -7,13 +7,16 @@ import numpy as np
 from fpdf import *
 import RAPTORFunctions as apt
 
+Debug = True
+if Debug:
+    groups = {'G0024':90, 'G0100':60, 'G0080':92, 'G0035':70, 'G0125':80, 'G0032':83, 'G0036':55}
+
 
 def pdfReport(groups: dict):
     # save FPDF() class into a
     # variable pdf
     pdf = FPDF()
     techniques_df, tactics_df, groups_df, software_df, mitigations_df, gfr_df, relationships_df = apt.buildDataFrames()
-    groups = {'G0024':90, 'G0100':60, 'G0080':92, 'G0035':70, 'G0125':80, 'G0032':83, 'G0036':55}
 
     # Populating Groups by % and linking to data
     nine = []
@@ -44,9 +47,9 @@ def pdfReport(groups: dict):
 
     # Add a page
     pdf.add_page()
-    pdf.add_font('DejaVu', '', './PDFFiles/DejaVuSansCondensed.ttf', uni=True)  # added line
+    pdf.add_font('DejaVu', '', './PDFFiles/DejaVuSans.ttf', uni=True)  # added line
     # set style and size of header
-    pdf.set_font('DejaVu','B',25)
+    pdf.set_font('DejaVu','',25)
     pdf.cell(80)
     pdf.cell(30,10,'R.A.P.T.O.R.',0,0,'C')
     pdf.ln(20)
@@ -239,3 +242,6 @@ def pdfReport(groups: dict):
 
     # save the pdf with name .pdf
     pdf.output("./PDFFiles/RAPTOR.pdf")
+
+if Debug:
+    pdfReport(groups)
