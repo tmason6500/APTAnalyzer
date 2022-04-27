@@ -44,7 +44,7 @@ def pdfReport(groups: dict):
 
     # Add a page
     pdf.add_page()
-    pdf.add_font('DejaVu', '', './PDFFiles/DejjaVuSansCondensed.tff', uni=True)  # added line
+    pdf.add_font('DejaVu', '', './PDFFiles/DejaVuSansCondensed.tff', uni=True)  # added line
     # set style and size of header
     pdf.set_font('DejaVu','B',25)
     pdf.cell(80)
