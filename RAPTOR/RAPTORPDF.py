@@ -13,7 +13,7 @@ def pdfReport(groups: dict):
     # variable pdf
     pdf = FPDF()
     techniques_df, tactics_df, groups_df, software_df, mitigations_df, gfr_df, relationships_df = apt.buildDataFrames()
-    #groups = {'G0130':95, 'G0100':95, 'G0080':62, 'G0035':70, 'G0125':94, 'G0032':83, 'G0036':55}
+    groups = {'G0024':90, 'G0100':60, 'G0080':92, 'G0035':70, 'G0125':80, 'G0032':83, 'G0036':55}
 
     # Populating Groups by % and linking to data
     nine = []
@@ -21,6 +21,7 @@ def pdfReport(groups: dict):
     seven = []
     six = []
     five = []
+    single=[]
     for key in groups:
         # 90+% Groups
         if groups[key] >= 90:
@@ -37,10 +38,13 @@ def pdfReport(groups: dict):
         # 59% - 50% Groups
         elif groups[key] >= 50 and groups[key] < 60:
             five.append(key)
+        else:
+            single.append(key)
+
 
     # Add a page
     pdf.add_page()
-    pdf.add_font('Arial', '', 'c:/windows/fonts/arial.ttf', uni=True)  # fixes unicode issue with the single quotation
+    pdf.add_font('Arial', '', 'c:/windows/fonts/arial.ttf', uni=True)  # added line
     # set style and size of header
     pdf.set_font('Arial','B',25)
     pdf.cell(80)
@@ -48,86 +52,190 @@ def pdfReport(groups: dict):
     pdf.ln(20)
 
     # 90+% Groups
-    pdf.set_font("Arial", size = 20)
-    pdf.cell(80)
-    pdf.cell(30, 10, txt="+90% Groups", align = 'C')
-    pdf.set_font("Arial", size = 12)
-    pdf.ln(20)
-
-    for i in range(len(nine)):
-        pdf.multi_cell(190, 10, txt="{}".format(apt.getData(groups_df, nine[i], 'name')),align = 'L')
-        desc = apt.getData(groups_df, nine[i], 'description')
-        desc = apt.fix_pdf_description(desc)
-        pdf.multi_cell(190, 10, txt="Description: {}".format(desc),align = 'L')
-        pdf.ln(10)
-        pdf.multi_cell(190, 10, txt="Associated Groups: {}".format(apt.getData(groups_df, nine[i], 'associated groups')),align = 'L')
+    if nine != []:
+        pdf.set_font("Arial", size = 20)
+        pdf.cell(80)
+        pdf.cell(30, 10, txt="+90% Match", align = 'C')
+        pdf.set_font("Arial", size = 12)
         pdf.ln(20)
 
-    # 89% - 80% Groups
-    pdf.add_page()
-    pdf.set_font("Arial", size = 20)
-    pdf.cell(80)
-    pdf.cell(30, 10, txt="89% - 80% Groups", align = 'C')
-    pdf.set_font("Arial", size = 12)
-    pdf.ln(20)
+        for i in range(len(nine)):
+            pdf.set_font("Arial", size = 16)
+            pdf.multi_cell(190, 10, txt="{}".format(apt.getData(groups_df, nine[i], 'name')),align = 'L')
+            pdf.set_font("Arial", size = 12)
+            pdf.ln(5)
+            desc = apt.getData(groups_df, nine[i], 'description')
+            desc = apt.fix_pdf_description(desc)
+            pdf.multi_cell(190, 10, txt="Description: {}".format(desc),align = 'L')
+            pdf.ln(10)
+            pdf.multi_cell(190, 10, txt="Associated Groups: {}".format(apt.getData(groups_df, nine[i], 'associated groups')),align = 'L')
+            pdf.ln(10)
+            techniques = apt.getTechniquesByGroup(relationships_df, nine[i])
+            for i in range(len(techniques)):
+                pdf.multi_cell(190, 10, txt="Techniques: {}".format(apt.getData(techniques_df, techniques[i], 'name')),align = 'L')
+                pdf.ln(5)
+                pdf.cell(10)
+                pdf.multi_cell(180, 10, txt="Description: {}".format(apt.getData(techniques_df, techniques[i], 'description')),align = 'L')
+                mitigations = apt.mitigationsByTechnique(relationships_df, techniques[i])
+                if mitigations != []:
+                    for j in range(len(mitigations)):
+                        pdf.ln(5)
+                        pdf.cell(20)
+                        pdf.multi_cell(170, 10, txt="Mitigation: {}".format(apt.getData(mitigations_df, mitigations[j], 'name')),align = 'L')
+                        pdf.ln(5)
+                        pdf.cell(30)
+                        pdf.multi_cell(160, 10, txt="{}".format(apt.getData(mitigations_df, mitigations[j], 'description')),align = 'L')
+                pdf.ln(10)
 
-    for i in range(len(eight)):
-        pdf.multi_cell(190, 10, txt="{}".format(apt.getData(groups_df, eight[i], 'name')),align = 'L')
-        desc = apt.getData(groups_df, eight[i], 'description')
-        desc = apt.fix_pdf_description(desc)
-        pdf.multi_cell(190, 10, txt="Description: {}".format(desc),align = 'L')
-        pdf.ln(10)
-        pdf.multi_cell(190, 10, txt="Associated Groups: {}".format(apt.getData(groups_df, eight[i], 'associated groups')),align = 'L')
+
+
+        pdf.add_page()
+
+    # 89% - 80% Group
+    if eight != []:
+        pdf.set_font("Arial", size = 20)
+        pdf.cell(80)
+        pdf.cell(30, 10, txt="89% - 80% Match", align = 'C')
+        pdf.set_font("Arial", size = 12)
         pdf.ln(20)
+
+        for i in range(len(eight)):
+            pdf.set_font("Arial", size = 16)
+            pdf.multi_cell(190, 10, txt="{}".format(apt.getData(groups_df, eight[i], 'name')),align = 'L')
+            pdf.set_font("Arial", size = 12)
+            pdf.ln(5)
+            desc = apt.getData(groups_df, eight[i], 'description')
+            desc = apt.fix_pdf_description(desc)
+            pdf.multi_cell(190, 10, txt="Description: {}".format(desc),align = 'L')
+            pdf.ln(10)
+            pdf.multi_cell(190, 10, txt="Associated Groups: {}".format(apt.getData(groups_df, eight[i], 'associated groups')),align = 'L')
+            pdf.ln(10)
+            techniques = apt.getTechniquesByGroup(relationships_df, eight[i])
+            for i in range(len(techniques)):
+                pdf.multi_cell(190, 10, txt="Techniques: {}".format(apt.getData(techniques_df, techniques[i], 'name')),align = 'L')
+                pdf.ln(5)
+                pdf.cell(10)
+                pdf.multi_cell(180, 10, txt="Description: {}".format(apt.getData(techniques_df, techniques[i], 'description')),align = 'L')
+                mitigations = apt.mitigationsByTechnique(relationships_df, techniques[i])
+                if mitigations != []:
+                    for j in range(len(mitigations)):
+                        pdf.ln(5)
+                        pdf.cell(20)
+                        pdf.multi_cell(170, 10, txt="Mitigation: {}".format(apt.getData(mitigations_df, mitigations[j], 'name')),align = 'L')
+                        pdf.ln(5)
+                        pdf.cell(30)
+                        pdf.multi_cell(160, 10, txt="{}".format(apt.getData(mitigations_df, mitigations[j], 'description')),align = 'L')
+                pdf.ln(10)
+        pdf.add_page()
 
     # 79% - 70% Groups
-    pdf.add_page()
-    pdf.set_font("Arial", size = 20)
-    pdf.cell(80)
-    pdf.cell(30, 10, txt="79% - 70% Groups", align = 'C')
-    pdf.set_font("Arial", size = 12)
-    pdf.ln(20)
-
-    for i in range(len(seven)):
-        pdf.multi_cell(190, 10, txt="{}".format(apt.getData(groups_df, seven[i], 'name')),align = 'L')
-        desc = apt.getData(groups_df, seven[i], 'description')
-        #desc = apt.fix_pdf_description(desc)
-        pdf.multi_cell(190, 10, txt="Description: {}".format(desc),align = 'L')
-        pdf.ln(10)
-        pdf.multi_cell(190, 10, txt="Associated Groups: {}".format(apt.getData(groups_df, seven[i], 'associated groups')),align = 'L')
+    if seven != []:
+        pdf.set_font("Arial", size = 20)
+        pdf.cell(80)
+        pdf.cell(30, 10, txt="79% - 70% Match", align = 'C')
+        pdf.set_font("Arial", size = 12)
         pdf.ln(20)
+
+        for i in range(len(seven)):
+            pdf.set_font("Arial", size = 16)
+            pdf.multi_cell(190, 10, txt="{}".format(apt.getData(groups_df, seven[i], 'name')),align = 'L')
+            pdf.set_font("Arial", size = 20)
+            pdf.ln(5)
+            desc = apt.getData(groups_df, seven[i], 'description')
+            #desc = apt.fix_pdf_description(desc)
+            pdf.multi_cell(190, 10, txt="Description: {}".format(desc),align = 'L')
+            pdf.ln(10)
+            pdf.multi_cell(190, 10, txt="Associated Groups: {}".format(apt.getData(groups_df, seven[i], 'associated groups')),align = 'L')
+            pdf.ln(10)
+            techniques = apt.getTechniquesByGroup(relationships_df, seven[i])
+            for i in range(len(techniques)):
+                pdf.multi_cell(190, 10, txt="Techniques: {}".format(apt.getData(techniques_df, techniques[i], 'name')),align = 'L')
+                pdf.ln(5)
+                pdf.cell(10)
+                pdf.multi_cell(180, 10, txt="Description: {}".format(apt.getData(techniques_df, techniques[i], 'description')),align = 'L')
+                mitigations = apt.mitigationsByTechnique(relationships_df, techniques[i])
+                if mitigations != []:
+                    for j in range(len(mitigations)):
+                        pdf.ln(5)
+                        pdf.cell(20)
+                        pdf.multi_cell(170, 10, txt="Mitigation: {}".format(apt.getData(mitigations_df, mitigations[j], 'name')),align = 'L')
+                        pdf.ln(5)
+                        pdf.cell(30)
+                        pdf.multi_cell(160, 10, txt="{}".format(apt.getData(mitigations_df, mitigations[j], 'description')),align = 'L')
+                pdf.ln(10)
+        pdf.add_page()
 
     # 69% - 60% Groups
-    pdf.add_page()
-    pdf.set_font("Arial", size = 20)
-    pdf.cell(80)
-    pdf.cell(30, 10, txt="69% - 60% Groups", align = 'C')
-    pdf.set_font("Arial", size = 12)
-    pdf.ln(20)
-    for i in range(len(six)):
-        pdf.multi_cell(190, 10, txt="{}".format(apt.getData(groups_df, six[i], 'name')),align = 'L')
-        desc = apt.getData(groups_df, six[i], 'description')
-        desc = apt.fix_pdf_description(desc)
-        pdf.multi_cell(190, 10, txt="Description: {}".format(desc),align = 'L')
-        pdf.ln(10)
-        pdf.multi_cell(190, 10, txt="Associated Groups: {}".format(apt.getData(groups_df, six[i], 'associated groups')),align = 'L')
+    if six != []:
+        pdf.set_font("Arial", size = 20)
+        pdf.cell(80)
+        pdf.cell(30, 10, txt="69% - 60% Match", align = 'C')
+        pdf.set_font("Arial", size = 12)
         pdf.ln(20)
+        for i in range(len(six)):
+            pdf.set_font("Arial", size = 16)
+            pdf.multi_cell(190, 10, txt="{}".format(apt.getData(groups_df, six[i], 'name')),align = 'L')
+            pdf.set_font("Arial", size = 12)
+            pdf.ln(5)
+            desc = apt.getData(groups_df, six[i], 'description')
+            desc = apt.fix_pdf_description(desc)
+            pdf.multi_cell(190, 10, txt="Description: {}".format(desc),align = 'L')
+            pdf.ln(10)
+            pdf.multi_cell(190, 10, txt="Associated Groups: {}".format(apt.getData(groups_df, six[i], 'associated groups')),align = 'L')
+            pdf.ln(10)
+            techniques = apt.getTechniquesByGroup(relationships_df, six[i])
+            for i in range(len(techniques)):
+                pdf.multi_cell(190, 10, txt="Techniques: {}".format(apt.getData(techniques_df, techniques[i], 'name')),align = 'L')
+                pdf.ln(5)
+                pdf.cell(10)
+                pdf.multi_cell(180, 10, txt="Description: {}".format(apt.getData(techniques_df, techniques[i], 'description')),align = 'L')
+                mitigations = apt.mitigationsByTechnique(relationships_df, techniques[i])
+                if mitigations != []:
+                    for j in range(len(mitigations)):
+                        pdf.ln(5)
+                        pdf.cell(20)
+                        pdf.multi_cell(170, 10, txt="Mitigation: {}".format(apt.getData(mitigations_df, mitigations[j], 'name')),align = 'L')
+                        pdf.ln(5)
+                        pdf.cell(30)
+                        pdf.multi_cell(160, 10, txt="{}".format(apt.getData(mitigations_df, mitigations[j], 'description')),align = 'L')
+                pdf.ln(10)
+
+        pdf.add_page()
 
     # 59% - 50% Groups
-    pdf.add_page()
-    pdf.set_font("Arial", size = 20)
-    pdf.cell(80)
-    pdf.cell(30, 10, txt="59% - 50% Groups", align = 'C')
-    pdf.set_font("Arial", size = 12)
-    pdf.ln(20)
-    for i in range(len(five)):
-        pdf.multi_cell(190, 10, txt="{}".format(apt.getData(groups_df, five[i], 'name')),align = 'L')
-        desc = apt.getData(groups_df, five[i], 'description')
-        #desc = apt.fix_pdf_description(desc)
-        pdf.multi_cell(190, 10, txt="Description: {}".format(desc),align = 'L')
-        pdf.ln(10)
-        pdf.multi_cell(190, 10, txt="Associated Groups: {}".format(apt.getData(groups_df, five[i], 'associated groups')),align = 'L')
+    if five != []:
+        pdf.set_font("Arial", size = 20)
+        pdf.cell(80)
+        pdf.cell(30, 10, txt="59% - 50% Match", align = 'C')
+        pdf.set_font("Arial", size = 12)
         pdf.ln(20)
+        for i in range(len(five)):
+            pdf.set_font("Arial", size = 16)
+            pdf.multi_cell(190, 10, txt="{}".format(apt.getData(groups_df, five[i], 'name')),align = 'L')
+            pdf.set_font("Arial", size = 12)
+            pdf.ln(5)
+            desc = apt.getData(groups_df, five[i], 'description')
+            #desc = apt.fix_pdf_description(desc)
+            pdf.multi_cell(190, 10, txt="Description: {}".format(desc),align = 'L')
+            pdf.ln(10)
+            pdf.multi_cell(190, 10, txt="Associated Groups: {}".format(apt.getData(groups_df, five[i], 'associated groups')),align = 'L')
+            pdf.ln(10)
+            techniques = apt.getTechniquesByGroup(relationships_df, five[i])
+            for i in range(len(techniques)):
+                pdf.multi_cell(190, 10, txt="Techniques: {}".format(apt.getData(techniques_df, techniques[i], 'name')),align = 'L')
+                pdf.ln(5)
+                pdf.cell(10)
+                pdf.multi_cell(180, 10, txt="Description: {}".format(apt.getData(techniques_df, techniques[i], 'description')),align = 'L')
+                mitigations = apt.mitigationsByTechnique(relationships_df, techniques[i])
+                if mitigations != []:
+                    for j in range(len(mitigations)):
+                        pdf.ln(5)
+                        pdf.cell(20)
+                        pdf.multi_cell(170, 10, txt="Mitigation: {}".format(apt.getData(mitigations_df, mitigations[j], 'name')),align = 'L')
+                        pdf.ln(5)
+                        pdf.cell(30)
+                        pdf.multi_cell(160, 10, txt="{}".format(apt.getData(mitigations_df, mitigations[j], 'description')),align = 'L')
+                pdf.ln(10)
 
     # save the pdf with name .pdf
     pdf.output("./PDFFiles/RAPTOR.pdf")
