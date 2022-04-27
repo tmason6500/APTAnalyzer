@@ -157,6 +157,12 @@ def analyzeResults(df: pd.DataFrame, techniqueList: list) -> dict:
     # Return the dictionary
     return percentages
 
+def getIDByName(df: pd.DataFrame, name: str) -> int:
+    """
+    Returns the ID of a row in a dataframe.
+    """
+    return df[df.name == name].ID.tolist()[0]
+
 def getDescriptionByName(df: pd.DataFrame, name: str) -> str:
     """
     Returns the description from the associated dataframe

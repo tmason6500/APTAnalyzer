@@ -6,7 +6,7 @@ techniques_df, tactics_df, groups_df, software_df, mitigations_df, gfr_df, relat
 # This is just for dummy testing for DEBUG
 groups = {'G0130':95, 'G0100':55, 'G0006':61, 'G0080':62, 'G0035':70, 'G0125':55, 'G0032':83}
 
-DEBUG = True
+DEBUG = False
 
 # Create html report using dictionary {GroupID:Percent}
 def htmlReport(groups: dict):
@@ -37,63 +37,82 @@ def htmlReport(groups: dict):
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="test.css">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="RAPTOR.css">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
     <title>R.A.P.T.O.R.</title>
   </head>
   <body>
     <div class="container">
-      <div id="navmenu">
+      <div class="navmenu">
         <ul>
-          <li><a href="index.html">Print All</a></li>
-          <li><a href="index.html">About</a></li>
           <li class="left"><a href="index.html"><img src="./images/raptor.png" id="logo"></a></li>
+          <li></li>
+          <li></li>
+          <li>R.</li>
+          <li>A.</li>
+          <li>P.</li>
+          <li>T.</li>
+          <li>O.</li>
+          <li>R.</li>
+          <li></li>
+          <li></li>
+          <li class="right"><a href="about.html">[About]</a></li>
         </ul>
       </div>
-      <div id="groupmenu">"""
+      <div class="groupmenu">
+        <div>"""
 
   # Adds the group hyperlinks to list
   index += """
-        <h2>90+%</h2>"""
+          <h2>90+%</h2>"""
   for i in range(len(nine)):
     index += """
-          <p><a href="{}.html">{}</a></p>""".format(nine[i], apt.getData(groups_df, nine[i], 'name'))
+            <p><a href="{}.html">{}</a></p>""".format(nine[i], apt.getData(groups_df, nine[i], 'name'))
   index += """
-        <h2>80% - 89%</h2>"""
+          <h2>80% - 89%</h2>"""
   for i in range(len(eight)):
     index += """
-          <p><a href="{}.html">{}</a></p>""".format(eight[i], apt.getData(groups_df, eight[i], 'name'))
+            <p><a href="{}.html">{}</a></p>""".format(eight[i], apt.getData(groups_df, eight[i], 'name'))
   index += """
-        <h2>70% - 79%</h2>"""
+          <h2>70% - 79%</h2>"""
   for i in range(len(seven)):
     index += """
-          <p><a href="{}.html">{}</a></p>""".format(seven[i], apt.getData(groups_df, seven[i], 'name'))      
+            <p><a href="{}.html">{}</a></p>""".format(seven[i], apt.getData(groups_df, seven[i], 'name'))      
   index += """
-        <h2>60% - 69%</h2>"""
+          <h2>60% - 69%</h2>"""
   for i in range(len(six)):
     index += """
-          <p><a href="{}.html">{}</a></p>""".format(six[i], apt.getData(groups_df, six[i], 'name'))
+            <p><a href="{}.html">{}</a></p>""".format(six[i], apt.getData(groups_df, six[i], 'name'))
   index += """
-        <h2>50% - 59%</h2>"""
+          <h2>50% - 59%</h2>"""
   for i in range(len(five)):
     index += """
-          <p><a href="{}.html">{}</a></p>""".format(five[i], apt.getData(groups_df, five[i], 'name'))
+            <p><a href="{}.html">{}</a></p>""".format(five[i], apt.getData(groups_df, five[i], 'name'))
   index += """
+        </div>
       </div>
-      <div id="groupinfo">
-        <h1>APT Name</h1>
-          <p>The descrition of the APT will be here.</p>
-        <h2>Associated Groups</h2>
-          <p>Known associated groups will be here.</p>
-        <h2>Software</h2>
-          <p>Software(s) known to be used by the group will be here.</p>
-        <h2>Techniques</h2>
-          <p>Technique(s) known to be used by the group will be here.</p>
+      <div class="groupinfo">
+        <div>
+          <h1>APT Name</h1>
+            <p>The descrition of the APT will be here.</p>
+          <h2 id="spacer">Associated Groups</h2>
+            <p>Known associated groups will be here.</p>
+            <button id ="button1" class="collapsible">Software</button>
+              <div class="content">
+                <p>Software(s) known to be used by the group will be here.</p>
+              </div>
+            <button id ="button1" class="collapsible">Techniques</button>
+              <div class="content">
+                <p>Technique(s) known to be used by the group will be here.</p>
+              </div>
+        </div> 
       </div>
-      <div id="footer">
-        <p>
-          <a href="https://github.com/redbeardmeric/APTAnalyzer">Github</a>
-          <a href="https://attack.mitre.org/">Attck</a>
-        </p>
+      <div class="footer">
+        <ul>
+          <li><a href="https://github.com/redbeardmeric/APTAnalyzer"><img src="./images/Github.png"></a></li>
+          <li><a href="https://attack.mitre.org/"><img src="./images/Attck.png"></a></li>
+        </ul>
       </div>
     </div>
     <script>
@@ -127,108 +146,123 @@ def htmlReport(groups: dict):
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="test.css">
-    <title>{}</title>""".format(key)
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="RAPTOR.css">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <title>{}</title>""".format(apt.getData(groups_df, key, 'name'))
     info += """
   </head>
   <body>
     <div class="container">
-      <div id="navmenu">
+      <div class="navmenu">
         <ul>
-          <li><a href="index.html">Print All</a></li>
-          <li><a href="index.html">About</a></li>
           <li class="left"><a href="index.html"><img src="./images/raptor.png" id="logo"></a></li>
+          <li></li>
+          <li></li>
+          <li>R.</li>
+          <li>A.</li>
+          <li>P.</li>
+          <li>T.</li>
+          <li>O.</li>
+          <li>R.</li>
+          <li></li>
+          <li></li>
+          <li class="right"><a href="about.html">[About]</a></li>
         </ul>
       </div>
-      <div id="groupmenu">"""
+      <div class="groupmenu">
+        <div>"""
     # Adds the group hyperlinks to list
     info += """
-        <h2>90+%</h2>"""
+          <h2>90+%</h2>"""
     for i in range(len(nine)):
       info += """
-          <p><a href="{}.html">{}</a></p>""".format(nine[i], apt.getData(groups_df, nine[i], 'name'))
+            <p><a href="{}.html">{}</a></p>""".format(nine[i], apt.getData(groups_df, nine[i], 'name'))
     info += """
-        <h2>80% - 89%</h2>"""
+          <h2>80% - 89%</h2>"""
     for i in range(len(eight)):
       info += """
-          <p><a href="{}.html">{}</a></p>""".format(eight[i], apt.getData(groups_df, eight[i], 'name'))
+            <p><a href="{}.html">{}</a></p>""".format(eight[i], apt.getData(groups_df, eight[i], 'name'))
     info += """
-        <h2>70% - 79%</h2>"""
+          <h2>70% - 79%</h2>"""
     for i in range(len(seven)):
       info += """
-          <p><a href="{}.html">{}</a></p>""".format(seven[i], apt.getData(groups_df, seven[i], 'name'))      
+            <p><a href="{}.html">{}</a></p>""".format(seven[i], apt.getData(groups_df, seven[i], 'name'))      
     info += """
-        <h2>60% - 69%</h2>"""
+          <h2>60% - 69%</h2>"""
     for i in range(len(six)):
       info += """
-          <p><a href="{}.html">{}</a></p>""".format(six[i], apt.getData(groups_df, six[i], 'name'))
+            <p><a href="{}.html">{}</a></p>""".format(six[i], apt.getData(groups_df, six[i], 'name'))
     info += """
-        <h2>50% - 59%</h2>"""
+          <h2>50% - 59%</h2>"""
     for i in range(len(five)):
       info += """
-          <p><a href="{}.html">{}</a></p>""".format(five[i], apt.getData(groups_df, five[i], 'name'))
+            <p><a href="{}.html">{}</a></p>""".format(five[i], apt.getData(groups_df, five[i], 'name'))
 
         # Populate group data
     info += """
+    </div>
       </div>
-      <div id="groupinfo">
-        <h1>{}</h1>""".format(apt.getData(groups_df, key, 'name'))
+      <div class="groupinfo">
+        <div>
+          <h1>{}</h1>""".format(apt.getData(groups_df, key, 'name'))
 
     info += """
-          <p>{}</p>""".format(apt.getData(groups_df, key, 'description'))
+            <p>{}</p>""".format(apt.getData(groups_df, key, 'description'))
 
     info += """
-        <h2>Associated Groups</h2>
-          <p>{}</p>""".format(apt.getData(groups_df, key, 'associated groups'))
+          <h2 id="spacer">Associated Groups</h2>
+            <p>{}</p>""".format(apt.getData(groups_df, key, 'associated groups'))
 
       # Populate software used by group
     info += """
-        <button id ="button1" class="collapsible">Software</button>
-          <div class="content">"""
+          <button id ="button1" class="collapsible">Software</button>
+            <div class="content">"""
         
     software = apt.getSofwareByGroup(relationships_df, key)
     for i in range(len(software)):
       info += """
-            <button id="button2" class="collapsible">{}</button>
-              <div class="content">
-                <p>{}</p>
-              </div>""".format(apt.getData(software_df, software[i], 'name'), apt.getData(software_df, software[i], 'description'))
+              <button id="button2" class="collapsible">{}</button>
+                <div class="content">
+                  <p>{}</p>
+                </div>""".format(apt.getData(software_df, software[i], 'name'), apt.getData(software_df, software[i], 'description'))
 
       # Populate techniques and how to mitigate these attacks
     info += """
-          </div>
-        <button id ="button1" class="collapsible">Techniques</button>
-          <div class="content">"""
+            </div>
+          <button id ="button1" class="collapsible">Techniques</button>
+            <div class="content">"""
 
     techniques = apt.getTechniquesByGroup(relationships_df, key)
     for i in range(len(techniques)):
       info += """
-          <button id="button2" class="collapsible">{}</button>
-            <div class="content">
-              <p>{}</p>""".format(apt.getData(techniques_df, techniques[i], 'name'), apt.getData(techniques_df, techniques[i], 'description'))
+            <button id="button2" class="collapsible">{}</button>
+              <div class="content">
+                <p>{}</p>""".format(apt.getData(techniques_df, techniques[i], 'name'), apt.getData(techniques_df, techniques[i], 'description'))
       mitigations = apt.mitigationsByTechnique(relationships_df, techniques[i])    
       if mitigations != []:
         info += """
-              <button id="button3" class="collapsible">Mitigations</button>
-                <div class="content">"""
+                <button id="button3" class="collapsible">Mitigations</button>
+                  <div class="content1">"""
         for j in range(len(mitigations)):
             info += """
-                  <p>{} - {}</p>""".format(apt.getData(mitigations_df, mitigations[j], 'name'), apt.getData(mitigations_df, mitigations[j], 'description'))
+                    <p>{} - {}</p>""".format(apt.getData(mitigations_df, mitigations[j], 'name'), apt.getData(mitigations_df, mitigations[j], 'description'))
         info += """
-                </div>
-            </div>"""  
+                  </div>
+              </div>"""  
       else:
         info += """
-            </div>"""
+              </div>"""
 
     info += """
           </div>
+        </div>
       </div>
-      <div id="footer">
-        <p>
-          <a href="https://github.com/redbeardmeric/APTAnalyzer">Github</a>
-          <a href="https://attack.mitre.org/">Attck</a>
-        </p>
+      <div class="footer">
+        <ul>
+          <li><a href="https://github.com/redbeardmeric/APTAnalyzer"><img src="./images/Github.png"></a></li>
+          <li><a href="https://attack.mitre.org/"><img src="./images/Attck.png"></a></li>
+        </ul>
       </div>
     </div>
     <script>
@@ -254,20 +288,106 @@ def htmlReport(groups: dict):
       f.write(info)
       f.close()
 
-    if DEBUG:        
-      webbrowser.open(file, new=2)
+  about = """
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="RAPTOR.css">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <title>R.A.P.T.O.R.</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="navmenu">
+        <ul>
+          <li class="left"><a href="index.html"><img src="./images/raptor.png" id="logo"></a></li>
+          <li></li>
+          <li></li>
+          <li>R.</li>
+          <li>A.</li>
+          <li>P.</li>
+          <li>T.</li>
+          <li>O.</li>
+          <li>R.</li>
+          <li></li>
+          <li></li>
+          <li class="right"><a href="about.html">[About]</a></li>
+        </ul>
+      </div>
+      <div class="aboutpage">
+        <div>
+        <ul class="aboutus">
+          <li>
+            <h3>James Henry</h3>
+            Project Lead
+          </li>
+          <li>
+            <h3>Jaimin Bhagat</h3>
+            GUI Development
+          </li>
+          <li>
+            <h3>Thomas Mason</h3>
+            Data Development
+          </li>
+          <li>
+            <h3>Tristan Sharpe</h3>
+            HTML Development
+          </li>
+          <li>
+            <h3>Welsley Venters</h3>
+            Report Development
+          </li>
+        </ul>
+      </div>
+      <div>
+        <ul class="blurb">
+          <li></li>
+          <li><img src="./images/dinosaur.gif"></li>
+          <li>
+            <h2>R.A.P.T.O.R</h2>
+            <p>Ranking Advanced Persistent Threat Ontological Report</p> 
+            <p>In this age of ubiquitous connectivity, with virtually every device we own or operate we are likely to become the victim of some type of cyber breach and never know the identity of the attacker.&nbsp; While databases of attackers and the methods used by them exist, they require a significant amount of navigating to narrow down the list of potential attackers.&nbsp; The aim of the R.A.P.T.O.R. is to harness these databases, initially Mitre’s Att&amp;ck, to programmatically narrow the list of potential attackers. Based upon input of techniques, sub techniques, and software, through the GUI, an HTML-based report will be generated with a list of matched attackers, the percentage match of the attacker to the user input, and mitigation recommendations, each with hyperlinks to the source information.</p>
+          </li>
+          <li></li>
+        </ul>
+      </div>
+      </div>
+      <div class="footer">
+        <ul>
+          <li><a href="https://github.com/redbeardmeric/APTAnalyzer"><img src="./images/Github.png"></a></li>
+          <li><a href="https://attack.mitre.org/"><img src="./images/Attck.png"></a></li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      var coll = document.getElementsByClassName("collapsible");
+      var i;
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function(){
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.maxHeight){
+            content.style.maxHeight = null;
+          } else {
+            content.style.maxHeight = 1000000 + "px";
+          } 
+        });
+      }
+    </script>
+  </body>
+</html>"""
 
-      ##### Opens Main Webpage #####
-    webbrowser.open('HTMLFiles/Index.html', new=2)
+  file = './HTMLFiles/about.html'
+  with open(file, 'w') as f:
+    f.write(about)
+    f.close()
 
-    ##### About Page #####
-    about=""
-    with open('./HTMLFiles/About.html', 'w') as f:
-      f.write(about)
-      f.close()
-              
-    if DEBUG:        
-      webbrowser.open('./HTMLFiles/About.html', new=2)
+  if DEBUG:        
+    webbrowser.open(file, new=2)
+
+  ##### Opens Main Webpage #####
+  #webbrowser.open('HTMLFiles/index.html', new=2)
 
 if DEBUG:
   htmlReport(groups)
