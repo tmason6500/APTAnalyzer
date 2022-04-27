@@ -40,7 +40,7 @@ def pdfReport(groups: dict):
 
     # Add a page
     pdf.add_page()
-
+    pdf.add_font('Arial', '', 'c:/windows/fonts/arial.ttf', uni=True)  # fixes unicode issue with the single quotation
     # set style and size of header
     pdf.set_font('Arial','B',25)
     pdf.cell(80)
