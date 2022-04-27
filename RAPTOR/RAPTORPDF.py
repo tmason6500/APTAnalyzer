@@ -44,25 +44,25 @@ def pdfReport(groups: dict):
 
     # Add a page
     pdf.add_page()
-    pdf.add_font('Arial', '', 'c:/windows/fonts/arial.ttf', uni=True)  # added line
+    pdf.add_font('DejaVu', '', './PDFFiles/DejjaVuSansCondensed.tff', uni=True)  # added line
     # set style and size of header
-    pdf.set_font('Arial','B',25)
+    pdf.set_font('DejaVu','B',25)
     pdf.cell(80)
     pdf.cell(30,10,'R.A.P.T.O.R.',0,0,'C')
     pdf.ln(20)
 
     # 90+% Groups
     if nine != []:
-        pdf.set_font("Arial", size = 20)
+        pdf.set_font("DejaVu", size = 20)
         pdf.cell(80)
         pdf.cell(30, 10, txt="+90% Match", align = 'C')
-        pdf.set_font("Arial", size = 12)
+        pdf.set_font("DejaVu", size = 12)
         pdf.ln(20)
 
         for i in range(len(nine)):
-            pdf.set_font("Arial", size = 16)
+            pdf.set_font("DejaVu", size = 16)
             pdf.multi_cell(190, 10, txt="{}".format(apt.getData(groups_df, nine[i], 'name')),align = 'L')
-            pdf.set_font("Arial", size = 12)
+            pdf.set_font("DejaVu", size = 12)
             pdf.ln(5)
             desc = apt.getData(groups_df, nine[i], 'description')
             desc = apt.fix_pdf_description(desc)
@@ -93,16 +93,16 @@ def pdfReport(groups: dict):
 
     # 89% - 80% Group
     if eight != []:
-        pdf.set_font("Arial", size = 20)
+        pdf.set_font("DejaVu", size = 20)
         pdf.cell(80)
         pdf.cell(30, 10, txt="89% - 80% Match", align = 'C')
-        pdf.set_font("Arial", size = 12)
+        pdf.set_font("DejaVu", size = 12)
         pdf.ln(20)
 
         for i in range(len(eight)):
-            pdf.set_font("Arial", size = 16)
+            pdf.set_font("DejaVu", size = 16)
             pdf.multi_cell(190, 10, txt="{}".format(apt.getData(groups_df, eight[i], 'name')),align = 'L')
-            pdf.set_font("Arial", size = 12)
+            pdf.set_font("DejaVu", size = 12)
             pdf.ln(5)
             desc = apt.getData(groups_df, eight[i], 'description')
             desc = apt.fix_pdf_description(desc)
@@ -130,16 +130,16 @@ def pdfReport(groups: dict):
 
     # 79% - 70% Groups
     if seven != []:
-        pdf.set_font("Arial", size = 20)
+        pdf.set_font("DejaVu", size = 20)
         pdf.cell(80)
         pdf.cell(30, 10, txt="79% - 70% Match", align = 'C')
-        pdf.set_font("Arial", size = 12)
+        pdf.set_font("DejaVu", size = 12)
         pdf.ln(20)
 
         for i in range(len(seven)):
-            pdf.set_font("Arial", size = 16)
+            pdf.set_font("DejaVu", size = 16)
             pdf.multi_cell(190, 10, txt="{}".format(apt.getData(groups_df, seven[i], 'name')),align = 'L')
-            pdf.set_font("Arial", size = 20)
+            pdf.set_font("DejaVu", size = 20)
             pdf.ln(5)
             desc = apt.getData(groups_df, seven[i], 'description')
             #desc = apt.fix_pdf_description(desc)
@@ -167,15 +167,15 @@ def pdfReport(groups: dict):
 
     # 69% - 60% Groups
     if six != []:
-        pdf.set_font("Arial", size = 20)
+        pdf.set_font("DejaVu", size = 20)
         pdf.cell(80)
         pdf.cell(30, 10, txt="69% - 60% Match", align = 'C')
-        pdf.set_font("Arial", size = 12)
+        pdf.set_font("DejaVu", size = 12)
         pdf.ln(20)
         for i in range(len(six)):
-            pdf.set_font("Arial", size = 16)
+            pdf.set_font("DejaVu", size = 16)
             pdf.multi_cell(190, 10, txt="{}".format(apt.getData(groups_df, six[i], 'name')),align = 'L')
-            pdf.set_font("Arial", size = 12)
+            pdf.set_font("DejaVu", size = 12)
             pdf.ln(5)
             desc = apt.getData(groups_df, six[i], 'description')
             desc = apt.fix_pdf_description(desc)
@@ -204,15 +204,15 @@ def pdfReport(groups: dict):
 
     # 59% - 50% Groups
     if five != []:
-        pdf.set_font("Arial", size = 20)
+        pdf.set_font("DejaVu", size = 20)
         pdf.cell(80)
         pdf.cell(30, 10, txt="59% - 50% Match", align = 'C')
-        pdf.set_font("Arial", size = 12)
+        pdf.set_font("DejaVu", size = 12)
         pdf.ln(20)
         for i in range(len(five)):
-            pdf.set_font("Arial", size = 16)
+            pdf.set_font("DejaVu", size = 16)
             pdf.multi_cell(190, 10, txt="{}".format(apt.getData(groups_df, five[i], 'name')),align = 'L')
-            pdf.set_font("Arial", size = 12)
+            pdf.set_font("DejaVu", size = 12)
             pdf.ln(5)
             desc = apt.getData(groups_df, five[i], 'description')
             #desc = apt.fix_pdf_description(desc)
