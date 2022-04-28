@@ -189,7 +189,7 @@ def getTechniquesByGroup(df: pd.DataFrame, GroupID: str) -> list:
     '''
     return df[(df.source_ID == GroupID)& (df.target_type == 'technique')].target_ID.tolist()
 
-def getSofwareByGroup(df: pd.DataFrame, GroupID: str) -> list:
+def getSoftwareByGroup(df: pd.DataFrame, GroupID: str) -> list:
     '''
     Return a list of all software used by a particular group
     '''
@@ -313,3 +313,5 @@ def fix_pdf_description(text: str)-> str:
     text = re.sub(r"</a>", '', text)
 
     return text
+
+techniques_df, tactics_df, groups_df, software_df, mitigations_df, gfr_df, relationships_df = buildDataFrames()
