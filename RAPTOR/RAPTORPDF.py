@@ -1,6 +1,7 @@
 # Python program to create
 # a pdf file
 
+from pydoc import describe
 import pandas as pd
 import numpy as np
 from fpdf import *
@@ -12,6 +13,7 @@ if Debug:
     group1 = {'G0024':90}
 
 pdf = FPDF()
+
 
 def addGroup(group: dict, string: str):
     if group != []:

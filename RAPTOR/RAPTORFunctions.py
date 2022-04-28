@@ -312,6 +312,8 @@ def fix_pdf_description(text: str)-> str:
     text = re.sub(r'\<a href=\"https?://[^()]*?>', '', text)
     text = re.sub(r"</a>", '', text)
 
+    text = re.sub(r"<code>", '', text)
+    text = re.sub(r"</code>", '',text)
     return text
-
+  
 techniques_df, tactics_df, groups_df, software_df, mitigations_df, gfr_df, relationships_df = buildDataFrames()
