@@ -2,6 +2,7 @@
 # Python program to create
 # a pdf file
 
+from pydoc import describe
 import pandas as pd
 import numpy as np
 from fpdf import *
@@ -78,7 +79,9 @@ def pdfReport(groups: dict):
                 pdf.multi_cell(190, 10, txt="Techniques: {}".format(apt.getData(techniques_df, techniques[i], 'name')),align = 'L')
                 pdf.ln(5)
                 pdf.cell(10)
-                pdf.multi_cell(180, 10, txt="Description: {}".format(apt.getData(techniques_df, techniques[i], 'description')),align = 'L')
+                desc = apt.getData(techniques_df, techniques[i], 'description')
+                desc = apt.fix_pdf_description(desc)
+                pdf.multi_cell(180, 10, txt="Description: {}".format(desc),align = 'L')
                 mitigations = apt.mitigationsByTechnique(relationships_df, techniques[i])
                 if mitigations != []:
                     for j in range(len(mitigations)):
@@ -87,7 +90,9 @@ def pdfReport(groups: dict):
                         pdf.multi_cell(170, 10, txt="Mitigation: {}".format(apt.getData(mitigations_df, mitigations[j], 'name')),align = 'L')
                         pdf.ln(5)
                         pdf.cell(30)
-                        pdf.multi_cell(160, 10, txt="{}".format(apt.getData(mitigations_df, mitigations[j], 'description')),align = 'L')
+                        desc =apt.getData(mitigations_df, mitigations[j], 'description')
+                        desc = apt.fix_pdf_description(desc)
+                        pdf.multi_cell(160, 10, txt="{}".format(desc),align = 'L')
                 pdf.ln(10)
 
 
@@ -118,6 +123,7 @@ def pdfReport(groups: dict):
                 pdf.multi_cell(190, 10, txt="Techniques: {}".format(apt.getData(techniques_df, techniques[i], 'name')),align = 'L')
                 pdf.ln(5)
                 pdf.cell(10)
+                desc = apt.fix_pdf_description(desc)
                 pdf.multi_cell(180, 10, txt="Description: {}".format(apt.getData(techniques_df, techniques[i], 'description')),align = 'L')
                 mitigations = apt.mitigationsByTechnique(relationships_df, techniques[i])
                 if mitigations != []:
@@ -127,6 +133,8 @@ def pdfReport(groups: dict):
                         pdf.multi_cell(170, 10, txt="Mitigation: {}".format(apt.getData(mitigations_df, mitigations[j], 'name')),align = 'L')
                         pdf.ln(5)
                         pdf.cell(30)
+
+                        desc = apt.fix_pdf_description(desc)
                         pdf.multi_cell(160, 10, txt="{}".format(apt.getData(mitigations_df, mitigations[j], 'description')),align = 'L')
                 pdf.ln(10)
         pdf.add_page()
@@ -145,7 +153,7 @@ def pdfReport(groups: dict):
             pdf.set_font("DejaVu", size = 20)
             pdf.ln(5)
             desc = apt.getData(groups_df, seven[i], 'description')
-            #desc = apt.fix_pdf_description(desc)
+            desc = apt.fix_pdf_description(desc)
             pdf.multi_cell(190, 10, txt="Description: {}".format(desc),align = 'L')
             pdf.ln(10)
             pdf.multi_cell(190, 10, txt="Associated Groups: {}".format(apt.getData(groups_df, seven[i], 'associated groups')),align = 'L')
@@ -155,7 +163,9 @@ def pdfReport(groups: dict):
                 pdf.multi_cell(190, 10, txt="Techniques: {}".format(apt.getData(techniques_df, techniques[i], 'name')),align = 'L')
                 pdf.ln(5)
                 pdf.cell(10)
-                pdf.multi_cell(180, 10, txt="Description: {}".format(apt.getData(techniques_df, techniques[i], 'description')),align = 'L')
+                desc = apt.getData(techniques_df, techniques[i], 'description')
+                desc = apt.fix_pdf_description(desc)
+                pdf.multi_cell(180, 10, txt="Description: {}".format(desc),align = 'L')
                 mitigations = apt.mitigationsByTechnique(relationships_df, techniques[i])
                 if mitigations != []:
                     for j in range(len(mitigations)):
@@ -164,7 +174,9 @@ def pdfReport(groups: dict):
                         pdf.multi_cell(170, 10, txt="Mitigation: {}".format(apt.getData(mitigations_df, mitigations[j], 'name')),align = 'L')
                         pdf.ln(5)
                         pdf.cell(30)
-                        pdf.multi_cell(160, 10, txt="{}".format(apt.getData(mitigations_df, mitigations[j], 'description')),align = 'L')
+                        desc = apt.getData(mitigations_df, mitigations[j], 'description')
+                        desc = apt.fix_pdf_description(desc)
+                        pdf.multi_cell(160, 10, txt="{}".format(desc),align = 'L')
                 pdf.ln(10)
         pdf.add_page()
 
@@ -191,7 +203,9 @@ def pdfReport(groups: dict):
                 pdf.multi_cell(190, 10, txt="Techniques: {}".format(apt.getData(techniques_df, techniques[i], 'name')),align = 'L')
                 pdf.ln(5)
                 pdf.cell(10)
-                pdf.multi_cell(180, 10, txt="Description: {}".format(apt.getData(techniques_df, techniques[i], 'description')),align = 'L')
+                desc = apt.getData(techniques_df, techniques[i], 'description')
+                desc = apt.fix_pdf_description(desc)
+                pdf.multi_cell(180, 10, txt="Description: {}".format(desc),align = 'L')
                 mitigations = apt.mitigationsByTechnique(relationships_df, techniques[i])
                 if mitigations != []:
                     for j in range(len(mitigations)):
@@ -200,7 +214,9 @@ def pdfReport(groups: dict):
                         pdf.multi_cell(170, 10, txt="Mitigation: {}".format(apt.getData(mitigations_df, mitigations[j], 'name')),align = 'L')
                         pdf.ln(5)
                         pdf.cell(30)
-                        pdf.multi_cell(160, 10, txt="{}".format(apt.getData(mitigations_df, mitigations[j], 'description')),align = 'L')
+                        desc = apt.getData(mitigations_df, mitigations[j], 'description')
+                        desc = apt.fix_pdf_description(desc)
+                        pdf.multi_cell(160, 10, txt="{}".format(desc),align = 'L')
                 pdf.ln(10)
 
         pdf.add_page()
@@ -218,7 +234,7 @@ def pdfReport(groups: dict):
             pdf.set_font("DejaVu", size = 12)
             pdf.ln(5)
             desc = apt.getData(groups_df, five[i], 'description')
-            #desc = apt.fix_pdf_description(desc)
+            desc = apt.fix_pdf_description(desc)
             pdf.multi_cell(190, 10, txt="Description: {}".format(desc),align = 'L')
             pdf.ln(10)
             pdf.multi_cell(190, 10, txt="Associated Groups: {}".format(apt.getData(groups_df, five[i], 'associated groups')),align = 'L')
@@ -228,7 +244,9 @@ def pdfReport(groups: dict):
                 pdf.multi_cell(190, 10, txt="Techniques: {}".format(apt.getData(techniques_df, techniques[i], 'name')),align = 'L')
                 pdf.ln(5)
                 pdf.cell(10)
-                pdf.multi_cell(180, 10, txt="Description: {}".format(apt.getData(techniques_df, techniques[i], 'description')),align = 'L')
+                desc = apt.getData(techniques_df, techniques[i], 'description')
+                desc = apt.fix_pdf_description(desc)
+                pdf.multi_cell(180, 10, txt="Description: {}".format(desc),align = 'L')
                 mitigations = apt.mitigationsByTechnique(relationships_df, techniques[i])
                 if mitigations != []:
                     for j in range(len(mitigations)):
@@ -237,7 +255,9 @@ def pdfReport(groups: dict):
                         pdf.multi_cell(170, 10, txt="Mitigation: {}".format(apt.getData(mitigations_df, mitigations[j], 'name')),align = 'L')
                         pdf.ln(5)
                         pdf.cell(30)
-                        pdf.multi_cell(160, 10, txt="{}".format(apt.getData(mitigations_df, mitigations[j], 'description')),align = 'L')
+                        desc = apt.getData(mitigations_df, mitigations[j], 'description')
+                        desc = apt.fix_pdf_description(desc)
+                        pdf.multi_cell(160, 10, txt="{}".format(desc),align = 'L')
                 pdf.ln(10)
 
     # save the pdf with name .pdf
