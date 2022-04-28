@@ -318,24 +318,24 @@ class UI(QMainWindow):
             item_parent = item_parent.text(0)
             if(item_parent == '90%+'):
                 groups_dict = {apt.getIDByName(groups_df, item_name):90}
-                pdf.pdfReport(groups_dict)
-                subprocess.run(['open', 'PDFFiles/RAPTOR.pdf'], check = True)
+                pdf.grouppdfReport(groups_dict, item_name)
+                subprocess.run(['open', 'PDFFiles/%s.pdf' %item_name], check = True)
             if(item_parent == '89%-80%'):
                 groups_dict = {apt.getIDByName(groups_df, item_name):80}
-                pdf.pdfReport(groups_dict)
-                subprocess.run(['open', 'PDFFiles/RAPTOR.pdf'], check = True)
+                pdf.grouppdfReport(groups_dict, item_name)
+                subprocess.run(['open', 'PDFFiles/%s.pdf' %item_name], check = True)
             if(item_parent == '79%-70%'):
                 groups_dict = {apt.getIDByName(groups_df, item_name):70}
-                pdf.pdfReport(groups_dict)
-                subprocess.run(['open', 'PDFFiles/RAPTOR.pdf'], check = True)
+                pdf.grouppdfReport(groups_dict, item_name)
+                subprocess.run(['open', 'PDFFiles/%s.pdf' %item_name], check = True)
             if(item_parent == '69%-60%'):
                 groups_dict = {apt.getIDByName(groups_df, item_name):60}
-                pdf.pdfReport(groups_dict)
-                subprocess.run(['open', 'PDFFiles/RAPTOR.pdf'], check = True)
+                pdf.grouppdfReport(groups_dict, item_name)
+                subprocess.run(['open', 'PDFFiles/%s.pdf' %item_name], check = True)
             if(item_parent == '59%-50%'):
                 groups_dict = {apt.getIDByName(groups_df, item_name):50}
-                pdf.pdfReport(groups_dict)
-                subprocess.run(['open', 'PDFFiles/RAPTOR.pdf'], check = True)
+                pdf.grouppdfReport(groups_dict, item_name)
+                subprocess.run(['open', 'PDFFiles/%s.pdf' %item_name], check = True)
 
 
     def thread_finished(self):
