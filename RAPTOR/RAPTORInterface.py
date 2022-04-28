@@ -1,4 +1,5 @@
-from PyQt5.QtWidgets import QMainWindow, QApplication, QComboBox, QPushButton, QPlainTextEdit, QCompleter, QListWidget, QAction, QLabel, QSlider, QTextBrowser
+
+from PyQt5.QtWidgets import QMainWindow, QApplication, QComboBox, QPushButton, QPlainTextEdit, QCompleter, QListWidget, QAction, QLabel, QSlider, QTextBrowser, QTreeWidget, QTreeWidgetItem
 from PyQt5 import uic, Qt, QtCore
 from PyQt5.QtCore import QCoreApplication
 import sys
@@ -6,16 +7,18 @@ import json
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QFont, QMovie, QIcon, QTextCursor
 import RAPTORFunctions as apt
 import RAPTORReport as report
+import RAPTORPDF as pdf
 import webbrowser
 import os
+import subprocess
 
 
-techniques_df, tactics_df, groups_df, software_df, mitigations_df, gfr_df, relationships_df = apt.buildDataFrames()
-apt.getTechniquesByTactic(tactics_df, techniques_df)
-apt.getSoftwareList(software_df)
-TacticCombo = apt.getTechniquesByTactic(tactics_df, techniques_df)
-Techniques = apt.getTechniqueList(techniques_df)
-Malware = apt.getSoftwareList(software_df)
+# apt.techniques_df, apt.tactics_df, apt.groups_df, apt.software_df, apt.mitigations_df, apt.gfr_df, apt.relationships_df = apt.buildDataFrames()
+apt.getTechniquesByTactic(apt.tactics_df, apt.techniques_df)
+apt.getSoftwareList(apt.software_df)
+TacticCombo = apt.getTechniquesByTactic(apt.tactics_df, apt.techniques_df)
+Techniques = apt.getTechniqueList(apt.techniques_df)
+Malware = apt.getSoftwareList(apt.software_df)
 Backend_list = []
 
 class UI(QMainWindow):
@@ -24,6 +27,8 @@ class UI(QMainWindow):
 
         #load the ui File
         uic.loadUi("GUIFiles/GUI.ui", self)
+        self.setFixedWidth(1525)
+        self.setFixedHeight(660)
         self.setWindowTitle("RAPTOR")
         self.setWindowIcon(QIcon('GUIFiles/raptor.png'))
         self.setStyleSheet("background-color: #282C2E; color: white; font-size : 12 pt;")
@@ -62,6 +67,16 @@ class UI(QMainWindow):
         self.reset_btn.setStyleSheet('QPushButton {background-color: #282C2E; color: white; font-size : 12pt;}')
         self.reset_btn.hide()
 
+        self.HTML_btn = self.findChild(QPushButton, "HTML")
+        self.HTML_btn.setStyleSheet('QPushButton {background-color: #282C2E; color: white; font-size : 12pt;}')
+        self.HTML_btn.hide()
+        self.PDF_btn = self.findChild(QPushButton, "PDF")
+        self.PDF_btn.setStyleSheet('QPushButton {background-color: #282C2E; color: white; font-size : 12pt;}')
+        self.PDF_btn.hide()
+        self.groupPDF_btn = self.findChild(QPushButton, "GroupPDF")
+        self.groupPDF_btn.setStyleSheet('QPushButton {background-color: #282C2E; color: white; font-size : 12pt;}')
+        self.groupPDF_btn.hide()
+
         self.added_techniques_box = self.findChild(QListWidget, "AddedTechniquesBox")
         self.added_techniques_box.setStyleSheet('QListWidget {background-color: #282C2E; color: white; font-size : 12pt;}')
         self.added_software_box = self.findChild(QListWidget, "AddedSoftwareBox")
@@ -95,8 +110,16 @@ class UI(QMainWindow):
         self.slider_text = self.findChild(QLabel, "slider_text")
         self.slider_text.setStyleSheet('QLabel{background-color: #282C2E; color: white; font-size : 13pt;}')
 
-        #self.tactics.setModel(self.model)
-        #self.techniques.setModel(self.model)
+        self.groups_list = self.findChild(QTreeWidget, "Groups_List")
+        self.groups_list.setStyleSheet('QTreeWidget{background-color: #282C2E; color: white; font-size : 13pt;}')
+        self.groups_list.expandAll()
+        self.groups_list.hide()
+        self.ninety = QTreeWidgetItem(self.groups_list, ['90%+'])
+        self.eighty = QTreeWidgetItem(self.groups_list, ['89%-80%'])
+        self.seventy = QTreeWidgetItem(self.groups_list, ['79%-70%'])
+        self.sixty= QTreeWidgetItem(self.groups_list, ['69%-60%'])
+        self.fifty = QTreeWidgetItem(self.groups_list, ['59%-50%'])
+
         self.software.addItems(Malware)
 
         self.update_action = self.findChild(QAction, "actionUpdate")
@@ -138,12 +161,16 @@ class UI(QMainWindow):
         self.reset_btn.pressed.connect(self.reset)
         self.update_action.triggered.connect(self.update_data)
 
+        self.HTML_btn.pressed.connect(self.open_html)
+        self.PDF_btn.pressed.connect(self.open_pdf)
+        self.groupPDF_btn.pressed.connect(self.open_group_pdf)
+
         self.slider.valueChanged.connect(self.sliderchange)
         self.showMaximized()
 
     def sliderchange(self):
         self.slider_text.setText(str(self.slider.value())+ "%")
-        self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
+        self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(apt.gfr_df, Backend_list, self.slider.value())))
 
     def indexChanged(self, index):
         self.techniques.clear()
@@ -158,20 +185,20 @@ class UI(QMainWindow):
         self.tactic_selected = self.tactics.currentText()
         #self.description_box.setPlainText(self.tactic_selected)
         if (self.tactic_selected != ""):
-            self.description_box.setHtml("{}<p>{}</p>".format(self.tactic_selected, apt.getDescriptionByName(tactics_df,self.tactic_selected)))
+            self.description_box.setHtml("{}<p>{}</p>".format(self.tactic_selected, apt.getDescriptionByName(apt.tactics_df,self.tactic_selected)))
     def technique_text(self,text):
         self.description_box.moveCursor(QTextCursor.Start)
         self.description_box.setOpenExternalLinks(True)
         self.technique_selected = self.techniques.currentText()
-        self.description_box.setHtml(apt.getDescriptionByName(techniques_df,self.technique_selected))
-        #self.description_box.setHtml("{}...\n\n{}".format(self.technique_selected, apt.getDescriptionByName(techniques_df,self.technique_selected)))
+        self.description_box.setHtml(apt.getDescriptionByName(apt.techniques_df,self.technique_selected))
+        #self.description_box.setHtml("{}...\n\n{}".format(self.technique_selected, apt.getDescriptionByName(apt.techniques_df,self.technique_selected)))
 
     def software_text(self,text):
         self.description_box.moveCursor(QTextCursor.Start)
         self.description_box.setOpenExternalLinks(True)
         self.software_selected = self.software.currentText()
         #self.description_box.setText(self.software_selected)
-        self.description_box.setHtml(apt.getDescriptionByName(software_df, self.software_selected))
+        self.description_box.setHtml(apt.getDescriptionByName(apt.software_df, self.software_selected))
 
     def add_technique(self):
         self.description_box.setOpenExternalLinks(False)
@@ -186,8 +213,8 @@ class UI(QMainWindow):
                 self.description_box.setHtml("Technique: " + self.technique_selected+ " has been added to the technique list." )
                 Backend_list.append(self.technique_selected)
                 self.technique_selected = ""
-                self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
-                if(apt.update_num(gfr_df, Backend_list, self.slider.value()) >= 1):
+                self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(apt.gfr_df, Backend_list, self.slider.value())))
+                if(apt.update_num(apt.gfr_df, Backend_list, self.slider.value()) >= 1):
                     self.evaluate_btn.show()
                 else:
                     self.evaluate_btn.hide()
@@ -204,8 +231,8 @@ class UI(QMainWindow):
                 self.description_box.setHtml("Software " + self.software_selected+ " has been added to the software list." )
                 Backend_list.append(self.software_selected)
                 self.software_selected = ""
-                self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
-                if(apt.update_num(gfr_df, Backend_list, self.slider.value()) >= 1):
+                self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(apt.gfr_df, Backend_list, self.slider.value())))
+                if(apt.update_num(apt.gfr_df, Backend_list, self.slider.value()) >= 1):
                     self.evaluate_btn.show()
                 else:
                     self.evaluate_btn.hide()
@@ -217,8 +244,8 @@ class UI(QMainWindow):
             self.added_techniques_box.takeItem(self.added_techniques_box.row(item))
             self.description_box.setHtml("Technique " + item.text()+ " has been removed from the technique list." )
             Backend_list.remove(item.text())
-            self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
-            if(apt.update_num(gfr_df, Backend_list, self.slider.value()) >= 1):
+            self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(apt.gfr_df, Backend_list, self.slider.value())))
+            if(apt.update_num(apt.gfr_df, Backend_list, self.slider.value()) >= 1):
                 self.evaluate_btn.show()
             else:
                 self.evaluate_btn.hide()
@@ -229,8 +256,8 @@ class UI(QMainWindow):
             self.added_software_box.takeItem(self.added_software_box.row(item))
             self.description_box.setHtml("Software " + item.text()+ " has been removed from the software list." )
             Backend_list.remove(item.text())
-            self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
-            if(apt.update_num(gfr_df, Backend_list, self.slider.value()) >= 1):
+            self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(apt.gfr_df, Backend_list, self.slider.value())))
+            if(apt.update_num(apt.gfr_df, Backend_list, self.slider.value()) >= 1):
                 self.evaluate_btn.show()
             else:
                 self.evaluate_btn.hide()
@@ -240,7 +267,7 @@ class UI(QMainWindow):
         self.added_software_box.clear()
         self.description_box.setHtml("All techniques and software have been cleared from added techniques and added software lists.")
         Backend_list.clear()
-        self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
+        self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(apt.gfr_df, Backend_list, self.slider.value())))
 
     def evaluate(self):
         self.temp_thread2 = StringThread2("Report")
@@ -264,6 +291,7 @@ class UI(QMainWindow):
             self.clear_all_btn.setEnabled(False)
             self.evaluate_btn.setEnabled(False)
             self.update_action.setEnabled(False)
+            self.slider_bar.setEnabled(False)
             self.reset_btn.hide()
             self.progress_label.show()
             self.update_label2.show()
@@ -272,18 +300,86 @@ class UI(QMainWindow):
             self.temp_thread2.start()
             self.temp_thread2.finished.connect(self.thread_finished)
 
+    def open_html(self):
+        webbrowser.open('HTMLFiles/index.html', new=2)
+    def open_pdf(self):
+        subprocess.run(['open', 'PDFFiles/RAPTOR.pdf'], check = True)
+
+    def open_group_pdf(self):
+        percent_list = ['90%+', '89%-80%', '79%-70%', '69%-60%', '59%-50%']
+        listItems=self.groups_list.currentItem()
+        if not listItems: return
+        item = self.groups_list.currentItem()
+        item_name = item.text(0)
+        if(item_name in percent_list or item_name == None):
+            pass
+        else:
+            item_parent = item.parent()
+            item_parent = item_parent.text(0)
+            if(item_parent == '90%+'):
+                groups_dict = {apt.getIDByName(apt.groups_df, item_name):90}
+                pdf.grouppdfReport(groups_dict, item_name)
+                subprocess.run(['open', 'PDFFiles/%s.pdf' %item_name], check = True)
+            if(item_parent == '89%-80%'):
+                groups_dict = {apt.getIDByName(apt.groups_df, item_name):80}
+                pdf.grouppdfReport(groups_dict, item_name)
+                subprocess.run(['open', 'PDFFiles/%s.pdf' %item_name], check = True)
+            if(item_parent == '79%-70%'):
+                groups_dict = {apt.getIDByName(apt.groups_df, item_name):70}
+                pdf.grouppdfReport(groups_dict, item_name)
+                subprocess.run(['open', 'PDFFiles/%s.pdf' %item_name], check = True)
+            if(item_parent == '69%-60%'):
+                groups_dict = {apt.getIDByName(apt.groups_df, item_name):60}
+                pdf.grouppdfReport(groups_dict, item_name)
+                subprocess.run(['open', 'PDFFiles/%s.pdf' %item_name], check = True)
+            if(item_parent == '59%-50%'):
+                groups_dict = {apt.getIDByName(apt.groups_df, item_name):50}
+                pdf.grouppdfReport(groups_dict, item_name)
+                subprocess.run(['open', 'PDFFiles/%s.pdf' %item_name], check = True)
+
 
     def thread_finished(self):
         self.description_box.clear()
+        self.slider_bar.hide()
+        self.potential_matches.clear()
+        self.slider_text.hide()
         self.progress_label.hide()
         self.update_label2.hide()
         self.reset_btn.show()
         self.reset_btn.setEnabled(True)
-        self.description_box.setHtml("PLEASE PRESS RESET BUTTON TO CONTINUE WORKING.")
-
+        self.groups_list.show()
+        self.HTML_btn.show()
+        self.PDF_btn.show()
+        self.groupPDF_btn.show()
+        print(group_dict)
+        for k,v in group_dict.items():
+            if(90<= v <=100):
+                QTreeWidgetItem(self.ninety, [apt.getData(apt.groups_df, k, 'name')])
+            elif(80 <= v <= 89):
+                QTreeWidgetItem(self.eighty, [apt.getData(apt.groups_df, k, 'name')])
+            elif(70 <= v <= 79):
+                QTreeWidgetItem(self.seventy, [apt.getData(apt.groups_df, k, 'name')])
+            elif(60 <=  v <= 69):
+                QTreeWidgetItem(self.sixty, [apt.getData(apt.groups_df, k, 'name')])
+            elif(50 <= v <= 59):
+                QTreeWidgetItem(self.fifty, [apt.getData(apt.groups_df, k, 'name')])
 
     def reset(self):
         Backend_list.clear()
+        for i in reversed(range(self.ninety.childCount())):
+            self.ninety.removeChild(self.ninety.child(i))
+        for i in reversed(range(self.eighty.childCount())):
+            self.eighty.removeChild(self.eighty.child(i))
+        for i in reversed(range(self.seventy.childCount())):
+            self.seventy.removeChild(self.seventy.child(i))
+        for i in reversed(range(self.sixty.childCount())):
+            self.sixty.removeChild(self.sixty.child(i))
+        for i in reversed(range(self.fifty.childCount())):
+            self.fifty.removeChild(self.fifty.child(i))
+        self.groups_list.hide()
+        self.HTML_btn.hide()
+        self.PDF_btn.hide()
+        self.groupPDF_btn.hide()
         self.progress_label.hide()
         self.update_label2.hide()
         self.description_box.setOpenExternalLinks(True)
@@ -304,6 +400,8 @@ class UI(QMainWindow):
         self.evaluate_btn.hide()
         self.update_action.setEnabled(True)
         self.reset_btn.hide()
+        self.slider_bar.show()
+        self.slider_text.show()
 
     def update_data(self):
         self.temp_thread = StringThread("RAPTOR")
@@ -321,7 +419,6 @@ class UI(QMainWindow):
         self.movie2.start()
         self.setEnabled(False)
         self.temp_thread.start()
-
 
 class StringThread(QtCore.QThread):
 
@@ -347,8 +444,11 @@ class StringThread2(QtCore.QThread):
         self._name = name
 
     def run(self):
-        test_df = apt.filterForSelectedTechniques(gfr_df, Backend_list)
-        report.htmlReport(apt.analyzeResults(test_df, Backend_list))
+        global group_dict
+        test_df = apt.filterForSelectedTechniques(apt.gfr_df, Backend_list)
+        group_dict = apt.analyzeResults(test_df, Backend_list)
+        report.htmlReport(group_dict)
+        pdf.pdfReport(group_dict)
 #Initialize the App
 app = QApplication(sys.argv)
 UIWindow = UI()

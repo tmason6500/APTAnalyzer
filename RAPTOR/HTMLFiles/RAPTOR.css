@@ -1,0 +1,214 @@
+body {
+    margin: 0;
+}
+.container {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(20%, 20%));
+    grid-template-rows: repeat(10, minmax(10%, 10%));
+}
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 5px lawngreen; 
+    border-radius: 10px;
+    background-color: #000000;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: lawngreen; 
+}
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+.navmenu {
+    display: grid;  
+    grid-column: 1 / 6;
+    grid-row: 1 / 2;
+    background-color: #000000;
+    color: lawngreen;
+    border: lawngreen solid medium;
+}
+.navmenu ul {list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+.navmenu li {
+    font-size: 60px;
+}
+.navmenu li a {
+    text-decoration: none;
+    color: lawngreen;
+}
+.navmenu .right {
+    float: right;
+    font-size: 20px;
+    margin-right: -120px;
+    padding: 0px;
+}
+.navmenu .left {
+    float: left;
+    margin-left: -130px;
+    padding: 0px;
+}
+#logo {
+    height: 70px;
+    width: 70px;
+    padding: 10px 0px 0px 10px;
+}
+.footer {
+    display: grid;
+    grid-column: 1 / 6;
+    grid-row: 10 / 11;
+    background-color: #000000;
+    color: lawngreen;
+    border: lawngreen solid medium;
+}
+.footer ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.footer li {
+    float: center;
+}
+.footer img {
+    height: 50px;
+    width: 50px;
+    padding: 0px;
+}
+.aboutpage {
+    display: grid;
+    grid-column: 1 /  6;
+    grid-row: 2 /  10;
+    background-color: #000000;
+    color: lawngreen;
+    border: lawngreen solid medium;
+}
+.groupmenu {
+    display: grid;
+    grid-column: 1 / 2;
+    grid-row: 2 / 10;
+    background-color: #000000;
+    color: lawngreen;
+    border: lawngreen solid medium;
+    overflow: scroll;
+}
+.groupmenu h2 {
+    font-size: 40px;
+    text-align: center;
+}
+.groupmenu p {
+    font-size: 20px;
+    text-align: center;
+}
+.groupmenu p a {
+    display: block;
+    text-decoration: none;
+    color: lawngreen;
+}
+#spacer {
+    padding-top: 30px;
+}
+.groupinfo {
+    display: grid;
+    grid-column: 2 / 6;
+    grid-row: 2 / 10;
+    background-color: #000000;
+    color: lawngreen;
+    border: lawngreen solid medium;
+    overflow: scroll;
+}
+.groupinfo h1 {
+    font-size: 60px;
+    margin: 0px;
+    padding: 30px 10px;
+}
+.groupinfo h2 {
+    font-size: 40px;
+    margin: 0px;
+    padding: 10px 20px;
+}
+.groupinfo p {
+    font-size: 20px;
+    margin: 0px;
+    padding: 10px 48px;
+}
+.groupinfo p a {
+    text-decoration: none;
+    color: lawngreen;
+}
+#button1 {
+    font-size: 40px;
+    margin: 0px;
+    padding: 10px 20px;
+    justify-self: left;
+}
+#button2 {
+    font-size: 30px;
+    padding: 10px 40px;
+    justify-self: left;
+}
+#button3 {
+    font-size: 20px;
+    padding: 10px 50px;
+    justify-self: left;
+}
+.collapsible {
+    cursor: pointer;
+    background-color: #000000;
+    color: lawngreen;
+    border: none;
+    padding: 10px 0px 10px 0px;
+}
+.collapsible:after {
+    content: '\002B';
+    color: lawngreen;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+.active:after {
+    content: "\2212";
+}
+.content {
+    max-height: 0;
+    overflow: hidden;
+    transition: flex 0.2s ease-out;
+    padding-left: 10px;
+}
+.content1 {
+    max-height: 0;
+    overflow: hidden;
+    transition: flex 0.2s ease-out;
+    padding-left: 20px;
+}
+.aboutus {
+    grid-row: 3 / 4;
+    display: flex;
+    flex-direction: row;
+}
+.aboutus li {
+    list-style: none;
+    text-align: center;
+    flex: 1;
+}
+.blurb {
+    grid-row: 4 / 6;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.blurb li {
+    float: center;
+    flex: 1;
+}

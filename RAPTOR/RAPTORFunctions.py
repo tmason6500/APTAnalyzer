@@ -157,6 +157,12 @@ def analyzeResults(df: pd.DataFrame, techniqueList: list) -> dict:
     # Return the dictionary
     return percentages
 
+def getIDByName(df: pd.DataFrame, name: str) -> int:
+    """
+    Returns the ID of a row in a dataframe.
+    """
+    return df[df.name == name].ID.tolist()[0]
+
 def getDescriptionByName(df: pd.DataFrame, name: str) -> str:
     """
     Returns the description from the associated dataframe
@@ -183,7 +189,7 @@ def getTechniquesByGroup(df: pd.DataFrame, GroupID: str) -> list:
     '''
     return df[(df.source_ID == GroupID)& (df.target_type == 'technique')].target_ID.tolist()
 
-def getSofwareByGroup(df: pd.DataFrame, GroupID: str) -> list:
+def getSoftwareByGroup(df: pd.DataFrame, GroupID: str) -> list:
     '''
     Return a list of all software used by a particular group
     '''
@@ -306,4 +312,8 @@ def fix_pdf_description(text: str)-> str:
     text = re.sub(r'\<a href=\"https?://[^()]*?>', '', text)
     text = re.sub(r"</a>", '', text)
 
+    text = re.sub(r"<code>", '', text)
+    text = re.sub(r"</code>", '',text)
     return text
+  
+techniques_df, tactics_df, groups_df, software_df, mitigations_df, gfr_df, relationships_df = buildDataFrames()

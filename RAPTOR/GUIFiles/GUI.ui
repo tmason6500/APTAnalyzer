@@ -188,7 +188,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Generate Report</string>
+     <string>Generate Reports</string>
     </property>
    </widget>
    <widget class="QPushButton" name="DeleteTechnique">
@@ -424,9 +424,9 @@
    <widget class="QPushButton" name="ResetButton">
     <property name="geometry">
      <rect>
-      <x>770</x>
-      <y>480</y>
-      <width>102</width>
+      <x>751</x>
+      <y>490</y>
+      <width>111</width>
       <height>27</height>
      </rect>
     </property>
@@ -523,6 +523,77 @@
      <string>TextLabel</string>
     </property>
    </widget>
+   <widget class="QTreeWidget" name="Groups_List">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>0</y>
+      <width>521</width>
+      <height>531</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="autoExpandDelay">
+     <number>-1</number>
+    </property>
+    <property name="indentation">
+     <number>34</number>
+    </property>
+    <property name="uniformRowHeights">
+     <bool>false</bool>
+    </property>
+    <column>
+     <property name="text">
+      <string>GROUPS</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QPushButton" name="HTML">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>560</y>
+      <width>161</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Open HTML Report</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="GroupPDF">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>560</y>
+      <width>161</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Open Group Report</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="PDF">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>560</y>
+      <width>161</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Open PDF Report</string>
+    </property>
+   </widget>
    <zorder>DescriptionBox</zorder>
    <zorder>PotentialMatches</zorder>
    <zorder>DeleteTechnique</zorder>
@@ -545,8 +616,12 @@
    <zorder>slider_text</zorder>
    <zorder>progress</zorder>
    <zorder>updating</zorder>
-   <zorder>ResetButton</zorder>
    <zorder>updating_2</zorder>
+   <zorder>HTML</zorder>
+   <zorder>GroupPDF</zorder>
+   <zorder>PDF</zorder>
+   <zorder>Groups_List</zorder>
+   <zorder>ResetButton</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
