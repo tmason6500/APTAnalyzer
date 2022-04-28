@@ -1,7 +1,7 @@
 import webbrowser
 import RAPTORFunctions as apt
 
-techniques_df, tactics_df, groups_df, software_df, mitigations_df, gfr_df, relationships_df = apt.buildDataFrames()
+# apt.techniques_df, apt.tactics_df, apt.groups_df, apt.software_df, apt.mitigations_df, apt.gfr_df, apt.relationships_df = apt.buildDataFrames()
 
 # This is just for dummy testing for DEBUG
 groups = {'G0130':95, 'G0100':55, 'G0006':61, 'G0080':62, 'G0035':70, 'G0125':55, 'G0032':83}
@@ -68,27 +68,27 @@ def htmlReport(groups: dict):
           <h2>90+%</h2>"""
   for i in range(len(nine)):
     index += """
-            <p><a href="{}.html">{}</a></p>""".format(nine[i], apt.getData(groups_df, nine[i], 'name'))
+            <p><a href="{}.html">{}</a></p>""".format(nine[i], apt.getData(apt.groups_df, nine[i], 'name'))
   index += """
           <h2>80% - 89%</h2>"""
   for i in range(len(eight)):
     index += """
-            <p><a href="{}.html">{}</a></p>""".format(eight[i], apt.getData(groups_df, eight[i], 'name'))
+            <p><a href="{}.html">{}</a></p>""".format(eight[i], apt.getData(apt.groups_df, eight[i], 'name'))
   index += """
           <h2>70% - 79%</h2>"""
   for i in range(len(seven)):
     index += """
-            <p><a href="{}.html">{}</a></p>""".format(seven[i], apt.getData(groups_df, seven[i], 'name'))      
+            <p><a href="{}.html">{}</a></p>""".format(seven[i], apt.getData(apt.groups_df, seven[i], 'name'))      
   index += """
           <h2>60% - 69%</h2>"""
   for i in range(len(six)):
     index += """
-            <p><a href="{}.html">{}</a></p>""".format(six[i], apt.getData(groups_df, six[i], 'name'))
+            <p><a href="{}.html">{}</a></p>""".format(six[i], apt.getData(apt.groups_df, six[i], 'name'))
   index += """
           <h2>50% - 59%</h2>"""
   for i in range(len(five)):
     index += """
-            <p><a href="{}.html">{}</a></p>""".format(five[i], apt.getData(groups_df, five[i], 'name'))
+            <p><a href="{}.html">{}</a></p>""".format(five[i], apt.getData(apt.groups_df, five[i], 'name'))
   index += """
         </div>
       </div>
@@ -149,7 +149,7 @@ def htmlReport(groups: dict):
     <meta charset="utf-8">
     <link rel="stylesheet" href="RAPTOR.css">
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
-    <title>{}</title>""".format(apt.getData(groups_df, key, 'name'))
+    <title>{}</title>""".format(apt.getData(apt.groups_df, key, 'name'))
     info += """
   </head>
   <body>
@@ -177,27 +177,27 @@ def htmlReport(groups: dict):
           <h2>90+%</h2>"""
     for i in range(len(nine)):
       info += """
-            <p><a href="{}.html">{}</a></p>""".format(nine[i], apt.getData(groups_df, nine[i], 'name'))
+            <p><a href="{}.html">{}</a></p>""".format(nine[i], apt.getData(apt.groups_df, nine[i], 'name'))
     info += """
           <h2>80% - 89%</h2>"""
     for i in range(len(eight)):
       info += """
-            <p><a href="{}.html">{}</a></p>""".format(eight[i], apt.getData(groups_df, eight[i], 'name'))
+            <p><a href="{}.html">{}</a></p>""".format(eight[i], apt.getData(apt.groups_df, eight[i], 'name'))
     info += """
           <h2>70% - 79%</h2>"""
     for i in range(len(seven)):
       info += """
-            <p><a href="{}.html">{}</a></p>""".format(seven[i], apt.getData(groups_df, seven[i], 'name'))      
+            <p><a href="{}.html">{}</a></p>""".format(seven[i], apt.getData(apt.groups_df, seven[i], 'name'))      
     info += """
           <h2>60% - 69%</h2>"""
     for i in range(len(six)):
       info += """
-            <p><a href="{}.html">{}</a></p>""".format(six[i], apt.getData(groups_df, six[i], 'name'))
+            <p><a href="{}.html">{}</a></p>""".format(six[i], apt.getData(apt.groups_df, six[i], 'name'))
     info += """
           <h2>50% - 59%</h2>"""
     for i in range(len(five)):
       info += """
-            <p><a href="{}.html">{}</a></p>""".format(five[i], apt.getData(groups_df, five[i], 'name'))
+            <p><a href="{}.html">{}</a></p>""".format(five[i], apt.getData(apt.groups_df, five[i], 'name'))
 
         # Populate group data
     info += """
@@ -205,27 +205,27 @@ def htmlReport(groups: dict):
       </div>
       <div class="groupinfo">
         <div>
-          <h1>{}</h1>""".format(apt.getData(groups_df, key, 'name'))
+          <h1>{}</h1>""".format(apt.getData(apt.groups_df, key, 'name'))
 
     info += """
-            <p>{}</p>""".format(apt.getData(groups_df, key, 'description'))
+            <p>{}</p>""".format(apt.getData(apt.groups_df, key, 'description'))
 
     info += """
           <h2 id="spacer">Associated Groups</h2>
-            <p>{}</p>""".format(apt.getData(groups_df, key, 'associated groups'))
+            <p>{}</p>""".format(apt.getData(apt.groups_df, key, 'associated groups'))
 
       # Populate software used by group
     info += """
           <button id ="button1" class="collapsible">Software</button>
             <div class="content">"""
         
-    software = apt.getSofwareByGroup(relationships_df, key)
+    software = apt.getSoftwareByGroup(apt.relationships_df, key)
     for i in range(len(software)):
       info += """
               <button id="button2" class="collapsible">{}</button>
                 <div class="content">
                   <p>{}</p>
-                </div>""".format(apt.getData(software_df, software[i], 'name'), apt.getData(software_df, software[i], 'description'))
+                </div>""".format(apt.getData(apt.software_df, software[i], 'name'), apt.getData(apt.software_df, software[i], 'description'))
 
       # Populate techniques and how to mitigate these attacks
     info += """
@@ -233,20 +233,20 @@ def htmlReport(groups: dict):
           <button id ="button1" class="collapsible">Techniques</button>
             <div class="content">"""
 
-    techniques = apt.getTechniquesByGroup(relationships_df, key)
+    techniques = apt.getTechniquesByGroup(apt.relationships_df, key)
     for i in range(len(techniques)):
       info += """
             <button id="button2" class="collapsible">{}</button>
               <div class="content">
-                <p>{}</p>""".format(apt.getData(techniques_df, techniques[i], 'name'), apt.getData(techniques_df, techniques[i], 'description'))
-      mitigations = apt.mitigationsByTechnique(relationships_df, techniques[i])    
+                <p>{}</p>""".format(apt.getData(apt.techniques_df, techniques[i], 'name'), apt.getData(apt.techniques_df, techniques[i], 'description'))
+      mitigations = apt.mitigationsByTechnique(apt.relationships_df, techniques[i])    
       if mitigations != []:
         info += """
                 <button id="button3" class="collapsible">Mitigations</button>
                   <div class="content1">"""
         for j in range(len(mitigations)):
             info += """
-                    <p>{} - {}</p>""".format(apt.getData(mitigations_df, mitigations[j], 'name'), apt.getData(mitigations_df, mitigations[j], 'description'))
+                    <p>{} - {}</p>""".format(apt.getData(apt.mitigations_df, mitigations[j], 'name'), apt.getData(apt.mitigations_df, mitigations[j], 'description'))
         info += """
                   </div>
               </div>"""  

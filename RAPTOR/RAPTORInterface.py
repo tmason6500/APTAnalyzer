@@ -13,12 +13,12 @@ import os
 import subprocess
 
 
-techniques_df, tactics_df, groups_df, software_df, mitigations_df, gfr_df, relationships_df = apt.buildDataFrames()
-apt.getTechniquesByTactic(tactics_df, techniques_df)
-apt.getSoftwareList(software_df)
-TacticCombo = apt.getTechniquesByTactic(tactics_df, techniques_df)
-Techniques = apt.getTechniqueList(techniques_df)
-Malware = apt.getSoftwareList(software_df)
+# apt.techniques_df, apt.tactics_df, apt.groups_df, apt.software_df, apt.mitigations_df, apt.gfr_df, apt.relationships_df = apt.buildDataFrames()
+apt.getTechniquesByTactic(apt.tactics_df, apt.techniques_df)
+apt.getSoftwareList(apt.software_df)
+TacticCombo = apt.getTechniquesByTactic(apt.tactics_df, apt.techniques_df)
+Techniques = apt.getTechniqueList(apt.techniques_df)
+Malware = apt.getSoftwareList(apt.software_df)
 Backend_list = []
 
 class UI(QMainWindow):
@@ -170,7 +170,7 @@ class UI(QMainWindow):
 
     def sliderchange(self):
         self.slider_text.setText(str(self.slider.value())+ "%")
-        self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
+        self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(apt.gfr_df, Backend_list, self.slider.value())))
 
     def indexChanged(self, index):
         self.techniques.clear()
@@ -185,20 +185,20 @@ class UI(QMainWindow):
         self.tactic_selected = self.tactics.currentText()
         #self.description_box.setPlainText(self.tactic_selected)
         if (self.tactic_selected != ""):
-            self.description_box.setHtml("{}<p>{}</p>".format(self.tactic_selected, apt.getDescriptionByName(tactics_df,self.tactic_selected)))
+            self.description_box.setHtml("{}<p>{}</p>".format(self.tactic_selected, apt.getDescriptionByName(apt.tactics_df,self.tactic_selected)))
     def technique_text(self,text):
         self.description_box.moveCursor(QTextCursor.Start)
         self.description_box.setOpenExternalLinks(True)
         self.technique_selected = self.techniques.currentText()
-        self.description_box.setHtml(apt.getDescriptionByName(techniques_df,self.technique_selected))
-        #self.description_box.setHtml("{}...\n\n{}".format(self.technique_selected, apt.getDescriptionByName(techniques_df,self.technique_selected)))
+        self.description_box.setHtml(apt.getDescriptionByName(apt.techniques_df,self.technique_selected))
+        #self.description_box.setHtml("{}...\n\n{}".format(self.technique_selected, apt.getDescriptionByName(apt.techniques_df,self.technique_selected)))
 
     def software_text(self,text):
         self.description_box.moveCursor(QTextCursor.Start)
         self.description_box.setOpenExternalLinks(True)
         self.software_selected = self.software.currentText()
         #self.description_box.setText(self.software_selected)
-        self.description_box.setHtml(apt.getDescriptionByName(software_df, self.software_selected))
+        self.description_box.setHtml(apt.getDescriptionByName(apt.software_df, self.software_selected))
 
     def add_technique(self):
         self.description_box.setOpenExternalLinks(False)
@@ -213,8 +213,8 @@ class UI(QMainWindow):
                 self.description_box.setHtml("Technique: " + self.technique_selected+ " has been added to the technique list." )
                 Backend_list.append(self.technique_selected)
                 self.technique_selected = ""
-                self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
-                if(apt.update_num(gfr_df, Backend_list, self.slider.value()) >= 1):
+                self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(apt.gfr_df, Backend_list, self.slider.value())))
+                if(apt.update_num(apt.gfr_df, Backend_list, self.slider.value()) >= 1):
                     self.evaluate_btn.show()
                 else:
                     self.evaluate_btn.hide()
@@ -231,8 +231,8 @@ class UI(QMainWindow):
                 self.description_box.setHtml("Software " + self.software_selected+ " has been added to the software list." )
                 Backend_list.append(self.software_selected)
                 self.software_selected = ""
-                self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
-                if(apt.update_num(gfr_df, Backend_list, self.slider.value()) >= 1):
+                self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(apt.gfr_df, Backend_list, self.slider.value())))
+                if(apt.update_num(apt.gfr_df, Backend_list, self.slider.value()) >= 1):
                     self.evaluate_btn.show()
                 else:
                     self.evaluate_btn.hide()
@@ -244,8 +244,8 @@ class UI(QMainWindow):
             self.added_techniques_box.takeItem(self.added_techniques_box.row(item))
             self.description_box.setHtml("Technique " + item.text()+ " has been removed from the technique list." )
             Backend_list.remove(item.text())
-            self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
-            if(apt.update_num(gfr_df, Backend_list, self.slider.value()) >= 1):
+            self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(apt.gfr_df, Backend_list, self.slider.value())))
+            if(apt.update_num(apt.gfr_df, Backend_list, self.slider.value()) >= 1):
                 self.evaluate_btn.show()
             else:
                 self.evaluate_btn.hide()
@@ -256,8 +256,8 @@ class UI(QMainWindow):
             self.added_software_box.takeItem(self.added_software_box.row(item))
             self.description_box.setHtml("Software " + item.text()+ " has been removed from the software list." )
             Backend_list.remove(item.text())
-            self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
-            if(apt.update_num(gfr_df, Backend_list, self.slider.value()) >= 1):
+            self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(apt.gfr_df, Backend_list, self.slider.value())))
+            if(apt.update_num(apt.gfr_df, Backend_list, self.slider.value()) >= 1):
                 self.evaluate_btn.show()
             else:
                 self.evaluate_btn.hide()
@@ -267,7 +267,7 @@ class UI(QMainWindow):
         self.added_software_box.clear()
         self.description_box.setHtml("All techniques and software have been cleared from added techniques and added software lists.")
         Backend_list.clear()
-        self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(gfr_df, Backend_list, self.slider.value())))
+        self.potential_matches.setPlainText("Potential Matches above " +str(self.slider.value())+ "%:  "  + str(apt.update_num(apt.gfr_df, Backend_list, self.slider.value())))
 
     def evaluate(self):
         self.temp_thread2 = StringThread2("Report")
@@ -317,23 +317,23 @@ class UI(QMainWindow):
             item_parent = item.parent()
             item_parent = item_parent.text(0)
             if(item_parent == '90%+'):
-                groups_dict = {apt.getIDByName(groups_df, item_name):90}
+                groups_dict = {apt.getIDByName(apt.groups_df, item_name):90}
                 pdf.grouppdfReport(groups_dict, item_name)
                 subprocess.run(['open', 'PDFFiles/%s.pdf' %item_name], check = True)
             if(item_parent == '89%-80%'):
-                groups_dict = {apt.getIDByName(groups_df, item_name):80}
+                groups_dict = {apt.getIDByName(apt.groups_df, item_name):80}
                 pdf.grouppdfReport(groups_dict, item_name)
                 subprocess.run(['open', 'PDFFiles/%s.pdf' %item_name], check = True)
             if(item_parent == '79%-70%'):
-                groups_dict = {apt.getIDByName(groups_df, item_name):70}
+                groups_dict = {apt.getIDByName(apt.groups_df, item_name):70}
                 pdf.grouppdfReport(groups_dict, item_name)
                 subprocess.run(['open', 'PDFFiles/%s.pdf' %item_name], check = True)
             if(item_parent == '69%-60%'):
-                groups_dict = {apt.getIDByName(groups_df, item_name):60}
+                groups_dict = {apt.getIDByName(apt.groups_df, item_name):60}
                 pdf.grouppdfReport(groups_dict, item_name)
                 subprocess.run(['open', 'PDFFiles/%s.pdf' %item_name], check = True)
             if(item_parent == '59%-50%'):
-                groups_dict = {apt.getIDByName(groups_df, item_name):50}
+                groups_dict = {apt.getIDByName(apt.groups_df, item_name):50}
                 pdf.grouppdfReport(groups_dict, item_name)
                 subprocess.run(['open', 'PDFFiles/%s.pdf' %item_name], check = True)
 
@@ -354,15 +354,15 @@ class UI(QMainWindow):
         print(group_dict)
         for k,v in group_dict.items():
             if(90<= v <=100):
-                QTreeWidgetItem(self.ninety, [apt.getData(groups_df, k, 'name')])
+                QTreeWidgetItem(self.ninety, [apt.getData(apt.groups_df, k, 'name')])
             elif(80 <= v <= 89):
-                QTreeWidgetItem(self.eighty, [apt.getData(groups_df, k, 'name')])
+                QTreeWidgetItem(self.eighty, [apt.getData(apt.groups_df, k, 'name')])
             elif(70 <= v <= 79):
-                QTreeWidgetItem(self.seventy, [apt.getData(groups_df, k, 'name')])
+                QTreeWidgetItem(self.seventy, [apt.getData(apt.groups_df, k, 'name')])
             elif(60 <=  v <= 69):
-                QTreeWidgetItem(self.sixty, [apt.getData(groups_df, k, 'name')])
+                QTreeWidgetItem(self.sixty, [apt.getData(apt.groups_df, k, 'name')])
             elif(50 <= v <= 59):
-                QTreeWidgetItem(self.fifty, [apt.getData(groups_df, k, 'name')])
+                QTreeWidgetItem(self.fifty, [apt.getData(apt.groups_df, k, 'name')])
 
     def reset(self):
         Backend_list.clear()
@@ -445,7 +445,7 @@ class StringThread2(QtCore.QThread):
 
     def run(self):
         global group_dict
-        test_df = apt.filterForSelectedTechniques(gfr_df, Backend_list)
+        test_df = apt.filterForSelectedTechniques(apt.gfr_df, Backend_list)
         group_dict = apt.analyzeResults(test_df, Backend_list)
         report.htmlReport(group_dict)
         pdf.pdfReport(group_dict)
