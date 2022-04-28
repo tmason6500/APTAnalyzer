@@ -9,6 +9,7 @@ import RAPTORFunctions as apt
 Debug = False
 if Debug:
     groups = {'G0024':90, 'G0100':60, 'G0080':92, 'G0035':70, 'G0125':80, 'G0032':83, 'G0036':55}
+    group1 = {'G0024':90}
 
 pdf = FPDF()
 
@@ -115,6 +116,11 @@ def pdfReport(groups: dict):
     pdf.output("./PDFFiles/RAPTOR.pdf")
 
 def grouppdfReport(groups: dict, name):
+    
+    single = []
+    for key in groups:
+        single.append(key)
+
     # Add a page
     pdf.add_page()
     pdf.add_font('DejaVu', '', './PDFFiles/DejaVuSans.ttf', uni=True)  # added line
@@ -124,11 +130,11 @@ def grouppdfReport(groups: dict, name):
     pdf.cell(30,10,'R.A.P.T.O.R.',0,0,'C')
     pdf.ln(20)
 
-    addGroup(groups, '')
+    addGroup(single, '')
 
     # save the pdf with name .pdf
     output_path='./PDFFiles/'+name+'.pdf'
     pdf.output(output_path)
 
 if Debug:
-    pdfReport(groups)
+    grouppdfReport(group1, 'group1')
