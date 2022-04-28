@@ -58,8 +58,6 @@ def addGroup(group: dict, string: str):
                         pdf.multi_cell(150, 10, txt="{}".format(apt.getData(apt.mitigations_df, mitigations[k], 'description')),align = 'L')
                 pdf.ln(10)
 
-        pdf.add_page()
-
 def pdfReport(groups: dict):
 
     # Populating Groups by % and linking to data
