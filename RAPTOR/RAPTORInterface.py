@@ -351,7 +351,6 @@ class UI(QMainWindow):
         self.HTML_btn.show()
         self.PDF_btn.show()
         self.groupPDF_btn.show()
-        print(group_dict)
         for k,v in group_dict.items():
             if(90<= v <=100):
                 QTreeWidgetItem(self.ninety, [apt.getData(apt.groups_df, k, 'name')])
