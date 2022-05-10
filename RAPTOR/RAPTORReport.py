@@ -95,7 +95,7 @@ def htmlReport(groups: dict):
       <div class="groupinfo">
         <div>
           <h1>APT Name</h1>
-            <p>The descrition of the APT will be here.</p>
+            <p>The description of the APT will be here.</p>
           <h2 id="spacer">Associated Groups</h2>
             <p>Known associated groups will be here.</p>
             <button id ="button1" class="collapsible">Software</button>
