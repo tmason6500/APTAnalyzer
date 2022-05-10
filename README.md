@@ -26,4 +26,4 @@ Python Dependencies:
 
 
 Known issues as of 5/10/2022:
--The visual components may not properly display on certain resolutions/oS's
+-The visual components may not properly display on certain resolutions/OS's
